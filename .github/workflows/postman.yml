@@ -1,0 +1,152 @@
+---
+name: Bank78 Postman Tests
+  
+permissions:
+  id-token: write
+  contents: read
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+  workflow_dispatch:
+
+jobs:
+  Bank78-Postman-Tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Allure Dependencies
+        shell: bash
+        run: |
+         npm install -g newman
+         npm install -g allure-commandline --save-dev
+         npm install -g newman-reporter-allure
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::012031050865:role/assurdlyautomation-github
+          role-skip-session-tagging: true
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Run API Tests
+        id: run-newman
+        working-directory: ./postman-collections
+        shell: bash
+        run: newman run paystro-api-collection.json -e env.json -r allure     
+
+      - name: Generate and upload Allure Report
+        if: ${{ always() }}
+        id: run-allure
+        working-directory: ./postman-collections
+        shell: bash
+        run: |
+          allure generate --output ./allure-report
+          link="./allure-report"
+          echo $link
+          aws s3 sync "$link" "s3://${{ secrets.AWS_S3_BUCKET }}/${{ github.event.repository.name }}/${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}"
+          report_url="http://myallurebucket-us.s3-website-us-east-1.amazonaws.com/${{ github.event.repository.name }}/${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}/index.html"
+          echo "Report URL: $report_url"
+          echo "url=$(echo $report_url)" >> $GITHUB_OUTPUT
+          echo $url
+
+      - name: Failure Slack Report
+        id: slack-failure
+        uses: slackapi/slack-github-action@v1.24.0
+        # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
+        if: ${{ failure() }}
+        with:
+          channel-id: 'C05RG27NJJJ' # slack channel #alerts-test
+          payload: |
+            {
+              "text": "GitHub Action failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Bank78 Postman tests failed* :x: There is a problem!"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":allure_report: Test Report"
+                      },
+                      "url": "${{ steps.run-allure.outputs.url }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":github: Github Action Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+      - name: Success Slack Report
+        id: slack-success
+        uses: slackapi/slack-github-action@v1.24.0
+        # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
+        if: ${{ success() }}
+        with:
+          channel-id: 'C05RG27NJJJ' # slack channel #alerts-test
+          payload: |
+            {
+              "text": "GitHub Action passed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Bank78 Postman tests passed* :white_check_mark: Hurray!"
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":allure_report: Test Report"
+                      },
+                      "url": "${{ steps.run-allure.outputs.url }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":github: Github Action Run"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
