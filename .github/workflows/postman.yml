@@ -44,7 +44,7 @@ jobs:
         id: run-newman
         working-directory: ./postman-collections
         shell: bash
-        run: newman run https://api.postman.com/collections/28334184-8c67c3ad-926b-4e37-be53-37e67b17b09e?access_key=${{ env.COLL_KEY }} -e env.json -r allure     
+        run: newman run https://api.postman.com/collections/28334184-8c67c3ad-926b-4e37-be53-37e67b17b09e?access_key=${{ secrets.COLL_KEY }} -e env.json -r allure     
 
       - name: Generate and upload Allure Report
         if: ${{ always() }}
