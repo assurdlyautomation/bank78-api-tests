@@ -5024,19 +5024,31 @@
 																"disableBodyPruning": true
 															},
 															"request": {
+																"auth": {
+																	"type": "bearer",
+																	"bearer": {
+																		"token": "{{admin_access_token}}"
+																	}
+																},
 																"method": "GET",
 																"header": [
 																	{
 																		"key": "Accept",
 																		"value": "text/plain"
+																	},
+																	{
+																		"key": "x-api-key",
+																		"value": "{{x-api-key}}",
+																		"type": "text"
 																	}
 																],
 																"url": {
-																	"raw": "{{baseUrl}}/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
+																	"raw": "{{baseUrl}}/savings/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
 																	"host": [
 																		"{{baseUrl}}"
 																	],
 																	"path": [
+																		"savings",
 																		"api",
 																		"SavingsProduct",
 																		"querypaged",
@@ -5274,6 +5286,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -5283,6 +5301,11 @@
 									{
 										"key": "Accept",
 										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -5295,7 +5318,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/SavingsProduct"
+								"url": "{{baseUrl}}/savings/api/SavingsProduct"
 							},
 							"response": [
 								{
