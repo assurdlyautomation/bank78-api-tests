@@ -5310,7 +5310,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"id\": \"<integer>\",\n  \"interestValue\": \"<double>\",\n  \"name\": \"<string>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null,\n  \"shouldLockSavings\": \"<boolean>\"\n}",
+									"raw": "{\n  \"id\": \"4\",\n  \"interestValue\": \"15.0\",\n  \"name\": \"15% (locked)\",\n  \"penalty\": \"7\",\n  \"penaltyTypeId\": \"1\",\n  \"shouldLockSavings\": \"true\",\n  \"productCode\": \"100\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
