@@ -12204,19 +12204,31 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/business/kyc/stakeholders?cacNumber=<string>",
+													"raw": "{{baseUrl}}/kyc/api/business/kyc/stakeholders?cacNumber=hdkakfnkwfnwlkl",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
+														"kyc",
 														"api",
 														"business",
 														"kyc",
@@ -12225,7 +12237,7 @@
 													"query": [
 														{
 															"key": "cacNumber",
-															"value": "<string>"
+															"value": "hdkakfnkwfnwlkl"
 														}
 													]
 												}
