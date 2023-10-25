@@ -14039,19 +14039,31 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/customer/kyc?userName=<string>",
+											"raw": "{{baseUrl}}/kyc/api/customer/kyc?userName=bryan+90@assurdly.com",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
+												"kyc",
 												"api",
 												"customer",
 												"kyc"
@@ -14059,7 +14071,7 @@
 											"query": [
 												{
 													"key": "userName",
-													"value": "<string>"
+													"value": "bryan+90@assurdly.com"
 												}
 											]
 										}
