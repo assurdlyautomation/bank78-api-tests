@@ -14058,7 +14058,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/kyc/api/customer/kyc?userName=bryan+90@assurdly.com",
+											"raw": "{{baseUrl}}/kyc/api/customer/kyc?userName=bryan%2B90%40assurdly.com",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -14071,7 +14071,7 @@
 											"query": [
 												{
 													"key": "userName",
-													"value": "bryan+90@assurdly.com"
+													"value": "bryan%2B90%40assurdly.com"
 												}
 											]
 										}
