@@ -4518,11 +4518,16 @@
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"<string>\",\n  \"referralCode\": \"<string>\",\n  \"financialId\": \"<string>\",\n  \"financialIdType\": \"BVN\",\n  \"profileImage\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"securityQuestion1\": \"<string>\",\n  \"securityAnswer1\": \"<string>\",\n  \"securityQuestion2\": \"<string>\",\n  \"securityAnswer2\": \"<string>\",\n  \"streetAddress1\": \"<string>\",\n  \"streetAddress2\": \"<string>\",\n  \"stateProvince\": \"<string>\",\n  \"city\": \"<string>\",\n  \"nearestLandmark\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"income\": \"<double>\",\n  \"idFile\": \"<string>\",\n  \"proofOfAddressFile\": \"<string>\",\n  \"bankStatementFile\": \"<string>\",\n  \"customerNumber\": \"<string>\",\n  \"previousNames\": \"<string>\",\n  \"meansOfId\": \"VotersCard\",\n  \"idNumber\": \"<string>\"\n}",
+											"raw": "{\n        \"userName\": \"udeme+22@assurdly.com\",\n        \"userId\": \"bfe205cb-96be-41fe-9258-f95e83ca878d\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"udeme+22@assurdly.com\",\n        \"phoneNumber\": \"08096560301\",\n        \"phoneNumberCountryCode\": \"+234\",\n        \"countryCode\": \"NG\",\n        \"referralCode\": \"\",\n        \"idNumber\": \"A10000001\",\n        \"financialId\": \"22222222280\",\n        \"financialIdType\": null,\n        \"stateProvince\": \"kogi state\",\n        \"city\": null,\n        \"streetAddress1\": null,\n        \"streetAddress2\": null,\n        \"nearestLandmark\": \"Redgranite\",\n        \"postalCode\": null,\n        \"profileImage\": null,\n        \"gender\": \"Male\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4530,7 +4535,7 @@
 												}
 											}
 										},
-										"url": "https://onboard-dev.bank78.co/api/customer"
+										"url": "{{baseUrl}}/onboard/api/customer"
 									},
 									"response": [
 										{
@@ -4643,7 +4648,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://onboard-dev.bank78.co/api/customer?userName=bryan%2B90%40assurdly.com",
+									"raw": "https://onboard-dev.bank78.co/api/customer?userName=udeme%2B22%40assurdly.com",
 									"protocol": "https",
 									"host": [
 										"onboard-dev",
@@ -4657,7 +4662,7 @@
 									"query": [
 										{
 											"key": "userName",
-											"value": "bryan%2B90%40assurdly.com"
+											"value": "udeme%2B22%40assurdly.com"
 										}
 									]
 								}
