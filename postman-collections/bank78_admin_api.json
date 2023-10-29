@@ -2103,7 +2103,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test8962@mailinator.com\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"bryan+99@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
