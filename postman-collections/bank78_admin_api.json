@@ -2103,7 +2103,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+99@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"udeme+06@assurdly.com\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4648,7 +4648,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://onboard-dev.bank78.co/api/customer?userName=udeme%2B22%40assurdly.com",
+									"raw": "https://onboard-dev.bank78.co/api/customer?userName=udeme%2B05%40assurdly.com",
 									"protocol": "https",
 									"host": [
 										"onboard-dev",
@@ -4662,7 +4662,7 @@
 									"query": [
 										{
 											"key": "userName",
-											"value": "udeme%2B22%40assurdly.com"
+											"value": "udeme%2B05%40assurdly.com"
 										}
 									]
 								}
