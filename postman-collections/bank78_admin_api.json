@@ -3910,6 +3910,106 @@
 									]
 								},
 								{
+									"name": "Blacklist account Copy",
+									"id": "b1eda7a5-5b21-4b1c-90ac-0fc29c82329b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=bankcustomer725@gmail.com",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"onboard",
+												"api",
+												"customer",
+												"blacklist"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null,
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "username",
+													"value": "bankcustomer725@gmail.com"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "0d3bc5ce-db78-40b1-af7f-f2b0622d0d7d",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/customer/blacklist?username=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"customer",
+														"blacklist"
+													],
+													"query": [
+														{
+															"key": "username",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Account already blacklisted",
 									"event": [
 										{
