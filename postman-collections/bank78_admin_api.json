@@ -3810,6 +3810,130 @@
 							"name": "Blacklist a customer",
 							"item": [
 								{
+									"name": "Blacklist identity",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7fcc92c7-c453-4c76-908c-802a2ab45e76",
+												"exec": [
+													"pm.test(\"Response 'hasResult' is false\", function () {\r",
+													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response 'result' is null\", function () {\r",
+													"    pm.expect(pm.response.json().result).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
+													"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response 'successful' is false\", function () {\r",
+													"    pm.expect(pm.response.json().successful).to.be.false;\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "9cf961e6-c3ec-4e69-b24b-863e9e3205a3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"userName\": \"test3293@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\",\n  \"detail\": [\n    {\n      \"email\": \"test3293@mailinator.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+									},
+									"response": [
+										{
+											"id": "a73dd695-a105-45cb-98df-82275dd3e171",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/customer/kyc/approve"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Blacklist account",
 									"id": "586db273-09ce-4620-a840-38b948bac7cf",
 									"protocolProfileBehavior": {
@@ -3862,106 +3986,6 @@
 									"response": [
 										{
 											"id": "8186d1d0-0712-46f8-a926-7680f1aa373d",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/customer/blacklist?username=<string>",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"customer",
-														"blacklist"
-													],
-													"query": [
-														{
-															"key": "username",
-															"value": "<string>"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Blacklist account Copy",
-									"id": "b1eda7a5-5b21-4b1c-90ac-0fc29c82329b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=bankcustomer725@gmail.com",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"onboard",
-												"api",
-												"customer",
-												"blacklist"
-											],
-											"query": [
-												{
-													"key": "",
-													"value": null,
-													"type": "text",
-													"disabled": true
-												},
-												{
-													"key": "username",
-													"value": "bankcustomer725@gmail.com"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "0d3bc5ce-db78-40b1-af7f-f2b0622d0d7d",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
