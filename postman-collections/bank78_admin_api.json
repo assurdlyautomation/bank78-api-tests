@@ -11567,6 +11567,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -11576,6 +11582,11 @@
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -11588,7 +11599,7 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/v1/transfer/bulk/validate-upload"
+										"url": "{{baseUrl}}/transfer/api/v1/transfer/bulk/validate-upload"
 									},
 									"response": [
 										{
