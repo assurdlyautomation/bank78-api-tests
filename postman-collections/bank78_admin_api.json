@@ -8183,14 +8183,25 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": "{{baseUrl}}/api/v1/administrators/current-user-information"
+										"url": "{{baseUrl}}/identity/api/v1/administrators/current-user-information"
 									},
 									"response": [
 										{
