@@ -11483,6 +11483,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{customer_access_token}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -11492,11 +11498,16 @@
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"channel\": null,\n  \"sourceAccountNo\": \"<string>\",\n  \"transactionPin\": \"3555\",\n  \"deviceId\": \"<string>\",\n  \"beneficiaries\": [\n    {\n      \"nameEnquiryId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"narration\": \"<string>\"\n    },\n    {\n      \"nameEnquiryId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"narration\": \"<string>\"\n    }\n  ]\n}",
+											"raw": "{\n  \"channel\": \"1\",\n  \"sourceAccountNo\": \"{{bussAccount}}\",\n  \"transactionPin\": \"6383\",\n  \"deviceId\": \"xphone\",\n  \"beneficiaries\": [\n    {\n            \"accountName\": \"Reece Koch\",\n            \"accountNumber\": \"1010001719\",\n            \"nameEnquiryId\": 600,\n            \"amount\": \"100\",\n            \"narration\": \"Salary\"\n        },\n        {\n            \"accountName\": \"John Doe\",\n            \"accountNumber\": \"8045013161\",\n            \"amount\": \"110\",\n            \"narration\": \"Salary\",\n            \"nameEnquiryId\": 601\n        },\n        {\n            \"accountName\": \"Chi Chi\",\n            \"accountNumber\": \"8198765432\",\n            \"amount\": \"120\",\n            \"narration\": \"Salary\",\n            \"nameEnquiryId\": 602\n        },\n        {\n            \"accountName\": \"John Doe\",\n            \"accountNumber\": \"8055584568\",\n            \"amount\": \"130\",\n            \"narration\": \"Salary\",\n            \"nameEnquiryId\": 603\n        },\n        {\n            \"accountName\": \"Bunch Dillon\",\n            \"accountNumber\": \"9373494343\",\n            \"amount\": \"140\",\n            \"narration\": \"Salary\",\n            \"nameEnquiryId\": 604\n        }\n  ]\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -11504,7 +11515,7 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/v1/transfer/bulk/process-transfer"
+										"url": "{{baseUrl}}/transfer/api/v1/transfer/bulk/process-transfer"
 									},
 									"response": [
 										{
@@ -11591,7 +11602,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"fileUrl\": \"<string>\"\n}",
+											"raw": "{\n  \"fileUrl\": \"https://bank78-dev-file-uploads.s3.eu-west-1.amazonaws.com/638344605583717455-Buktrans.csv\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
