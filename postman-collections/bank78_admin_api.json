@@ -2405,7 +2405,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+79@assurdly.com\",\n  \"rcBnNumber\": \"RCB1230987\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"unyc23@mailinator.com\",\n  \"rcBnNumber\": \"RC08909090\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4254,7 +4254,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+21@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -5016,7 +5016,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+21@assurdly.com\",\n  \"kycStatus\": \"Level3rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+21@assurdly.com\",\n      \"reason\": [\n        \"ID\"\n      ]\n    }\n  ]\n}",
+											"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
