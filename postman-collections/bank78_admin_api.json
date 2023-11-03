@@ -2405,7 +2405,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"unyc23@mailinator.com\",\n  \"rcBnNumber\": \"RC08909090\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"bryan+23@assurdly.com\",\n  \"rcBnNumber\": \"RB0818559\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
