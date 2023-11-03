@@ -7043,7 +7043,7 @@
 													"    pm.expect(jsonData.result.message).to.eql('Invite successfully sent');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Result type is Success\", function () {\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
 													"    pm.expect(jsonData.resultType).to.eql(1);\r",
 													"});\r",
 													"\r",
@@ -8538,7 +8538,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "10"
+													"value": "34"
 												}
 											]
 										}
