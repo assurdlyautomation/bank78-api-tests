@@ -8249,7 +8249,7 @@
 													"});\r",
 													"\r",
 													"pm.test(\"validationMessages is not empty\", function () {\r",
-													"    pm.expect(jsonData.validationMessages[0]).to.eql('The LastName field is required.');\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('The PhoneNumber field is required.');\r",
 													"});\r",
 													"\r",
 													"pm.test(\"Response is unsuccessful\", function () {\r",
@@ -8289,7 +8289,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"confirmPassword\": \"Password@0980\",\n  \"firstName\": \"bro\",\n  \"inviteId\": \"2ead873d-73c5-4590-b843-5166b517c6e0\",\n  \"lastName\": \"\",\n  \"password\": \"Password@0980\",\n  \"phoneNumber\": \"08185597979\"\n}",
+											"raw": "{\n  \"confirmPassword\": \"Password@0980\",\n  \"firstName\": \"bro\",\n  \"inviteId\": \"2ead873d-73c5-4590-b843-5166b517c6e0\",\n  \"lastName\": \"bro\",\n  \"password\": \"Password@0980\",\n  \"phoneNumber\": \"\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
