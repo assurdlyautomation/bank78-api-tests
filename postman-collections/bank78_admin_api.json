@@ -7148,6 +7148,56 @@
 								},
 								{
 									"name": "Email required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e0ef2db2-d5ac-458c-9311-ac9e3ee339e2",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is True\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('The EmailAddress field is required.');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is Success\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is Response has validation errors\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "559385c5-79ec-4915-9345-575e263846ff",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -7237,6 +7287,57 @@
 								},
 								{
 									"name": "Invite Url Required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ed2229c5-3129-4c94-b891-0df3e1aa94be",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is True\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql(\"The InviteUrl field is required.\",\r",
+													"        \"The InviteUrl field is not a valid fully-qualified http, https, or ftp URL.\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is Success\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is Response has validation errors\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "b959159c-9e6b-4dcb-833e-fd3a1eb73802",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
