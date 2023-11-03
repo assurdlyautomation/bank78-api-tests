@@ -8899,6 +8899,56 @@
 							"item": [
 								{
 									"name": "Revoke Invite - Successful",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b001e4ea-7c33-4c62-8bc0-eaa8a7248ce6",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is not empty\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result is not empty\", function () {\r",
+													"    pm.expect(jsonData.result.message).to.eql('Account Invite revoked successfully');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "a3a95eb4-ff25-41b8-94f4-4a1d4c1bdb3c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -8928,7 +8978,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"11\"\n}",
+											"raw": "{\n  \"id\": \"36\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -9569,6 +9619,52 @@
 								},
 								{
 									"name": "Get Administrator by Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5baae4d0-9e7c-4c65-b69a-1590a17e2568",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Ok\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is not empty\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"resultType is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is present\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful is present\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "574a1744-155c-4e33-83bc-ed7f7e7ffb35",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -9607,7 +9703,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "34"
+													"value": "36"
 												}
 											]
 										}
@@ -9670,6 +9766,52 @@
 							"item": [
 								{
 									"name": "Get Paginated List of Administrator",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "82fc6ac0-9699-447b-a835-e8d270cd9203",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Ok\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is not empty\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"resultType is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is present\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful is present\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "7f71d478-888d-4522-be38-107803c33a07",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
