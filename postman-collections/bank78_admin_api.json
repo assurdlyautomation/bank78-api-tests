@@ -10057,6 +10057,57 @@
 							"item": [
 								{
 									"name": "Create Admin - Successful",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "967790dc-948a-40d0-a34f-9dc93cf9774e",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.result.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is True\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result is not empty\", function () {\r",
+													"    pm.expect(jsonData.result.message).to.eql('Account Successfully created');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is Success\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "5e2cd64a-07ea-47e1-9638-01f84486dd6e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -10086,7 +10137,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"emailAddress\": \"admininvite2@dispostable.com\",\n  \"firstName\": \"Second\",\n  \"lastName\": \"New-Admin\",\n  \"phoneNumber\": \"09038281829\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
+											"raw": "{\n  \"emailAddress\": \"admininvite89@dispostable.com\",\n  \"firstName\": \"Secoon\",\n  \"lastName\": \"New-Admin\",\n  \"phoneNumber\": \"09038281849\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -10234,6 +10285,148 @@
 									"response": [
 										{
 											"id": "434483e0-0d13-4e1c-9f93-b9cbd87d67d5",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailAddress\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"roleId\": \"<integer>\",\n  \"isSuperAdmin\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/administrators"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Create Admin - Blank email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "0979d39f-e169-4c19-8c2e-de52c2afa816",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql(\"The EmailAddress field is required.\",\r",
+													"        \"'Email Address' must not be empty.\",\r",
+													"        \"'Email Address' is not a valid email address.\",\r",
+													"        \"Invalid Email Address\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "672ac744-10d5-4451-87e5-fd98efcd6702",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emailAddress\": \"\",\n  \"firstName\": \"Second\",\n  \"lastName\": \"New-Admin\",\n  \"phoneNumber\": \"09038281829\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/identity/api/v1/administrators"
+									},
+									"response": [
+										{
+											"id": "406b4a6b-e777-482a-b1f5-320683828b24",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
