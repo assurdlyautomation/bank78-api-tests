@@ -7797,6 +7797,52 @@
 								},
 								{
 									"name": "Invalid user ID",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4c6476c0-052b-4008-ae29-51111151360b",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('User Id is in an incorrect format');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "415a5560-7f08-49e0-8b13-78478034a5af",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -7886,6 +7932,56 @@
 								},
 								{
 									"name": "First name required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "608351d2-2e10-4831-9503-1dcd69004ee3",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('The FirstName field is required.');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "f39cdede-381c-4799-9906-0e8f0590d253",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -7975,6 +8071,56 @@
 								},
 								{
 									"name": "Last name required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4ad88284-b398-4899-bafa-953d8ee2e2ac",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('The LastName field is required.');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "fc4e0426-f21e-4d2a-a80a-4ceb7ed862be",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -8064,6 +8210,56 @@
 								},
 								{
 									"name": "Password does not match",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4bf863b5-8fd0-46e4-bfce-6bf4731034c5",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('Password do not match');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "fcd89e56-5499-49bf-9d43-f8b8ed708fc2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
