@@ -10476,51 +10476,21 @@
 							"id": "88b7140b-096f-4244-9dbb-8c92dc8b324e"
 						},
 						{
-							"name": "Update Administrator",
-							"id": "e5a55401-e130-4b22-925d-26106fa1f1bc",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Admin\",\n  \"phoneNumber\": \"23607193017\",\n  \"id\": \"11\",\n  \"roleId\": \"2\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/api/v1/administrators"
-							},
-							"response": [
+							"name": "Update Admin",
+							"item": [
 								{
-									"id": "1e6e143d-0bf5-4d6a-8715-83ccc2b31ba6",
-									"name": "Success",
-									"originalRequest": {
+									"name": "Update Administrator",
+									"id": "e5a55401-e130-4b22-925d-26106fa1f1bc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "PUT",
 										"header": [
 											{
@@ -10532,14 +10502,14 @@
 												"value": "application/json"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"firstName\": \"gQ\",\n  \"lastName\": \"dNtrxkA\",\n  \"phoneNumber\": \"23607193017\",\n  \"id\": \"<integer>\",\n  \"roleId\": \"<integer>\"\n}",
+											"raw": "{\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Admin\",\n  \"phoneNumber\": \"23607193017\",\n  \"id\": \"11\",\n  \"roleId\": \"2\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -10547,22 +10517,58 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/v1/administrators"
+										"url": "{{baseUrl}}/identity/api/v1/administrators"
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "1e6e143d-0bf5-4d6a-8715-83ccc2b31ba6",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstName\": \"gQ\",\n  \"lastName\": \"dNtrxkA\",\n  \"phoneNumber\": \"23607193017\",\n  \"id\": \"<integer>\",\n  \"roleId\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/administrators"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"emailAddress\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"isSuperAdmin\": \"<boolean>\",\n    \"hasLoginProfile\": \"<boolean>\",\n    \"acceptedInvite\": \"<boolean>\",\n    \"acceptedInviteOn\": \"<dateTime>\",\n    \"inviteId\": \"<uuid>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"emailAddress\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"isSuperAdmin\": \"<boolean>\",\n    \"hasLoginProfile\": \"<boolean>\",\n    \"acceptedInvite\": \"<boolean>\",\n    \"acceptedInviteOn\": \"<dateTime>\",\n    \"inviteId\": \"<uuid>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+									]
 								}
-							]
+							],
+							"id": "0681f7fc-edda-4f3f-a35c-453f3725efe9"
 						}
 					],
 					"id": "41f67599-c60c-4fc5-b9b2-e45b53be08dd"
