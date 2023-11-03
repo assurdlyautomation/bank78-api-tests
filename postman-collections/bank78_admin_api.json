@@ -7562,6 +7562,52 @@
 								},
 								{
 									"name": "Role not found",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4fdee336-16df-47a6-88d8-5db2392286f9",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Failed to invite user: Role not found');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "557bf408-efa3-4350-b91f-47723c7ad1fe",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -8572,6 +8618,52 @@
 								},
 								{
 									"name": "Invalid id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "461d1f6b-7db6-4328-b3b5-b3d6412c02cd",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Administrator record not found');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "21f3c9bf-befd-4af7-9401-cd48059fa93c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
