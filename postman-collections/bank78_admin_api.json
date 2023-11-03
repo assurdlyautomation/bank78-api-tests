@@ -8209,6 +8209,145 @@
 									]
 								},
 								{
+									"name": "Phone number required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "4ad88284-b398-4899-bafa-953d8ee2e2ac",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(3);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages is not empty\", function () {\r",
+													"    pm.expect(jsonData.validationMessages[0]).to.eql('The LastName field is required.');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "785958b7-6876-49b8-b73f-0e2acc44772d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"confirmPassword\": \"Password@0980\",\n  \"firstName\": \"bro\",\n  \"inviteId\": \"2ead873d-73c5-4590-b843-5166b517c6e0\",\n  \"lastName\": \"\",\n  \"password\": \"Password@0980\",\n  \"phoneNumber\": \"08185597979\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/identity/api/v1/administrators/accept-invite"
+									},
+									"response": [
+										{
+											"id": "d75e7297-3f2a-4a7a-bd60-fb7352ba5ad2",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"confirmPassword\": \"<string>\",\n  \"firstName\": \"SYG\",\n  \"inviteId\": \"<string>\",\n  \"lastName\": \"PJ\",\n  \"password\": \"jP8M1@gASITlIJ\",\n  \"phoneNumber\": \"30239629805\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/administrators/accept-invite"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Password does not match",
 									"event": [
 										{
