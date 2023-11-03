@@ -9255,6 +9255,141 @@
 											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 										}
 									]
+								},
+								{
+									"name": "Revoke Invite - Revoked user Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "681007ee-cbf1-486d-be14-1a416e5db35e",
+												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is Bad Request\", function () {\r",
+													"    pm.response.to.have.status('Bad Request');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.null;\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is false\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(2);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('User invite already revoked');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(false);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "6ddd1130-4730-487e-8244-70a9a4a9456f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"11\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/identity/api/v1/administrators/revoke-invite"
+									},
+									"response": [
+										{
+											"id": "7f9b8bbd-b292-4eb7-9d04-265890ddb5d0",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<integer>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/administrators/revoke-invite"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
 								}
 							],
 							"id": "2a787dbc-4f28-45e9-a6fa-5e2e82e0fe0c"
