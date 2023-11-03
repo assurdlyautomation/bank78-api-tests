@@ -9257,7 +9257,7 @@
 									]
 								},
 								{
-									"name": "Revoke Invite - Revoked user Copy",
+									"name": "Revoke Invite - Active user",
 									"event": [
 										{
 											"listen": "test",
@@ -9293,7 +9293,7 @@
 													"});\r",
 													"\r",
 													"pm.test(\"Message is not empty\", function () {\r",
-													"    pm.expect(jsonData.message).to.eql('User invite already revoked');\r",
+													"    pm.expect(jsonData.message).to.eql('User already accepted invite');\r",
 													"});\r",
 													"\r",
 													"pm.test(\"Response is unsuccessful\", function () {\r",
@@ -9333,7 +9333,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"11\"\n}",
+											"raw": "{\n  \"id\": \"35\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
