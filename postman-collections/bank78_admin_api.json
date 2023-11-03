@@ -7147,6 +7147,146 @@
 									]
 								},
 								{
+									"name": "Duplicate Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "cc4083f1-0c85-4381-915b-bb83bf44f7ba",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body is not empty\", function () {   \r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.result.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is True\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result is not empty\", function () {\r",
+													"    pm.expect(jsonData.result.message).to.eql('Invite successfully sent');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is Success\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "5c4794f0-486d-458e-a4de-11839af3e66a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emailAddress\": \"unyc+41@assurdly.com\",\n  \"inviteUrl\": \"https://www.admininvite.com\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/identity/api/v1/administrators/invite"
+									},
+									"response": [
+										{
+											"id": "c74dca7d-7c3d-4510-9b57-102be52dd699",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"emailAddress\": \"20zAB+8FUys9JU@qGPIF6.t1oqV.zQ5Iu.QSQeRk-IF_k7PNIM.5NN9w-y-2flq1p\",\n  \"inviteUrl\": \"<uri>\",\n  \"roleId\": \"<integer>\",\n  \"isSuperAdmin\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/v1/administrators/invite"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Email required",
 									"event": [
 										{
@@ -7322,15 +7462,15 @@
 													"        \"The InviteUrl field is not a valid fully-qualified http, https, or ftp URL.\");\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Result type is Success\", function () {\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
 													"    pm.expect(jsonData.resultType).to.eql(3);\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Message is Response has validation errors\", function () {\r",
+													"pm.test(\"Message is not empty\", function () {\r",
 													"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Response is successful\", function () {\r",
+													"pm.test(\"Response is unsuccessful\", function () {\r",
 													"    pm.expect(jsonData.successful).to.eql(false);\r",
 													"});"
 												],
