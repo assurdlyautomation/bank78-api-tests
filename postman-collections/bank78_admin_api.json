@@ -1453,6 +1453,58 @@
 										},
 										{
 											"name": "Invalid ID",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "3217a90d-d6e5-41ed-99f4-0296cd52dd5d",
+														"exec": [
+															"pm.test(\"Status code is 400\", function () {\r",
+															"    pm.response.to.have.status(400);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Status code response is Bad Request\", function () {\r",
+															"    pm.response.to.have.status('Bad Request');\r",
+															"});\r",
+															"\r",
+															"var jsonData = pm.response.json();\r",
+															"\r",
+															"pm.test(\"Response body result\", function () {\r",
+															"    pm.expect(jsonData).to.be.an('object');\r",
+															"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+															"    pm.expect(jsonData.result).to.be.null;\r",
+															"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+															"    pm.expect(jsonData.message).to.be.a('string');\r",
+															"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+															"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"hasResult is not empty\", function () {\r",
+															"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Result type is not empty\", function () {\r",
+															"    pm.expect(jsonData.resultType).to.eql('ValidationError');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Message is not empty\", function () {\r",
+															"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"validationMessages is not empty\", function () {\r",
+															"    pm.expect(jsonData.validationMessages[0]).to.eql(\"The value 'c80f73df-303d-40ca-a5eb-d00687bcd4' is not valid.\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Successful\", function () {\r",
+															"    pm.expect(jsonData.successful).to.eql(false);\r",
+															"});\r",
+															"\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"id": "b9f03de1-cb26-40ba-a354-4f81275538ac",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -1968,7 +2020,7 @@
 									"name": "dashboard",
 									"item": [
 										{
-											"name": "/api/transactions/customers/:userId/dashboard",
+											"name": "Customer transaction by user ID",
 											"event": [
 												{
 													"listen": "test",
@@ -2065,6 +2117,156 @@
 											"response": [
 												{
 													"id": "debb2a75-0027-4674-8e9b-06a1dea7d8fb",
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/transactions/customers/:userId/dashboard",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"transactions",
+																"customers",
+																":userId",
+																"dashboard"
+															],
+															"variable": [
+																{
+																	"key": "userId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"totalSum\": \"<double>\",\n    \"total\": \"<integer>\",\n    \"totalSuccessfulAmount\": \"<double>\",\n    \"totalSuccessfulCount\": \"<integer>\",\n    \"totalFailedAmount\": \"<double>\",\n    \"totalFailedCount\": \"<integer>\"\n  },\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Invalid ID",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ee5a7340-356f-4c70-b39f-3803cfd3d266",
+														"exec": [
+															"pm.test(\"Status code is 400\", function () {\r",
+															"    pm.response.to.have.status(400);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Status code response is Bad Request\", function () {\r",
+															"    pm.response.to.have.status('Bad Request');\r",
+															"});\r",
+															"\r",
+															"var jsonData = pm.response.json();\r",
+															"\r",
+															"pm.test(\"Response body result\", function () {\r",
+															"    pm.expect(jsonData).to.be.an('object');\r",
+															"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+															"    pm.expect(jsonData.result).to.be.null;\r",
+															"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+															"    pm.expect(jsonData.message).to.be.a('string');\r",
+															"    pm.expect(jsonData.validationMessages).to.be.an('array');\r",
+															"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"hasResult is not empty\", function () {\r",
+															"    pm.expect(jsonData.hasResult).to.eql(false);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Result type is not empty\", function () {\r",
+															"    pm.expect(jsonData.resultType).to.eql('ValidationError');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Message is not empty\", function () {\r",
+															"    pm.expect(jsonData.message).to.eql('Response has validation errors');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"validationMessages is not empty\", function () {\r",
+															"    pm.expect(jsonData.validationMessages[0]).to.eql(\"The value 'c80f73df-303d-40ca-a5eb-d00687bcd4' is not valid.\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Successful\", function () {\r",
+															"    pm.expect(jsonData.successful).to.eql(false);\r",
+															"});\r",
+															"\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "7548068b-2ffa-48b0-85d3-d524b3a11445",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/transaction/api/transactions/customers/:userId/dashboard",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transaction",
+														"api",
+														"transactions",
+														"customers",
+														":userId",
+														"dashboard"
+													],
+													"variable": [
+														{
+															"key": "userId",
+															"value": "c80f73df-303d-40ca-a5eb-d00687bcd4",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "cd6b5823-5154-494c-8ebd-99e3020ccbd0",
 													"name": "Success",
 													"originalRequest": {
 														"method": "GET",
