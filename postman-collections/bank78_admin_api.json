@@ -5768,98 +5768,67 @@
 							"id": "ae44b01e-75ec-4847-bdb9-0df11c967993"
 						},
 						{
-							"name": "View Single Business",
-							"event": [
+							"name": "View a business",
+							"item": [
 								{
-									"listen": "test",
-									"script": {
-										"id": "9796657c-14c7-4afd-8071-cc1190f878f3",
-										"exec": [
-											"",
-											"pm.test(\"Response status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response has the required fields\", function () {",
-											"  const responseData = pm.response.json();",
-											"",
-											"  pm.expect(responseData).to.be.an('object');",
-											"  pm.expect(responseData).to.include.keys('hasResult', 'result', 'successful');",
-											"});",
-											"",
-											"",
-											"pm.test(\"Verify that the 'result' object is not null\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.result).to.exist.and.to.not.be.null;",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "34f07ae4-9972-483c-ae05-8352e972916a",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"url": {
-									"raw": "https://onboard-dev.bank78.co/api/business?rcbnNumber=hdkakfnkwfnwlkl",
-									"protocol": "https",
-									"host": [
-										"onboard-dev",
-										"bank78",
-										"co"
-									],
-									"path": [
-										"api",
-										"business"
-									],
-									"query": [
+									"name": "View Single Business",
+									"event": [
 										{
-											"key": "rcbnNumber",
-											"value": "hdkakfnkwfnwlkl"
+											"listen": "test",
+											"script": {
+												"id": "9796657c-14c7-4afd-8071-cc1190f878f3",
+												"exec": [
+													"",
+													"pm.test(\"Response status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"  const responseData = pm.response.json();",
+													"",
+													"  pm.expect(responseData).to.be.an('object');",
+													"  pm.expect(responseData).to.include.keys('hasResult', 'result', 'successful');",
+													"});",
+													"",
+													"",
+													"pm.test(\"Verify that the 'result' object is not null\", function () {",
+													"    const responseData = pm.response.json();",
+													"    ",
+													"    pm.expect(responseData.result).to.exist.and.to.not.be.null;",
+													"});",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "36a98329-f3be-4a97-90e2-65bd312e0f09",
-									"name": "Success",
-									"originalRequest": {
+									],
+									"id": "34f07ae4-9972-483c-ae05-8352e972916a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/business?rcbnNumber=<string>",
+											"raw": "https://onboard-dev.bank78.co/api/business?rcbnNumber=hdkakfnkwfnwlkl",
+											"protocol": "https",
 											"host": [
-												"{{baseUrl}}"
+												"onboard-dev",
+												"bank78",
+												"co"
 											],
 											"path": [
 												"api",
@@ -5868,176 +5837,188 @@
 											"query": [
 												{
 													"key": "rcbnNumber",
-													"value": "<string>"
+													"value": "hdkakfnkwfnwlkl"
 												}
 											]
 										}
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "36a98329-f3be-4a97-90e2-65bd312e0f09",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/business?rcbnNumber=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"business"
+													],
+													"query": [
+														{
+															"key": "rcbnNumber",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"rcBnNumber\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"streetAddress1\": \"<string>\",\n    \"streetAddress2\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"city\": \"<string>\",\n    \"nearestLandmark\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"natureOfBusiness\": \"<string>\",\n    \"sourceOfRevenue\": \"<string>\",\n    \"sourceOfCapital\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"taxCompliance\": \"<boolean>\",\n    \"evidenceOfCorporateGovernance\": \"<boolean>\",\n    \"dailyDeposit\": \"<double>\",\n    \"dailyTransfer\": \"<double>\",\n    \"lifetimeDeposit\": \"<double>\",\n    \"limitTransfer\": \"<double>\",\n    \"kycLevel\": \"<string>\",\n    \"kycStatus\": \"Level3Pending\",\n    \"dateCreated\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"accounts\": [\n      {\n        \"id\": \"<integer>\",\n        \"userName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"cardLimit\": \"<double>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"rcBnNumber\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCountryCode\": \"<string>\",\n          \"tin\": \"<string>\",\n          \"hasDirectors\": \"<boolean>\",\n          \"hasShareHolders\": \"<boolean>\",\n          \"hasBenficialOwners\": \"<boolean>\",\n          \"natureOfBusiness\": \"<string>\",\n          \"sourceOfRevenue\": \"<string>\",\n          \"sourceOfCapital\": \"<string>\",\n          \"taxCompliance\": \"<boolean>\",\n          \"evidenceOfCorporateGovernance\": \"<boolean>\",\n          \"dailyDeposit\": \"<double>\",\n          \"dailyTransfer\": \"<double>\",\n          \"lifetimeDeposit\": \"<double>\",\n          \"limitTransfer\": \"<double>\",\n          \"streetAddress1\": \"<string>\",\n          \"streetAddress2\": \"<string>\",\n          \"stateProvince\": \"<string>\",\n          \"city\": \"<string>\",\n          \"nearestLandmark\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"status\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"customerNumber\": \"<string>\",\n          \"kycLevel\": \"<string>\",\n          \"kycStatus\": \"Level1Pending\",\n          \"kycApprovedBy\": \"<string>\",\n          \"kycApprovedDate\": \"<dateTime>\",\n          \"blackListed\": \"<boolean>\",\n          \"accounts\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            }\n          ],\n          \"customerRelationships\": [\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"stakeholders\": [\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"userBusinesses\": [\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            },\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            }\n          ],\n          \"dateCreated\": \"<dateTime>\",\n          \"lastUpdatedOn\": \"<dateTime>\",\n          \"createdBy\": \"<string>\",\n          \"lastUpdatedBy\": \"<string>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"userName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"cardLimit\": \"<double>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"rcBnNumber\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCountryCode\": \"<string>\",\n          \"tin\": \"<string>\",\n          \"hasDirectors\": \"<boolean>\",\n          \"hasShareHolders\": \"<boolean>\",\n          \"hasBenficialOwners\": \"<boolean>\",\n          \"natureOfBusiness\": \"<string>\",\n          \"sourceOfRevenue\": \"<string>\",\n          \"sourceOfCapital\": \"<string>\",\n          \"taxCompliance\": \"<boolean>\",\n          \"evidenceOfCorporateGovernance\": \"<boolean>\",\n          \"dailyDeposit\": \"<double>\",\n          \"dailyTransfer\": \"<double>\",\n          \"lifetimeDeposit\": \"<double>\",\n          \"limitTransfer\": \"<double>\",\n          \"streetAddress1\": \"<string>\",\n          \"streetAddress2\": \"<string>\",\n          \"stateProvince\": \"<string>\",\n          \"city\": \"<string>\",\n          \"nearestLandmark\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"status\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"customerNumber\": \"<string>\",\n          \"kycLevel\": \"<string>\",\n          \"kycStatus\": \"Level3Rejected\",\n          \"kycApprovedBy\": \"<string>\",\n          \"kycApprovedDate\": \"<dateTime>\",\n          \"blackListed\": \"<boolean>\",\n          \"accounts\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            }\n          ],\n          \"customerRelationships\": [\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"stakeholders\": [\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"userBusinesses\": [\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            },\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            }\n          ],\n          \"dateCreated\": \"<dateTime>\",\n          \"lastUpdatedOn\": \"<dateTime>\",\n          \"createdBy\": \"<string>\",\n          \"lastUpdatedBy\": \"<string>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"customerRelationships\": [\n      {\n        \"id\": \"<integer>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"stakeholders\": [\n      {\n        \"id\": \"<integer>\",\n        \"rcBnNumber\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"phoneNumberCountryCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"financialId\": \"<string>\",\n        \"financialIdType\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"city\": \"<string>\",\n        \"streetAddress1\": \"<string>\",\n        \"streetAddress2\": \"<string>\",\n        \"nearestLandmark\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"profileImage\": \"<string>\",\n        \"gender\": \"<string>\",\n        \"stakeholderType\": \"<string>\",\n        \"ownerhipPercentage\": \"<float>\",\n        \"phoneNumberVerfiedAt\": \"<dateTime>\",\n        \"emailVeriedAt\": \"<dateTime>\",\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"rcBnNumber\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"phoneNumberCountryCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"financialId\": \"<string>\",\n        \"financialIdType\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"city\": \"<string>\",\n        \"streetAddress1\": \"<string>\",\n        \"streetAddress2\": \"<string>\",\n        \"nearestLandmark\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"profileImage\": \"<string>\",\n        \"gender\": \"<string>\",\n        \"stakeholderType\": \"<string>\",\n        \"ownerhipPercentage\": \"<float>\",\n        \"phoneNumberVerfiedAt\": \"<dateTime>\",\n        \"emailVeriedAt\": \"<dateTime>\",\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"userBusinesses\": [\n      {\n        \"id\": \"<long>\",\n        \"userId\": \"<string>\",\n        \"user\": {\n          \"userId\": \"<string>\",\n          \"userName\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCode\": \"<string>\",\n          \"referralCode\": \"<string>\",\n          \"profileImage\": \"<string>\",\n          \"phoneNumberVerifiedAt\": \"<dateTime>\",\n          \"emailVerifiedAt\": \"<dateTime>\",\n          \"dateOfBirth\": \"<dateTime>\",\n          \"hasTransactionPin\": \"<boolean>\",\n          \"primaryProfile\": \"<string>\",\n          \"gender\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"blacklisted\": \"<boolean>\",\n          \"customerId\": \"<integer>\",\n          \"customer\": {\n            \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n          },\n          \"userBusinesses\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            }\n          ],\n          \"createdBy\": \"<string>\",\n          \"dateCreated\": \"<dateTime>\",\n          \"updatedBy\": \"<string>\",\n          \"lastUpdateDate\": \"<dateTime>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        }\n      },\n      {\n        \"id\": \"<long>\",\n        \"userId\": \"<string>\",\n        \"user\": {\n          \"userId\": \"<string>\",\n          \"userName\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCode\": \"<string>\",\n          \"referralCode\": \"<string>\",\n          \"profileImage\": \"<string>\",\n          \"phoneNumberVerifiedAt\": \"<dateTime>\",\n          \"emailVerifiedAt\": \"<dateTime>\",\n          \"dateOfBirth\": \"<dateTime>\",\n          \"hasTransactionPin\": \"<boolean>\",\n          \"primaryProfile\": \"<string>\",\n          \"gender\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"blacklisted\": \"<boolean>\",\n          \"customerId\": \"<integer>\",\n          \"customer\": {\n            \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n          },\n          \"userBusinesses\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            }\n          ],\n          \"createdBy\": \"<string>\",\n          \"dateCreated\": \"<dateTime>\",\n          \"updatedBy\": \"<string>\",\n          \"lastUpdateDate\": \"<dateTime>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        }\n      }\n    ],\n    \"blackListed\": \"<boolean>\"\n  },\n  \"resultType\": \"Success\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"rcBnNumber\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"streetAddress1\": \"<string>\",\n    \"streetAddress2\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"city\": \"<string>\",\n    \"nearestLandmark\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"natureOfBusiness\": \"<string>\",\n    \"sourceOfRevenue\": \"<string>\",\n    \"sourceOfCapital\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"taxCompliance\": \"<boolean>\",\n    \"evidenceOfCorporateGovernance\": \"<boolean>\",\n    \"dailyDeposit\": \"<double>\",\n    \"dailyTransfer\": \"<double>\",\n    \"lifetimeDeposit\": \"<double>\",\n    \"limitTransfer\": \"<double>\",\n    \"kycLevel\": \"<string>\",\n    \"kycStatus\": \"Level3Pending\",\n    \"dateCreated\": \"<dateTime>\",\n    \"status\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"accounts\": [\n      {\n        \"id\": \"<integer>\",\n        \"userName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"cardLimit\": \"<double>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"rcBnNumber\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCountryCode\": \"<string>\",\n          \"tin\": \"<string>\",\n          \"hasDirectors\": \"<boolean>\",\n          \"hasShareHolders\": \"<boolean>\",\n          \"hasBenficialOwners\": \"<boolean>\",\n          \"natureOfBusiness\": \"<string>\",\n          \"sourceOfRevenue\": \"<string>\",\n          \"sourceOfCapital\": \"<string>\",\n          \"taxCompliance\": \"<boolean>\",\n          \"evidenceOfCorporateGovernance\": \"<boolean>\",\n          \"dailyDeposit\": \"<double>\",\n          \"dailyTransfer\": \"<double>\",\n          \"lifetimeDeposit\": \"<double>\",\n          \"limitTransfer\": \"<double>\",\n          \"streetAddress1\": \"<string>\",\n          \"streetAddress2\": \"<string>\",\n          \"stateProvince\": \"<string>\",\n          \"city\": \"<string>\",\n          \"nearestLandmark\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"status\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"customerNumber\": \"<string>\",\n          \"kycLevel\": \"<string>\",\n          \"kycStatus\": \"Level1Pending\",\n          \"kycApprovedBy\": \"<string>\",\n          \"kycApprovedDate\": \"<dateTime>\",\n          \"blackListed\": \"<boolean>\",\n          \"accounts\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            }\n          ],\n          \"customerRelationships\": [\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"stakeholders\": [\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"userBusinesses\": [\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            },\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            }\n          ],\n          \"dateCreated\": \"<dateTime>\",\n          \"lastUpdatedOn\": \"<dateTime>\",\n          \"createdBy\": \"<string>\",\n          \"lastUpdatedBy\": \"<string>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"userName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"accountType\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"cardLimit\": \"<double>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"rcBnNumber\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCountryCode\": \"<string>\",\n          \"tin\": \"<string>\",\n          \"hasDirectors\": \"<boolean>\",\n          \"hasShareHolders\": \"<boolean>\",\n          \"hasBenficialOwners\": \"<boolean>\",\n          \"natureOfBusiness\": \"<string>\",\n          \"sourceOfRevenue\": \"<string>\",\n          \"sourceOfCapital\": \"<string>\",\n          \"taxCompliance\": \"<boolean>\",\n          \"evidenceOfCorporateGovernance\": \"<boolean>\",\n          \"dailyDeposit\": \"<double>\",\n          \"dailyTransfer\": \"<double>\",\n          \"lifetimeDeposit\": \"<double>\",\n          \"limitTransfer\": \"<double>\",\n          \"streetAddress1\": \"<string>\",\n          \"streetAddress2\": \"<string>\",\n          \"stateProvince\": \"<string>\",\n          \"city\": \"<string>\",\n          \"nearestLandmark\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"status\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"customerNumber\": \"<string>\",\n          \"kycLevel\": \"<string>\",\n          \"kycStatus\": \"Level3Rejected\",\n          \"kycApprovedBy\": \"<string>\",\n          \"kycApprovedDate\": \"<dateTime>\",\n          \"blackListed\": \"<boolean>\",\n          \"accounts\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n            }\n          ],\n          \"customerRelationships\": [\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"customerId\": \"<integer>\",\n              \"customer\": {\n                \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"stakeholders\": [\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            },\n            {\n              \"id\": \"<integer>\",\n              \"rcBnNumber\": \"<string>\",\n              \"firstName\": \"<string>\",\n              \"lastName\": \"<string>\",\n              \"email\": \"<string>\",\n              \"phoneNumber\": \"<string>\",\n              \"phoneNumberCountryCode\": \"<string>\",\n              \"countryCode\": \"<string>\",\n              \"financialId\": \"<string>\",\n              \"financialIdType\": \"<string>\",\n              \"stateProvince\": \"<string>\",\n              \"city\": \"<string>\",\n              \"streetAddress1\": \"<string>\",\n              \"streetAddress2\": \"<string>\",\n              \"nearestLandmark\": \"<string>\",\n              \"postalCode\": \"<string>\",\n              \"profileImage\": \"<string>\",\n              \"gender\": \"<string>\",\n              \"stakeholderType\": \"<string>\",\n              \"ownerhipPercentage\": \"<float>\",\n              \"phoneNumberVerfiedAt\": \"<dateTime>\",\n              \"emailVeriedAt\": \"<dateTime>\",\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              },\n              \"dateCreated\": \"<dateTime>\",\n              \"lastUpdatedOn\": \"<dateTime>\",\n              \"createdBy\": \"<string>\",\n              \"lastUpdatedBy\": \"<string>\"\n            }\n          ],\n          \"userBusinesses\": [\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            },\n            {\n              \"id\": \"<long>\",\n              \"userId\": \"<string>\",\n              \"user\": {\n                \"userId\": \"<string>\",\n                \"userName\": \"<string>\",\n                \"firstName\": \"<string>\",\n                \"lastName\": \"<string>\",\n                \"phoneNumber\": \"<string>\",\n                \"phoneNumberCode\": \"<string>\",\n                \"referralCode\": \"<string>\",\n                \"profileImage\": \"<string>\",\n                \"phoneNumberVerifiedAt\": \"<dateTime>\",\n                \"emailVerifiedAt\": \"<dateTime>\",\n                \"dateOfBirth\": \"<dateTime>\",\n                \"hasTransactionPin\": \"<boolean>\",\n                \"primaryProfile\": \"<string>\",\n                \"gender\": \"<string>\",\n                \"active\": \"<boolean>\",\n                \"blacklisted\": \"<boolean>\",\n                \"customerId\": \"<integer>\",\n                \"customer\": {\n                  \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n                },\n                \"userBusinesses\": [\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  },\n                  {\n                    \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n                  }\n                ],\n                \"createdBy\": \"<string>\",\n                \"dateCreated\": \"<dateTime>\",\n                \"updatedBy\": \"<string>\",\n                \"lastUpdateDate\": \"<dateTime>\"\n              },\n              \"businessId\": \"<integer>\",\n              \"business\": {\n                \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n              }\n            }\n          ],\n          \"dateCreated\": \"<dateTime>\",\n          \"lastUpdatedOn\": \"<dateTime>\",\n          \"createdBy\": \"<string>\",\n          \"lastUpdatedBy\": \"<string>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"customerRelationships\": [\n      {\n        \"id\": \"<integer>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"customerId\": \"<integer>\",\n        \"customer\": {\n          \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"stakeholders\": [\n      {\n        \"id\": \"<integer>\",\n        \"rcBnNumber\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"phoneNumberCountryCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"financialId\": \"<string>\",\n        \"financialIdType\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"city\": \"<string>\",\n        \"streetAddress1\": \"<string>\",\n        \"streetAddress2\": \"<string>\",\n        \"nearestLandmark\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"profileImage\": \"<string>\",\n        \"gender\": \"<string>\",\n        \"stakeholderType\": \"<string>\",\n        \"ownerhipPercentage\": \"<float>\",\n        \"phoneNumberVerfiedAt\": \"<dateTime>\",\n        \"emailVeriedAt\": \"<dateTime>\",\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"rcBnNumber\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"phoneNumber\": \"<string>\",\n        \"phoneNumberCountryCode\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"financialId\": \"<string>\",\n        \"financialIdType\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"city\": \"<string>\",\n        \"streetAddress1\": \"<string>\",\n        \"streetAddress2\": \"<string>\",\n        \"nearestLandmark\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"profileImage\": \"<string>\",\n        \"gender\": \"<string>\",\n        \"stakeholderType\": \"<string>\",\n        \"ownerhipPercentage\": \"<float>\",\n        \"phoneNumberVerfiedAt\": \"<dateTime>\",\n        \"emailVeriedAt\": \"<dateTime>\",\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        },\n        \"dateCreated\": \"<dateTime>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedBy\": \"<string>\"\n      }\n    ],\n    \"userBusinesses\": [\n      {\n        \"id\": \"<long>\",\n        \"userId\": \"<string>\",\n        \"user\": {\n          \"userId\": \"<string>\",\n          \"userName\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCode\": \"<string>\",\n          \"referralCode\": \"<string>\",\n          \"profileImage\": \"<string>\",\n          \"phoneNumberVerifiedAt\": \"<dateTime>\",\n          \"emailVerifiedAt\": \"<dateTime>\",\n          \"dateOfBirth\": \"<dateTime>\",\n          \"hasTransactionPin\": \"<boolean>\",\n          \"primaryProfile\": \"<string>\",\n          \"gender\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"blacklisted\": \"<boolean>\",\n          \"customerId\": \"<integer>\",\n          \"customer\": {\n            \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n          },\n          \"userBusinesses\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            }\n          ],\n          \"createdBy\": \"<string>\",\n          \"dateCreated\": \"<dateTime>\",\n          \"updatedBy\": \"<string>\",\n          \"lastUpdateDate\": \"<dateTime>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        }\n      },\n      {\n        \"id\": \"<long>\",\n        \"userId\": \"<string>\",\n        \"user\": {\n          \"userId\": \"<string>\",\n          \"userName\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"phoneNumber\": \"<string>\",\n          \"phoneNumberCode\": \"<string>\",\n          \"referralCode\": \"<string>\",\n          \"profileImage\": \"<string>\",\n          \"phoneNumberVerifiedAt\": \"<dateTime>\",\n          \"emailVerifiedAt\": \"<dateTime>\",\n          \"dateOfBirth\": \"<dateTime>\",\n          \"hasTransactionPin\": \"<boolean>\",\n          \"primaryProfile\": \"<string>\",\n          \"gender\": \"<string>\",\n          \"active\": \"<boolean>\",\n          \"blacklisted\": \"<boolean>\",\n          \"customerId\": \"<integer>\",\n          \"customer\": {\n            \"value\": \"<Circular reference to #/components/schemas/Customer detected>\"\n          },\n          \"userBusinesses\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/UserBusiness detected>\"\n            }\n          ],\n          \"createdBy\": \"<string>\",\n          \"dateCreated\": \"<dateTime>\",\n          \"updatedBy\": \"<string>\",\n          \"lastUpdateDate\": \"<dateTime>\"\n        },\n        \"businessId\": \"<integer>\",\n        \"business\": {\n          \"value\": \"<Circular reference to #/components/schemas/Business detected>\"\n        }\n      }\n    ],\n    \"blackListed\": \"<boolean>\"\n  },\n  \"resultType\": \"Success\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Update Business",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "70e9efb2-74b6-4f0a-a13e-1e92b91adffe",
-										"exec": [
-											"",
-											"pm.test(\"Response status code is 200\", function () {",
-											"  pm.response.to.have.status(200);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Email is in a valid format\", function () {",
-											"  const responseData = pm.response.json();",
-											"  ",
-											"  pm.expect(responseData.result.email).to.exist.and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email is not in a valid format\");",
-											"});",
-											"",
-											"pm.test(\"Verify response hasResult is true\", function () {",
-											"    pm.expect(pm.response.json().hasResult).to.eql(true);",
-											"});",
-											"",
-											"pm.test(\"Verify response result contains expected properties\", function () {",
-											"    const result = pm.response.json().result;",
-											"",
-											"    // Check if 'name' property exists and is a string",
-											"    pm.expect(result.name).to.be.a('string');",
-											"",
-											"    // Check if 'rcBnNumber' property exists and is a string",
-											"    pm.expect(result.rcBnNumber).to.be.a('string');",
-											"",
-											"    // Check if 'email' property exists and is a string",
-											"    pm.expect(result.email).to.be.a('string');",
-											"",
-											"    // Check if 'phoneNumber' property exists and is a string",
-											"    pm.expect(result.phoneNumber).to.be.a('string');",
-											"",
-											"    // Check if 'phoneNumberCountryCode' property exists and is a string",
-											"    pm.expect(result.phoneNumberCountryCode).to.be.a('string');",
-											"",
-											"    // Check if 'streetAddress1' property exists and is a string",
-											"    pm.expect(result.streetAddress1).to.be.a('string');",
-											"",
-											"    // Check if 'streetAddress2' property exists and is a string",
-											"    pm.expect(result.streetAddress2).to.be.a('string');",
-											"",
-											"    // Check if 'stateProvince' property exists and is a string",
-											"    pm.expect(result.stateProvince).to.be.a('string');",
-											"",
-											"    // Check if 'city' property exists and is a string",
-											"    pm.expect(result.city).to.be.a('string');",
-											"",
-											"    // Check if 'nearestLandmark' property exists and is a string",
-											"    pm.expect(result.nearestLandmark).to.be.a('string');",
-											"",
-											"    // Check if 'postalCode' property exists and is a string",
-											"    pm.expect(result.postalCode).to.be.a('string');",
-											"",
-											"    // Check if 'countryCode' property exists and is a string",
-											"    pm.expect(result.countryCode).to.be.a('string');",
-											"",
-											"    // Check if 'natureOfBusiness' property exists and is a string",
-											"    pm.expect(result.natureOfBusiness).to.be.a('string');",
-											"",
-											"    // Check if 'sourceOfRevenue' property exists and is a string",
-											"    pm.expect(result.sourceOfRevenue).to.be.a('string');",
-											"",
-											"    // Check if 'sourceOfCapital' property exists and is a string",
-											"    pm.expect(result.sourceOfCapital).to.be.a('string');",
-											"",
-											"    // Check if 'tin' property exists and is a string",
-											"    pm.expect(result.tin).to.be.a('string');",
-											"",
-											"    // Check if 'taxCompliance' property exists and is a boolean",
-											"    pm.expect(result.taxCompliance).to.be.a('boolean');",
-											"",
-											"    // Check if 'evidenceOfCorporateGovernance' property exists and is a boolean",
-											"    pm.expect(result.evidenceOfCorporateGovernance).to.be.a('boolean');",
-											"",
-											"    // Check if 'dailyDeposit' property exists and is a number",
-											"    pm.expect(result.dailyDeposit).to.be.a('number');",
-											"",
-											"    // Check if 'dailyTransfer' property exists and is a number",
-											"    pm.expect(result.dailyTransfer).to.be.a('number');",
-											"",
-											"    // Check if 'lifetimeDeposit' property exists and is a number",
-											"    pm.expect(result.lifetimeDeposit).to.be.a('number');",
-											"",
-											"    // Check if 'limitTransfer' property exists and is a number",
-											"    pm.expect(result.limitTransfer).to.be.a('number');",
-											"});",
-											"",
-											"pm.test(\"Verify response resultType is 'Success'\", function () {",
-											"    pm.expect(pm.response.json().resultType).to.eql('Success');",
-											"});",
-											"",
-											"pm.test(\"Verify response message is 'Success'\", function () {",
-											"    pm.expect(pm.response.json().message).to.eql('Success');",
-											"});",
-											"",
-											"pm.test(\"Verify response successful is true\", function () {",
-											"    pm.expect(pm.response.json().successful).to.eql(true);",
-											"});",
-											""
-										],
-										"type": "text/javascript"
-									}
+									]
 								}
 							],
-							"id": "50413631-5eff-488f-8c04-bddb785f67db",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"Blubble\",\n  \"rcBnNumber\": \"hdkakfnkwfnwlkl\",\n  \"email\": \"ajaerounchenya@gmail.com\",\n  \"phoneNumber\": \"8185597979\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"streetAddress1\": \"lagos avenue\",\n  \"streetAddress2\": \"Aoapa close\",\n  \"stateProvince\": \"Ikeja\",\n  \"city\": \"Lagos\",\n  \"nearestLandmark\": \"Bank 78 junction\",\n  \"postalCode\": \"908383\",\n  \"countryCode\": \"NGN\",\n  \"natureOfBusiness\": \"Tech\",\n  \"sourceOfRevenue\": \"Fashion businesss\",\n  \"sourceOfCapital\": \"Google LLC\",\n  \"tin\": \"28291991\",\n  \"taxCompliance\": \"true\",\n  \"evidenceOfCorporateGovernance\": \"true\",\n  \"dailyDeposit\": \"100000\",\n  \"dailyTransfer\": \"3000000\",\n  \"lifetimeDeposit\": \"30000\",\n  \"limitTransfer\": \"50000\"\n}\n\n\n{\n  \"name\": \"string\",\n  \"rcBnNumber\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"phoneNumberCountryCode\": \"string\",\n  \"streetAddress1\": \"string\",\n  \"streetAddress2\": \"string\",\n  \"stateProvince\": \"string\",\n  \"city\": \"string\",\n  \"nearestLandmark\": \"string\",\n  \"postalCode\": \"string\",\n  \"countryCode\": \"string\",\n  \"natureOfBusiness\": \"string\",\n  \"sourceOfRevenue\": \"string\",\n  \"sourceOfCapital\": \"string\",\n  \"tin\": \"string\",\n  \"taxCompliance\": true,\n  \"evidenceOfCorporateGovernance\": true,\n  \"dailyDeposit\": 0,\n  \"dailyTransfer\": 0,\n  \"lifetimeDeposit\": 0,\n  \"limitTransfer\": 0,\n  \"boardResolutionFile\": \"string\",\n  \"cacForm2aFile\": \"string\",\n  \"cacForm7aFile\": \"string\",\n  \"mematFile\": \"string\",\n  \"companyTinFile\": \"string\",\n  \"proofOfAddressFile\": \"string\",\n  \"additionalDocument\": [\n    \"string\"\n  ],\n  \"agreeToAddDirectors\": true,\n  \"businessType\": \"string\",\n  \"certificateOfIncorporationFile\": \"string\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://onboard-dev.bank78.co/api/business"
-							},
-							"response": [
+							"id": "ad2b60fb-588e-45fe-8df0-4af98c44c231"
+						},
+						{
+							"name": "Update a business",
+							"item": [
 								{
-									"id": "73ca46c5-2942-4af8-bf5b-137a8bd1fe5f",
-									"name": "Success",
-									"originalRequest": {
+									"name": "Update Business",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "70e9efb2-74b6-4f0a-a13e-1e92b91adffe",
+												"exec": [
+													"",
+													"pm.test(\"Response status code is 200\", function () {",
+													"  pm.response.to.have.status(200);",
+													"});",
+													"",
+													"",
+													"pm.test(\"Email is in a valid format\", function () {",
+													"  const responseData = pm.response.json();",
+													"  ",
+													"  pm.expect(responseData.result.email).to.exist.and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email is not in a valid format\");",
+													"});",
+													"",
+													"pm.test(\"Verify response hasResult is true\", function () {",
+													"    pm.expect(pm.response.json().hasResult).to.eql(true);",
+													"});",
+													"",
+													"pm.test(\"Verify response result contains expected properties\", function () {",
+													"    const result = pm.response.json().result;",
+													"",
+													"    // Check if 'name' property exists and is a string",
+													"    pm.expect(result.name).to.be.a('string');",
+													"",
+													"    // Check if 'rcBnNumber' property exists and is a string",
+													"    pm.expect(result.rcBnNumber).to.be.a('string');",
+													"",
+													"    // Check if 'email' property exists and is a string",
+													"    pm.expect(result.email).to.be.a('string');",
+													"",
+													"    // Check if 'phoneNumber' property exists and is a string",
+													"    pm.expect(result.phoneNumber).to.be.a('string');",
+													"",
+													"    // Check if 'phoneNumberCountryCode' property exists and is a string",
+													"    pm.expect(result.phoneNumberCountryCode).to.be.a('string');",
+													"",
+													"    // Check if 'streetAddress1' property exists and is a string",
+													"    pm.expect(result.streetAddress1).to.be.a('string');",
+													"",
+													"    // Check if 'streetAddress2' property exists and is a string",
+													"    pm.expect(result.streetAddress2).to.be.a('string');",
+													"",
+													"    // Check if 'stateProvince' property exists and is a string",
+													"    pm.expect(result.stateProvince).to.be.a('string');",
+													"",
+													"    // Check if 'city' property exists and is a string",
+													"    pm.expect(result.city).to.be.a('string');",
+													"",
+													"    // Check if 'nearestLandmark' property exists and is a string",
+													"    pm.expect(result.nearestLandmark).to.be.a('string');",
+													"",
+													"    // Check if 'postalCode' property exists and is a string",
+													"    pm.expect(result.postalCode).to.be.a('string');",
+													"",
+													"    // Check if 'countryCode' property exists and is a string",
+													"    pm.expect(result.countryCode).to.be.a('string');",
+													"",
+													"    // Check if 'natureOfBusiness' property exists and is a string",
+													"    pm.expect(result.natureOfBusiness).to.be.a('string');",
+													"",
+													"    // Check if 'sourceOfRevenue' property exists and is a string",
+													"    pm.expect(result.sourceOfRevenue).to.be.a('string');",
+													"",
+													"    // Check if 'sourceOfCapital' property exists and is a string",
+													"    pm.expect(result.sourceOfCapital).to.be.a('string');",
+													"",
+													"    // Check if 'tin' property exists and is a string",
+													"    pm.expect(result.tin).to.be.a('string');",
+													"",
+													"    // Check if 'taxCompliance' property exists and is a boolean",
+													"    pm.expect(result.taxCompliance).to.be.a('boolean');",
+													"",
+													"    // Check if 'evidenceOfCorporateGovernance' property exists and is a boolean",
+													"    pm.expect(result.evidenceOfCorporateGovernance).to.be.a('boolean');",
+													"",
+													"    // Check if 'dailyDeposit' property exists and is a number",
+													"    pm.expect(result.dailyDeposit).to.be.a('number');",
+													"",
+													"    // Check if 'dailyTransfer' property exists and is a number",
+													"    pm.expect(result.dailyTransfer).to.be.a('number');",
+													"",
+													"    // Check if 'lifetimeDeposit' property exists and is a number",
+													"    pm.expect(result.lifetimeDeposit).to.be.a('number');",
+													"",
+													"    // Check if 'limitTransfer' property exists and is a number",
+													"    pm.expect(result.limitTransfer).to.be.a('number');",
+													"});",
+													"",
+													"pm.test(\"Verify response resultType is 'Success'\", function () {",
+													"    pm.expect(pm.response.json().resultType).to.eql('Success');",
+													"});",
+													"",
+													"pm.test(\"Verify response message is 'Success'\", function () {",
+													"    pm.expect(pm.response.json().message).to.eql('Success');",
+													"});",
+													"",
+													"pm.test(\"Verify response successful is true\", function () {",
+													"    pm.expect(pm.response.json().successful).to.eql(true);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "50413631-5eff-488f-8c04-bddb785f67db",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "PUT",
 										"header": [
 											{
@@ -6047,16 +6028,11 @@
 											{
 												"key": "Accept",
 												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"streetAddress1\": \"<string>\",\n  \"streetAddress2\": \"<string>\",\n  \"stateProvince\": \"<string>\",\n  \"city\": \"<string>\",\n  \"nearestLandmark\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"natureOfBusiness\": \"<string>\",\n  \"sourceOfRevenue\": \"<string>\",\n  \"sourceOfCapital\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"taxCompliance\": \"<boolean>\",\n  \"evidenceOfCorporateGovernance\": \"<boolean>\",\n  \"dailyDeposit\": \"<double>\",\n  \"dailyTransfer\": \"<double>\",\n  \"lifetimeDeposit\": \"<double>\",\n  \"limitTransfer\": \"<double>\"\n}",
+											"raw": "{\n  \"name\": \"Blubble\",\n  \"rcBnNumber\": \"hdkakfnkwfnwlkl\",\n  \"email\": \"ajaerounchenya@gmail.com\",\n  \"phoneNumber\": \"8185597979\",\n  \"phoneNumberCountryCode\": \"+234\",\n  \"streetAddress1\": \"lagos avenue\",\n  \"streetAddress2\": \"Aoapa close\",\n  \"stateProvince\": \"Ikeja\",\n  \"city\": \"Lagos\",\n  \"nearestLandmark\": \"Bank 78 junction\",\n  \"postalCode\": \"908383\",\n  \"countryCode\": \"NGN\",\n  \"natureOfBusiness\": \"Tech\",\n  \"sourceOfRevenue\": \"Fashion businesss\",\n  \"sourceOfCapital\": \"Google LLC\",\n  \"tin\": \"28291991\",\n  \"taxCompliance\": \"true\",\n  \"evidenceOfCorporateGovernance\": \"true\",\n  \"dailyDeposit\": \"100000\",\n  \"dailyTransfer\": \"3000000\",\n  \"lifetimeDeposit\": \"30000\",\n  \"limitTransfer\": \"50000\"\n}\n\n\n{\n  \"name\": \"string\",\n  \"rcBnNumber\": \"string\",\n  \"email\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"phoneNumberCountryCode\": \"string\",\n  \"streetAddress1\": \"string\",\n  \"streetAddress2\": \"string\",\n  \"stateProvince\": \"string\",\n  \"city\": \"string\",\n  \"nearestLandmark\": \"string\",\n  \"postalCode\": \"string\",\n  \"countryCode\": \"string\",\n  \"natureOfBusiness\": \"string\",\n  \"sourceOfRevenue\": \"string\",\n  \"sourceOfCapital\": \"string\",\n  \"tin\": \"string\",\n  \"taxCompliance\": true,\n  \"evidenceOfCorporateGovernance\": true,\n  \"dailyDeposit\": 0,\n  \"dailyTransfer\": 0,\n  \"lifetimeDeposit\": 0,\n  \"limitTransfer\": 0,\n  \"boardResolutionFile\": \"string\",\n  \"cacForm2aFile\": \"string\",\n  \"cacForm7aFile\": \"string\",\n  \"mematFile\": \"string\",\n  \"companyTinFile\": \"string\",\n  \"proofOfAddressFile\": \"string\",\n  \"additionalDocument\": [\n    \"string\"\n  ],\n  \"agreeToAddDirectors\": true,\n  \"businessType\": \"string\",\n  \"certificateOfIncorporationFile\": \"string\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -6064,22 +6040,58 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/business"
+										"url": "https://onboard-dev.bank78.co/api/business"
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "73ca46c5-2942-4af8-bf5b-137a8bd1fe5f",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneNumberCountryCode\": \"<string>\",\n  \"streetAddress1\": \"<string>\",\n  \"streetAddress2\": \"<string>\",\n  \"stateProvince\": \"<string>\",\n  \"city\": \"<string>\",\n  \"nearestLandmark\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"natureOfBusiness\": \"<string>\",\n  \"sourceOfRevenue\": \"<string>\",\n  \"sourceOfCapital\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"taxCompliance\": \"<boolean>\",\n  \"evidenceOfCorporateGovernance\": \"<boolean>\",\n  \"dailyDeposit\": \"<double>\",\n  \"dailyTransfer\": \"<double>\",\n  \"lifetimeDeposit\": \"<double>\",\n  \"limitTransfer\": \"<double>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/business"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"rcBnNumber\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"streetAddress1\": \"<string>\",\n    \"streetAddress2\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"city\": \"<string>\",\n    \"nearestLandmark\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"natureOfBusiness\": \"<string>\",\n    \"sourceOfRevenue\": \"<string>\",\n    \"sourceOfCapital\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"taxCompliance\": \"<boolean>\",\n    \"evidenceOfCorporateGovernance\": \"<boolean>\",\n    \"dailyDeposit\": \"<double>\",\n    \"dailyTransfer\": \"<double>\",\n    \"lifetimeDeposit\": \"<double>\",\n    \"limitTransfer\": \"<double>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"name\": \"<string>\",\n    \"rcBnNumber\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"phoneNumberCountryCode\": \"<string>\",\n    \"streetAddress1\": \"<string>\",\n    \"streetAddress2\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"city\": \"<string>\",\n    \"nearestLandmark\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"natureOfBusiness\": \"<string>\",\n    \"sourceOfRevenue\": \"<string>\",\n    \"sourceOfCapital\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"taxCompliance\": \"<boolean>\",\n    \"evidenceOfCorporateGovernance\": \"<boolean>\",\n    \"dailyDeposit\": \"<double>\",\n    \"dailyTransfer\": \"<double>\",\n    \"lifetimeDeposit\": \"<double>\",\n    \"limitTransfer\": \"<double>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+									]
 								}
-							]
+							],
+							"id": "3fdd5ee0-7f94-453d-9b6c-ca8886e058a4"
 						}
 					],
 					"id": "5ce8e09c-5010-4395-b915-853d0fb69556"
@@ -6096,6 +6108,139 @@
 						{
 							"name": "kyc",
 							"item": [
+								{
+									"name": "Level 1",
+									"item": [
+										{
+											"name": "Level 1 Approved",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "e4dbf846-d320-4f56-8f1e-146496e612f0",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Approval Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "37e86281-3ae5-4498-842b-9ab7d8ef923c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/onboard/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "99cb6a5a-46af-4530-833b-9d7a8bbc0758",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										}
+									],
+									"id": "e64bb93b-17de-4fa8-9547-e14ac6eac97c"
+								},
 								{
 									"name": "Level 2 Approved",
 									"event": [
@@ -6428,6 +6573,130 @@
 									"response": [
 										{
 											"id": "19cd1889-8195-4f57-a212-bb02530d5211",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/customer/kyc/approve"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Level 2 Approved without username Copy",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "6b04a42c-b8f2-48ff-97e0-c27d3a1536fb",
+												"exec": [
+													"pm.test(\"Verify response hasResult is false\", function () {\r",
+													"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify response result is null\", function () {\r",
+													"    pm.expect(pm.response.json().result).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
+													"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
+													"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify response validationMessages is null\", function () {\r",
+													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Verify response successful is false\", function () {\r",
+													"    pm.expect(pm.response.json().successful).to.eql(false);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f2e44464-7a04-480f-9db2-b00743ceef36",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+									},
+									"response": [
+										{
+											"id": "9417c765-ed61-4f17-b38f-e66ab0f1df86",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
