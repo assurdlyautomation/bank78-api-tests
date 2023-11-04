@@ -334,8 +334,17 @@
 									"\r",
 									"pm.test(\"Error in the response\", function () {\r",
 									"    pm.expect(jsonData.error).to.exist;\r",
+									"    pm.expect(jsonData.error_description).to.exist;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error in the response\", function () {\r",
 									"    pm.expect(jsonData.error).to.be.a('string');\r",
-									"    pm.expect(jsonData.error).to.eq('invalid_grant');\r",
+									"    pm.expect(jsonData.error).to.eq('unauthorized_client');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error in the response\", function () {\r",
+									"    pm.expect(jsonData.error_description).to.be.a('string');\r",
+									"    pm.expect(jsonData.error_description).to.eq('Invalid Username or password');\r",
 									"});\r",
 									""
 								],
@@ -376,7 +385,7 @@
 								{
 									"description": "username",
 									"key": "username",
-									"value": ""
+									"value": "regi@mail.com"
 								},
 								{
 									"description": "password",
@@ -958,6 +967,54 @@
 					"item": [
 						{
 							"name": "Dashboard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b3bf9675-4ea7-4723-8ea8-2c6d1e72b72b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body result\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result).to.be.an('object');\r",
+											"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"hasResult is not empty\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result type is not empty\", function () {\r",
+											"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is not empty\", function () {\r",
+											"    pm.expect(jsonData.message).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful\", function () {\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "23089d9d-961a-4f18-b33f-982928efe469",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -1034,6 +1091,54 @@
 											"item": [
 												{
 													"name": "All transactions",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "29abf2d1-0df9-40e7-8271-f85f8df5cab0",
+																"exec": [
+																	"pm.test(\"Status code is 200\", function () {\r",
+																	"    pm.response.to.have.status(200);\r",
+																	"});\r",
+																	"\r",
+																	"pm.test(\"Status code response is OK\", function () {\r",
+																	"    pm.response.to.have.status('OK');\r",
+																	"});\r",
+																	"\r",
+																	"var jsonData = pm.response.json();\r",
+																	"\r",
+																	"pm.test(\"Response body result\", function () {\r",
+																	"    pm.expect(jsonData).to.be.an('object');\r",
+																	"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+																	"    pm.expect(jsonData.result).to.be.an('object');\r",
+																	"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+																	"    pm.expect(jsonData.message).to.be.a('string');\r",
+																	"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+																	"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+																	"});\r",
+																	"\r",
+																	"pm.test(\"hasResult is not empty\", function () {\r",
+																	"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+																	"});\r",
+																	"\r",
+																	"pm.test(\"Result type is not empty\", function () {\r",
+																	"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+																	"});\r",
+																	"\r",
+																	"pm.test(\"Message is not empty\", function () {\r",
+																	"    pm.expect(jsonData.message).to.eql('Success');\r",
+																	"});\r",
+																	"\r",
+																	"pm.test(\"Successful\", function () {\r",
+																	"    pm.expect(jsonData.successful).to.eql(true);\r",
+																	"});\r",
+																	"\r",
+																	""
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
 													"id": "8b6df72b-cdbf-4ca2-96b2-d9e8984e8500",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -1179,11 +1284,23 @@
 																"disableBodyPruning": true
 															},
 															"request": {
+																"auth": {
+																	"type": "bearer",
+																	"bearer": {
+																		"token": "{{admin_access_token}}"
+																	}
+																},
 																"method": "GET",
 																"header": [
 																	{
 																		"key": "Accept",
 																		"value": "text/plain"
+																	},
+																	{
+																		"key": "x-api-key",
+																		"value": "{{x-api-key}}",
+																		"type": "text",
+																		"disabled": true
 																	}
 																],
 																"url": {
@@ -2882,33 +2999,92 @@
 							"item": [
 								{
 									"name": "/api/transactions/:id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fe889846-8f9a-4dd4-898c-c78a137e3ce8",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body result\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is not empty\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "b1337062-4f42-4f49-adae-c8b58f0c2fec",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/transactions/:id",
+											"raw": "{{baseUrl}}/transaction/api/transactions/:id",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
+												"transaction",
 												"api",
 												"transactions",
 												":id"
 											],
 											"variable": [
 												{
-													"id": "9e0c71d2-65f9-439c-8815-6a0580508f25",
 													"key": "id",
-													"value": "<long>",
+													"value": "75",
 													"description": "(Required) "
 												}
 											]
@@ -2982,14 +3158,25 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": "{{baseUrl}}/api/transactions/transaction-types"
+										"url": "{{baseUrl}}/transaction/api/transactions/transaction-types"
 									},
 									"response": [
 										{
@@ -3211,7 +3398,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/transaction/api/transactions/account?id=<string>",
+									"raw": "{{baseUrl}}/transaction/api/transactions/account?id=19979",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -3224,7 +3411,7 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "<string>"
+											"value": "19979"
 										}
 									]
 								}
@@ -3396,19 +3583,31 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{admin_access_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [
 															{
 																"key": "Accept",
 																"value": "text/plain"
+															},
+															{
+																"key": "x-api-key",
+																"value": "{{x-api-key}}",
+																"type": "text"
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/api/transactions/getpaged/:page/:pagesize/:wherecondition",
+															"raw": "{{baseUrl}}/transaction/api/transactions/getpaged/:page/:pagesize/:wherecondition",
 															"host": [
 																"{{baseUrl}}"
 															],
 															"path": [
+																"transaction",
 																"api",
 																"transactions",
 																"getpaged",
@@ -3527,19 +3726,31 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{admin_access_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [
 															{
 																"key": "Accept",
 																"value": "text/plain"
+															},
+															{
+																"key": "x-api-key",
+																"value": "{{x-api-key}}",
+																"type": "text"
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/api/transactions/querypaged/:page/:pagesize/:wherecondition",
+															"raw": "{{baseUrl}}/transaction/api/transactions/querypaged/:page/:pagesize/:wherecondition",
 															"host": [
 																"{{baseUrl}}"
 															],
 															"path": [
+																"transaction",
 																"api",
 																"transactions",
 																"querypaged",
@@ -3649,6 +3860,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -3658,11 +3875,16 @@
 									{
 										"key": "Accept",
 										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"accountNumber\": \"8419981262\",\n  \"endDate\": \"<dateTime>\",\n  \"startDate\": \"<dateTime>\"\n}",
+									"raw": "{\n  \"accountNumber\": \"0890709090\",\n  \"endDate\": \"09-10-23\",\n  \"startDate\": \"10-10-23\"\n}",
 									"options": {
 										"raw": {
 											"headerFamily": "json",
@@ -3670,7 +3892,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/transactions/statement"
+								"url": "{{baseUrl}}/transaction/api/transactions/statement"
 							},
 							"response": [
 								{
@@ -4076,7 +4298,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+23@assurdly.com\",\n  \"rcBnNumber\": \"RB0818559\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"unyc101@mailinator.com\",\n  \"rcBnNumber\": \"RC5009008\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4535,6 +4757,10 @@
 											"script": {
 												"id": "5b59ea41-82d5-49df-a012-f07c0567b57d",
 												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
 													"pm.test(\"Message is 'Deactivated Successfully' or 'Activated Successfully'\", function() {\r",
 													"    const responseData = pm.response.json();\r",
 													"    const expectedMessages = [\"Business and all associated User has been Deactivated Successfully\", \"Business and all associated User has been Activated Successfully\"];\r",
@@ -4591,7 +4817,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/onboard/api/business/status/toggle?rcbnNumber=hdkakfnkwfnwlkl",
+											"raw": "{{baseUrl}}/onboard/api/business/status/toggle?rcbnNumber=RC5009008",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -4605,7 +4831,7 @@
 											"query": [
 												{
 													"key": "rcbnNumber",
-													"value": "hdkakfnkwfnwlkl"
+													"value": "RC5009008"
 												}
 											]
 										}
@@ -5710,8 +5936,8 @@
 											"script": {
 												"id": "347e2a37-60e0-4a53-bab9-953c6c7d3a13",
 												"exec": [
-													"pm.test(\"Status code is 200\", function () {\r",
-													"    pm.response.to.have.status(200);\r",
+													"pm.test(\"Status code is 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
 													"});"
 												],
 												"type": "text/javascript"
@@ -5724,10 +5950,7 @@
 									},
 									"request": {
 										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
+											"type": "noauth"
 										},
 										"method": "POST",
 										"header": [
@@ -6696,7 +6919,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6946,7 +7169,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
+													"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -8053,6 +8276,10 @@
 											"script": {
 												"id": "c2bfab6f-ca50-44b0-b31f-117b46b5ffcc",
 												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
 													"pm.test(\"Response has no result\", function() {\r",
 													"    const responseData = pm.response.json();\r",
 													"    \r",
@@ -8611,7 +8838,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=bankcustomer725@gmail.com",
+											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=bryan+39@assurdly.com",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -8624,13 +8851,13 @@
 											"query": [
 												{
 													"key": "",
-													"value": null,
+													"value": "",
 													"type": "text",
 													"disabled": true
 												},
 												{
 													"key": "username",
-													"value": "bankcustomer725@gmail.com"
+													"value": "bryan+39@assurdly.com"
 												}
 											]
 										}
@@ -9877,7 +10104,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"emailAddress\": \"unyc+41@assurdly.com\",\n  \"inviteUrl\": \"https://www.admininvite.com\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
+													"raw": "{\n  \"emailAddress\": \"unyc+43@assurdly.com\",\n  \"inviteUrl\": \"https://www.admininvite.com\",\n  \"roleId\": \"2\",\n  \"isSuperAdmin\": \"false\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
