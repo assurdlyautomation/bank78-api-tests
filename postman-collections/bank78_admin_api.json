@@ -4408,7 +4408,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -4416,7 +4416,7 @@
 												}
 											}
 										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+										"url": "{{baseUrl}}/onboard/api/customer/kyc/approve"
 									},
 									"response": [
 										{
