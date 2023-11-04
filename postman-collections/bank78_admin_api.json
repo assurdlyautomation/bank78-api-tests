@@ -2876,6 +2876,95 @@
 								}
 							],
 							"id": "cd0e796d-1d59-4049-b86c-f1fbee5090cf"
+						},
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "/api/transactions/:id",
+									"id": "b1337062-4f42-4f49-adae-c8b58f0c2fec",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/transactions/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"transactions",
+												":id"
+											],
+											"variable": [
+												{
+													"id": "9e0c71d2-65f9-439c-8815-6a0580508f25",
+													"key": "id",
+													"value": "<long>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "e77e6bb0-1e6c-4059-ac2a-40ff2a1c9c15",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/transactions/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"transactions",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<long>\",\n    \"senderAccount\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"beneficiaryAccount\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryBank\": \"<string>\",\n    \"beneficiaryBankCountry\": \"<string>\",\n    \"remarks\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"transactionSource\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"transactionReference\": \"<string>\",\n    \"transactionStatus\": \"Failed\",\n    \"narration\": \"<string>\",\n    \"tryCount\": \"<integer>\",\n    \"transactionDate\": \"<dateTime>\",\n    \"userId\": \"<string>\",\n    \"transactionLeg\": \"Debit\",\n    \"transactionFee\": \"<double>\",\n    \"exchangeRate\": \"<double>\",\n    \"beneficiaryId\": \"<integer>\",\n    \"senderBankName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceWallet\": \"<string>\",\n    \"walletId\": \"<long>\",\n    \"walletNumber\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								}
+							],
+							"id": "27c95c33-214d-4483-8410-ab5afc04f3b0"
 						}
 					],
 					"id": "f32cb48c-75e9-4cb3-88d3-e1fb9c5106ac"
@@ -2883,6 +2972,62 @@
 				{
 					"name": "all-transaction-types",
 					"item": [
+						{
+							"name": "transaction-types",
+							"item": [
+								{
+									"name": "/api/transactions/transaction-types",
+									"id": "99aae248-c013-4438-b0a0-c2c40b772fd1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": "{{baseUrl}}/api/transactions/transaction-types"
+									},
+									"response": [
+										{
+											"id": "25244f89-d2f7-4df1-a358-8ff755b4f439",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": "{{baseUrl}}/api/transactions/transaction-types"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								}
+							],
+							"id": "efa9a777-89fd-474c-a9ee-fd591f135041"
+						},
 						{
 							"name": "Transaction types",
 							"event": [
@@ -3495,151 +3640,6 @@
 					"id": "1b79a194-1771-4a10-80b6-43f946e8bdf9"
 				},
 				{
-					"name": "{id}",
-					"item": [
-						{
-							"name": "/api/transactions/:id",
-							"id": "b1337062-4f42-4f49-adae-c8b58f0c2fec",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/transactions/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"transactions",
-										":id"
-									],
-									"variable": [
-										{
-											"id": "9e0c71d2-65f9-439c-8815-6a0580508f25",
-											"key": "id",
-											"value": "<long>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "e77e6bb0-1e6c-4059-ac2a-40ff2a1c9c15",
-									"name": "Success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/api/transactions/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"transactions",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<long>\",\n    \"senderAccount\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"beneficiaryAccount\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryBank\": \"<string>\",\n    \"beneficiaryBankCountry\": \"<string>\",\n    \"remarks\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"transactionSource\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"transactionReference\": \"<string>\",\n    \"transactionStatus\": \"Failed\",\n    \"narration\": \"<string>\",\n    \"tryCount\": \"<integer>\",\n    \"transactionDate\": \"<dateTime>\",\n    \"userId\": \"<string>\",\n    \"transactionLeg\": \"Debit\",\n    \"transactionFee\": \"<double>\",\n    \"exchangeRate\": \"<double>\",\n    \"beneficiaryId\": \"<integer>\",\n    \"senderBankName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceWallet\": \"<string>\",\n    \"walletId\": \"<long>\",\n    \"walletNumber\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						}
-					],
-					"id": "27c95c33-214d-4483-8410-ab5afc04f3b0"
-				},
-				{
-					"name": "transaction-types",
-					"item": [
-						{
-							"name": "/api/transactions/transaction-types",
-							"id": "99aae248-c013-4438-b0a0-c2c40b772fd1",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"url": "{{baseUrl}}/api/transactions/transaction-types"
-							},
-							"response": [
-								{
-									"id": "25244f89-d2f7-4df1-a358-8ff755b4f439",
-									"name": "Success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"url": "{{baseUrl}}/api/transactions/transaction-types"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						}
-					],
-					"id": "efa9a777-89fd-474c-a9ee-fd591f135041"
-				},
-				{
 					"name": "statement",
 					"item": [
 						{
@@ -3855,26 +3855,38 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{admin_access_token}}"
+							}
+						},
 						"method": "GET",
 						"header": [
 							{
 								"key": "Accept",
 								"value": "text/plain"
+							},
+							{
+								"key": "x-api-key",
+								"value": "{{x-api-key}}",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/transactions?transactionReference=<string>",
+							"raw": "{{baseUrl}}/transaction/api/transactions?transactionReference=231103114515063451853798447009",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
+								"transaction",
 								"api",
 								"transactions"
 							],
 							"query": [
 								{
 									"key": "transactionReference",
-									"value": "<string>"
+									"value": "231103114515063451853798447009"
 								}
 							]
 						}
