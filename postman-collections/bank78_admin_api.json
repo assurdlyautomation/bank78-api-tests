@@ -2332,24 +2332,84 @@
 															"item": [
 																{
 																	"name": "/api/transactions/customers/:userId/getpaged/:page/:pagesize/:wherecondition",
+																	"event": [
+																		{
+																			"listen": "test",
+																			"script": {
+																				"id": "3413dade-b8ef-4ca3-b946-fdd56a765566",
+																				"exec": [
+																					"pm.test(\"Status code is 200\", function () {\r",
+																					"    pm.response.to.have.status(200);\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Status code response is OK\", function () {\r",
+																					"    pm.response.to.have.status('OK');\r",
+																					"});\r",
+																					"\r",
+																					"var jsonData = pm.response.json();\r",
+																					"\r",
+																					"pm.test(\"Response body result\", function () {\r",
+																					"    pm.expect(jsonData).to.be.an('object');\r",
+																					"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+																					"    pm.expect(jsonData.result).to.be.an('object');\r",
+																					"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+																					"    pm.expect(jsonData.message).to.be.a('string');\r",
+																					"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+																					"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"hasResult is not empty\", function () {\r",
+																					"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Result type is not empty\", function () {\r",
+																					"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Message is not empty\", function () {\r",
+																					"    pm.expect(jsonData.message).to.eql('Success');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Successful\", function () {\r",
+																					"    pm.expect(jsonData.successful).to.eql(true);\r",
+																					"});\r",
+																					"\r",
+																					""
+																				],
+																				"type": "text/javascript"
+																			}
+																		}
+																	],
 																	"id": "be860618-dfa2-4164-95cc-613380e2b12c",
 																	"protocolProfileBehavior": {
 																		"disableBodyPruning": true
 																	},
 																	"request": {
+																		"auth": {
+																			"type": "bearer",
+																			"bearer": {
+																				"token": "{{admin_access_token}}"
+																			}
+																		},
 																		"method": "GET",
 																		"header": [
 																			{
 																				"key": "Accept",
 																				"value": "text/plain"
+																			},
+																			{
+																				"key": "x-api-key",
+																				"value": "{{x-api-key}}",
+																				"type": "text"
 																			}
 																		],
 																		"url": {
-																			"raw": "{{baseUrl}}/api/transactions/customers/:userId/getpaged/:page/:pagesize/:wherecondition",
+																			"raw": "{{baseUrl}}/transaction/api/transactions/customers/:userId/getpaged/:page/:pagesize/:wherecondition",
 																			"host": [
 																				"{{baseUrl}}"
 																			],
 																			"path": [
+																				"transaction",
 																				"api",
 																				"transactions",
 																				"customers",
@@ -2361,25 +2421,21 @@
 																			],
 																			"variable": [
 																				{
-																					"id": "922ec5fe-057b-480e-84d8-f2d3864f31ae",
 																					"key": "userId",
-																					"value": "<uuid>",
+																					"value": "c80f73df-303d-40ca-a5eb-d00687bcd461",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "7c0d8848-0c8d-4d1e-84fd-407dff25d4ca",
 																					"key": "page",
 																					"value": "1",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "805c473e-e20d-4693-954c-314a966f2966",
 																					"key": "pagesize",
 																					"value": "10",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "adbc393a-5b7a-4c13-8be9-51364e733e3f",
 																					"key": "wherecondition",
 																					"value": "{}",
 																					"description": "(Required) "
@@ -2476,24 +2532,84 @@
 															"item": [
 																{
 																	"name": "/api/transactions/customers/:userId/querypaged/:page/:pagesize/:wherecondition",
+																	"event": [
+																		{
+																			"listen": "test",
+																			"script": {
+																				"id": "c452cf25-c40c-494a-857a-38429e994576",
+																				"exec": [
+																					"pm.test(\"Status code is 200\", function () {\r",
+																					"    pm.response.to.have.status(200);\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Status code response is OK\", function () {\r",
+																					"    pm.response.to.have.status('OK');\r",
+																					"});\r",
+																					"\r",
+																					"var jsonData = pm.response.json();\r",
+																					"\r",
+																					"pm.test(\"Response body result\", function () {\r",
+																					"    pm.expect(jsonData).to.be.an('object');\r",
+																					"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+																					"    pm.expect(jsonData.result).to.be.an('object');\r",
+																					"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+																					"    pm.expect(jsonData.message).to.be.a('string');\r",
+																					"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+																					"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"hasResult is not empty\", function () {\r",
+																					"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Result type is not empty\", function () {\r",
+																					"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Message is not empty\", function () {\r",
+																					"    pm.expect(jsonData.message).to.eql('Success');\r",
+																					"});\r",
+																					"\r",
+																					"pm.test(\"Successful\", function () {\r",
+																					"    pm.expect(jsonData.successful).to.eql(true);\r",
+																					"});\r",
+																					"\r",
+																					""
+																				],
+																				"type": "text/javascript"
+																			}
+																		}
+																	],
 																	"id": "aba34b34-2b8d-4dfb-8c27-8558c990c03b",
 																	"protocolProfileBehavior": {
 																		"disableBodyPruning": true
 																	},
 																	"request": {
+																		"auth": {
+																			"type": "bearer",
+																			"bearer": {
+																				"token": "{{admin_access_token}}"
+																			}
+																		},
 																		"method": "GET",
 																		"header": [
 																			{
 																				"key": "Accept",
 																				"value": "text/plain"
+																			},
+																			{
+																				"key": "x-api-key",
+																				"value": "{{x-api-key}}",
+																				"type": "text"
 																			}
 																		],
 																		"url": {
-																			"raw": "{{baseUrl}}/api/transactions/customers/:userId/querypaged/:page/:pagesize/:wherecondition",
+																			"raw": "{{baseUrl}}/transaction/api/transactions/customers/:userId/querypaged/:page/:pagesize/:wherecondition",
 																			"host": [
 																				"{{baseUrl}}"
 																			],
 																			"path": [
+																				"transaction",
 																				"api",
 																				"transactions",
 																				"customers",
@@ -2505,25 +2621,21 @@
 																			],
 																			"variable": [
 																				{
-																					"id": "51e4206d-356a-4300-8b24-630e602b5cba",
 																					"key": "userId",
-																					"value": "<uuid>",
+																					"value": "c80f73df-303d-40ca-a5eb-d00687bcd461",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "12db4a58-c5fb-467a-ac3c-e0148bbc25c4",
 																					"key": "page",
 																					"value": "1",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "604d837f-dc6b-42c6-84d3-339eb1a25988",
 																					"key": "pagesize",
 																					"value": "10",
 																					"description": "(Required) "
 																				},
 																				{
-																					"id": "6d8a16fa-888d-4ca9-bfb8-47ba149b2e59",
 																					"key": "wherecondition",
 																					"value": "{}",
 																					"description": "(Required) "
@@ -2619,7 +2731,7 @@
 							"name": "{id}",
 							"item": [
 								{
-									"name": "/api/transactions/fetch-transaction-by-id/:id",
+									"name": "Transaction by ID",
 									"id": "cb990097-1642-48e0-a242-0772cbf50335",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
