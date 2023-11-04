@@ -1452,25 +1452,37 @@
 											]
 										},
 										{
-											"name": "Business transaction by user ID Copy",
+											"name": "Invalid ID",
 											"id": "b9f03de1-cb26-40ba-a354-4f81275538ac",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/transactions/businesses/:userId/dashboard",
+													"raw": "{{baseUrl}}/transaction/api/transactions/businesses/:userId/dashboard",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
+														"transaction",
 														"api",
 														"transactions",
 														"businesses",
@@ -1479,9 +1491,8 @@
 													],
 													"variable": [
 														{
-															"id": "ef9329af-d897-48b9-aefb-38714227efc7",
 															"key": "userId",
-															"value": "<uuid>",
+															"value": "c80f73df-303d-40ca-a5eb-d00687bcd4",
 															"description": "(Required) "
 														}
 													]
@@ -1958,24 +1969,84 @@
 									"item": [
 										{
 											"name": "/api/transactions/customers/:userId/dashboard",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ee5a7340-356f-4c70-b39f-3803cfd3d266",
+														"exec": [
+															"pm.test(\"Status code is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Status code response is OK\", function () {\r",
+															"    pm.response.to.have.status('OK');\r",
+															"});\r",
+															"\r",
+															"var jsonData = pm.response.json();\r",
+															"\r",
+															"pm.test(\"Response body result\", function () {\r",
+															"    pm.expect(jsonData).to.be.an('object');\r",
+															"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+															"    pm.expect(jsonData.result).to.be.an('object');\r",
+															"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+															"    pm.expect(jsonData.message).to.be.a('string');\r",
+															"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+															"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"hasResult is not empty\", function () {\r",
+															"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Result type is not empty\", function () {\r",
+															"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Message is not empty\", function () {\r",
+															"    pm.expect(jsonData.message).to.eql('Success');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Successful\", function () {\r",
+															"    pm.expect(jsonData.successful).to.eql(true);\r",
+															"});\r",
+															"\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"id": "169ab532-76fe-40bd-b3bf-d2d090b99f94",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/transactions/customers/:userId/dashboard",
+													"raw": "{{baseUrl}}/transaction/api/transactions/customers/:userId/dashboard",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
+														"transaction",
 														"api",
 														"transactions",
 														"customers",
@@ -1984,9 +2055,8 @@
 													],
 													"variable": [
 														{
-															"id": "64f7bd39-7f58-4749-96b0-97c8e67cc727",
 															"key": "userId",
-															"value": "<uuid>",
+															"value": "c80f73df-303d-40ca-a5eb-d00687bcd461",
 															"description": "(Required) "
 														}
 													]
