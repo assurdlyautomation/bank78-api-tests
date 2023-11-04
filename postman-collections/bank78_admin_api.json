@@ -3849,53 +3849,69 @@
 					"id": "8be2c00b-4412-4486-b7ad-0ec573a83ca2"
 				},
 				{
-					"name": "Get Transaction",
-					"id": "0c334526-d965-4529-b1fe-d6ee5d2f9646",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{admin_access_token}}"
-							}
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "text/plain"
-							},
-							{
-								"key": "x-api-key",
-								"value": "{{x-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/transaction/api/transactions?transactionReference=231103114515063451853798447009",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"transaction",
-								"api",
-								"transactions"
-							],
-							"query": [
-								{
-									"key": "transactionReference",
-									"value": "231103114515063451853798447009"
-								}
-							]
-						}
-					},
-					"response": [
+					"name": "Transaction by transaction reference",
+					"item": [
 						{
-							"id": "c103294f-a310-4048-9b2b-0504a66718ac",
-							"name": "Success",
-							"originalRequest": {
+							"name": "Get Transaction",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9e60b25e-df2d-44c2-870d-67904873bff1",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body result\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result).to.be.an('object');\r",
+											"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"hasResult is not empty\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result type is not empty\", function () {\r",
+											"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is not empty\", function () {\r",
+											"    pm.expect(jsonData.message).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful\", function () {\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0c334526-d965-4529-b1fe-d6ee5d2f9646",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -3903,42 +3919,80 @@
 										"value": "text/plain"
 									},
 									{
-										"description": "Added as a part of security scheme: apikey",
-										"key": "Authorization",
-										"value": "<API Key>"
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/transactions?transactionReference=<string>",
+									"raw": "{{baseUrl}}/transaction/api/transactions?transactionReference=231103114515063451853798447009",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
+										"transaction",
 										"api",
 										"transactions"
 									],
 									"query": [
 										{
 											"key": "transactionReference",
-											"value": "<string>"
+											"value": "231103114515063451853798447009"
 										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "Content-Type",
-									"value": "application/json"
+									"id": "c103294f-a310-4048-9b2b-0504a66718ac",
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "Authorization",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/transactions?transactionReference=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"transactions"
+											],
+											"query": [
+												{
+													"key": "transactionReference",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<long>\",\n    \"senderAccount\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"beneficiaryAccount\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryBank\": \"<string>\",\n    \"beneficiaryBankCountry\": \"<string>\",\n    \"remarks\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"transactionSource\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"transactionReference\": \"<string>\",\n    \"transactionStatus\": \"Failed\",\n    \"narration\": \"<string>\",\n    \"tryCount\": \"<integer>\",\n    \"transactionDate\": \"<dateTime>\",\n    \"userId\": \"<string>\",\n    \"transactionLeg\": \"Debit\",\n    \"transactionFee\": \"<double>\",\n    \"exchangeRate\": \"<double>\",\n    \"beneficiaryId\": \"<integer>\",\n    \"senderBankName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceWallet\": \"<string>\",\n    \"walletId\": \"<long>\",\n    \"walletNumber\": \"<string>\",\n    \"charges\": \"<double>\",\n    \"billToken\": \"<string>\",\n    \"failureReason\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"lastUpdatedOn\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"lastUpdatedBy\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<long>\",\n    \"senderAccount\": \"<string>\",\n    \"senderName\": \"<string>\",\n    \"beneficiaryAccount\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryBank\": \"<string>\",\n    \"beneficiaryBankCountry\": \"<string>\",\n    \"remarks\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"transactionType\": \"<string>\",\n    \"transactionSource\": \"<string>\",\n    \"amount\": \"<double>\",\n    \"transactionReference\": \"<string>\",\n    \"transactionStatus\": \"Failed\",\n    \"narration\": \"<string>\",\n    \"tryCount\": \"<integer>\",\n    \"transactionDate\": \"<dateTime>\",\n    \"userId\": \"<string>\",\n    \"transactionLeg\": \"Debit\",\n    \"transactionFee\": \"<double>\",\n    \"exchangeRate\": \"<double>\",\n    \"beneficiaryId\": \"<integer>\",\n    \"senderBankName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceWallet\": \"<string>\",\n    \"walletId\": \"<long>\",\n    \"walletNumber\": \"<string>\",\n    \"charges\": \"<double>\",\n    \"billToken\": \"<string>\",\n    \"failureReason\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"lastUpdatedOn\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"lastUpdatedBy\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+							]
 						}
-					]
+					],
+					"id": "cd1a914c-4836-40ee-8e77-e29eb8c60b01"
 				}
 			],
 			"id": "b5464f41-cfdc-4edf-be26-693c6b5cc60d"
