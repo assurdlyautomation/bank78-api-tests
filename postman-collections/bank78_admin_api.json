@@ -9427,7 +9427,7 @@
 											}
 										],
 										"url": {
-											"raw": "https://onboard-dev.bank78.co/api/customer?userName=bryan%2B69%40assurdly.com",
+											"raw": "https://onboard-dev.bank78.co/api/customer?userName=unyc24@mailinator.com",
 											"protocol": "https",
 											"host": [
 												"onboard-dev",
@@ -9441,7 +9441,7 @@
 											"query": [
 												{
 													"key": "userName",
-													"value": "bryan%2B69%40assurdly.com"
+													"value": "unyc24@mailinator.com"
 												}
 											]
 										}
@@ -18870,11 +18870,22 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "application/json"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"url": {
@@ -18890,9 +18901,8 @@
 													],
 													"variable": [
 														{
-															"id": "44132222-da51-4eeb-8b34-84a309b5b371",
 															"key": "id",
-															"value": "<string>"
+															"value": "95"
 														}
 													]
 												}
