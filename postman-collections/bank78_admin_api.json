@@ -1033,7 +1033,7 @@
 											"name": "{wherecondition}",
 											"item": [
 												{
-													"name": "/api/transactions/all/:page/:pagesize/:wherecondition",
+													"name": "All transactions",
 													"id": "8b6df72b-cdbf-4ca2-96b2-d9e8984e8500",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
