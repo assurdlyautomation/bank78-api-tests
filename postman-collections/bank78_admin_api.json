@@ -3147,6 +3147,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -3156,6 +3162,11 @@
 									{
 										"key": "Accept",
 										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -3168,7 +3179,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/api/transactions/status"
+								"url": "{{baseUrl}}/transaction/api/transactions/status"
 							},
 							"response": [
 								{
