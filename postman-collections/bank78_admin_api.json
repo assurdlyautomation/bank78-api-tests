@@ -5455,7 +5455,7 @@
 							"name": "View All Businesses",
 							"item": [
 								{
-									"name": "/api/business/getpaged/:page/:pagesize/:whereCondition",
+									"name": "View businesses",
 									"event": [
 										{
 											"listen": "test",
@@ -5466,80 +5466,84 @@
 													"    pm.response.to.have.status(200);",
 													"});",
 													"",
+													"var jsonData = pm.response.json();",
+													"",
 													"pm.test(\"Response is an object with hasResult property\", function () {",
-													"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('hasResult');",
+													"    pm.expect(jsonData).to.be.an('object').that.has.property('hasResult');",
 													"});",
 													"",
 													"pm.test(\"Response hasResult property is true\", function () {",
-													"    pm.expect(pm.response.json().hasResult).to.be.true;",
+													"    pm.expect(jsonData.hasResult).to.be.true;",
 													"});",
 													"",
 													"pm.test(\"Response is an object with result property\", function () {",
-													"    pm.expect(pm.response.json()).to.be.an('object').that.has.property('result');",
+													"    pm.expect(jsonData).to.be.an('object').that.has.property('result');",
 													"});",
 													"",
-													"pm.test(\"Response result property is an object\", function () {",
-													"    pm.expect(pm.response.json().result).to.be.an('object');",
+													"pm.test(\"Response result property is an array\", function () {",
+													"    pm.expect(jsonData.result).to.be.an('array');",
 													"});",
 													"",
-													"pm.test(\"Response result object has items property\", function () {",
-													"    pm.expect(pm.response.json().result).to.have.property('items');",
+													"pm.test(\"Response result is not empty\", function () {",
+													"    pm.expect(jsonData.result.length).to.be.greaterThan(0);",
 													"});",
 													"",
-													"pm.test(\"Response items property is an array\", function () {",
-													"    pm.expect(pm.response.json().result.items).to.be.an('array');",
-													"});",
-													"",
-													"pm.test(\"Response items array is not empty\", function () {",
-													"    pm.expect(pm.response.json().result.items).to.have.length.above(0);",
+													"pm.test(\"Response result is not empty\", function () {",
+													"    jsonData.result.forEach((item) => {",
+													"      pm.expect(item).to.have.property(\"id\");",
+													"      pm.expect(item).to.have.property(\"name\");",
+													"      pm.expect(item).to.have.property(\"rcBnNumber\");",
+													"      pm.expect(item).to.have.property(\"businessUid\");",
+													"      pm.expect(item).to.have.property(\"phoneNumber\");",
+													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a valid email address\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
-													"        pm.expect(item.email).to.be.a('string').and.to.match(/^\\S+@\\S+\\.\\S+$/);",
+													"    jsonData.result.forEach((item) => {",
+													"      pm.expect(item.email).to.be.a(\"string\").and.to.match(/^\\S+@\\S+\\.\\S+$/);",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a valid phone number\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
-													"        pm.expect(item.phoneNumber).to.be.a('string').and.to.match(/^\\d+$/);",
+													"    jsonData.result.forEach((item) => {",
+													"      pm.expect(item.phoneNumber).to.be.a('string').and.to.match(/^\\d+$/);",
 													"    });",
 													"});",
 													"",
 													"",
 													"pm.test(\"Each element in the items array has a valid active property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
+													"    jsonData.result.forEach((item) => {",
 													"        pm.expect(item.active).to.be.a('boolean');",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has an accounts property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
+													"    jsonData.result.forEach((item) => {",
 													"        pm.expect(item).to.have.property('accounts');",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a customerRelationships property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
+													"    jsonData.result.forEach((item) => {",
 													"        pm.expect(item).to.have.property('customerRelationships');",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a stakeholders property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
+													"    jsonData.result.forEach((item) => {",
 													"        pm.expect(item).to.have.property('stakeholders');",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a userBusinesses property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
+													"    jsonData.result.forEach((item) => {",
 													"        pm.expect(item).to.have.property('userBusinesses');",
 													"    });",
 													"});",
 													"",
 													"pm.test(\"Each element in the items array has a blackListed property\", function () {",
-													"    pm.response.json().result.items.forEach(function(item) {",
-													"        pm.expect(item).to.have.property('blackListed');",
+													"    jsonData.result.forEach((item) => {",
+													"        pm.expect(item).to.have.property('blacklisted');",
 													"    });",
 													"});"
 												],
@@ -5637,7 +5641,21 @@
 							"name": "export",
 							"item": [
 								{
-									"name": "/api/business/export",
+									"name": "Export",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "347e2a37-60e0-4a53-bab9-953c6c7d3a13",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "7a275765-9a81-48c3-a040-fa689eb55aa8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -5650,12 +5668,80 @@
 											}
 										},
 										"method": "POST",
-										"header": [],
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
 										"url": "https://onboard-dev.bank78.co/api/business/export"
 									},
 									"response": [
 										{
 											"id": "da41d0f7-de1a-4788-a938-f6d57379a5e1",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": "{{baseUrl}}/api/business/export"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"responseTime": null,
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Export - No authorization",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "347e2a37-60e0-4a53-bab9-953c6c7d3a13",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "06c66a4d-6137-4253-b774-bffb0f65ab08",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"url": "https://onboard-dev.bank78.co/api/business/export"
+									},
+									"response": [
+										{
+											"id": "f9a7546f-3653-4fca-8ce5-f3e98923da40",
 											"name": "Success",
 											"originalRequest": {
 												"method": "POST",
