@@ -957,7 +957,7 @@
 					"name": "dashboard",
 					"item": [
 						{
-							"name": "/api/transactions/dashboard",
+							"name": "Dashboard",
 							"id": "23089d9d-961a-4f18-b33f-982928efe469",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
