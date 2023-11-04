@@ -10799,7 +10799,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"confirmPassword\": \"Password@0980\",\n  \"firstName\": \"Uny\",\n  \"inviteId\": \"daf69649-c170-488f-ba11-dc33f274839d\",\n  \"lastName\": \"Ekoo\",\n  \"password\": \"Password@0980\",\n  \"phoneNumber\": \"08185597918\"\n}",
+													"raw": "{\n  \"confirmPassword\": \"Password@0980\",\n  \"firstName\": \"Unyc\",\n  \"inviteId\": \"daf69649-c170-488f-ba11-dc33f274839d\",\n  \"lastName\": \"Euny\",\n  \"password\": \"Password@0980\",\n  \"phoneNumber\": \"08185597312\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
