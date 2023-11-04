@@ -8322,7 +8322,57 @@
 							"name": "Update Customer limit",
 							"item": [
 								{
-									"name": "/api/customer/limit/update",
+									"name": "Update customer limit",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "a65990a2-f584-42cb-b21e-20242d244ab5",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"    \r",
+													"pm.test(\"Response body properties\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is true\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result is not empty\", function () {\r",
+													"    pm.expect(jsonData.result.message).to.eql('Limit Updated Successfully');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"resultType is Success\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"message is Success\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"successful is true\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "211df259-a1a0-4c54-bfc3-8b8f5f7787f6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
