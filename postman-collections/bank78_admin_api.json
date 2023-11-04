@@ -2732,24 +2732,84 @@
 							"item": [
 								{
 									"name": "Transaction by ID",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "dc2f51aa-889b-443e-b72a-ed4a8be54f9a",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Status code response is OK\", function () {\r",
+													"    pm.response.to.have.status('OK');\r",
+													"});\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Response body result\", function () {\r",
+													"    pm.expect(jsonData).to.be.an('object');\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"    pm.expect(jsonData.result).to.be.an('object');\r",
+													"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult is not empty\", function () {\r",
+													"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Result type is not empty\", function () {\r",
+													"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Message is not empty\", function () {\r",
+													"    pm.expect(jsonData.message).to.eql('Success');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Successful\", function () {\r",
+													"    pm.expect(jsonData.successful).to.eql(true);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "cb990097-1642-48e0-a242-0772cbf50335",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/transactions/fetch-transaction-by-id/:id",
+											"raw": "{{baseUrl}}/transaction/api/transactions/fetch-transaction-by-id/:id",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
+												"transaction",
 												"api",
 												"transactions",
 												"fetch-transaction-by-id",
@@ -2757,9 +2817,8 @@
 											],
 											"variable": [
 												{
-													"id": "ae4505b4-ff54-4a83-b78d-0fdcfaf2df46",
 													"key": "id",
-													"value": "<long>",
+													"value": "95",
 													"description": "(Required) "
 												}
 											]
@@ -2825,7 +2884,55 @@
 					"name": "all-transaction-types",
 					"item": [
 						{
-							"name": "/api/transactions/all-transaction-types",
+							"name": "Transaction types",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bd5d7c84-3754-4cc9-93cd-41a8d70cfd25",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body result\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result).to.be.an('array');\r",
+											"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"hasResult is not empty\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result type is not empty\", function () {\r",
+											"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is not empty\", function () {\r",
+											"    pm.expect(jsonData.message).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful\", function () {\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "2c1108c7-fcef-4a24-98aa-054b10e90ab7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -2836,9 +2943,14 @@
 									{
 										"key": "Accept",
 										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
-								"url": "{{baseUrl}}/api/transactions/all-transaction-types"
+								"url": "{{baseUrl}}/transaction/api/transactions/all-transaction-types"
 							},
 							"response": [
 								{
@@ -2882,24 +2994,84 @@
 					"item": [
 						{
 							"name": "/api/transactions/account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "95c8ce2c-5c5d-4f08-b58f-0189d0ae58dd",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code response is OK\", function () {\r",
+											"    pm.response.to.have.status('OK');\r",
+											"});\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response body result\", function () {\r",
+											"    pm.expect(jsonData).to.be.an('object');\r",
+											"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+											"    pm.expect(jsonData.result).to.be.an('array');\r",
+											"    pm.expect(jsonData.resultType).to.be.a('string');\r",
+											"    pm.expect(jsonData.message).to.be.a('string');\r",
+											"    pm.expect(jsonData.validationMessages).to.be.null;\r",
+											"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"hasResult is not empty\", function () {\r",
+											"    pm.expect(jsonData.hasResult).to.eql(true);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Result type is not empty\", function () {\r",
+											"    pm.expect(jsonData.resultType).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Message is not empty\", function () {\r",
+											"    pm.expect(jsonData.message).to.eql('Success');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Successful\", function () {\r",
+											"    pm.expect(jsonData.successful).to.eql(true);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "3298bd3e-73dd-4f8f-97cc-bd33e34e8406",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
 										"key": "Accept",
 										"value": "text/plain"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/api/transactions/account?id=<string>",
+									"raw": "{{baseUrl}}/transaction/api/transactions/account?id=<string>",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
+										"transaction",
 										"api",
 										"transactions",
 										"account"
