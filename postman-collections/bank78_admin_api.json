@@ -4662,6 +4662,140 @@
 									]
 								},
 								{
+									"name": "RCBN number required",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5b59ea41-82d5-49df-a012-f07c0567b57d",
+												"exec": [
+													"pm.test(\"Message is 'Deactivated Successfully' or 'Activated Successfully'\", function() {\r",
+													"    const responseData = pm.response.json();\r",
+													"    const expectedMessages = [\"Business and all associated User has been Deactivated Successfully\", \"Business and all associated User has been Activated Successfully\"];\r",
+													"    \r",
+													"    pm.expect(expectedMessages).to.include(responseData.result.message);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has a 'hasResult' property\", function() {\r",
+													"    pm.expect(pm.response.json()).to.have.property(\"hasResult\", true);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has a 'resultType' property with value 'Success'\", function() {\r",
+													"    pm.expect(pm.response.json()).to.have.property(\"resultType\", \"Success\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has a 'message' property with value 'Success'\", function() {\r",
+													"    pm.expect(pm.response.json()).to.have.property(\"message\", \"Success\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has no 'validationMessages'\", function() {\r",
+													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has a 'successful' property with value 'true'\", function() {\r",
+													"    pm.expect(pm.response.json()).to.have.property(\"successful\", true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f1fac898-a309-4643-9d58-de52d80eadd7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/onboard/api/business/status/toggle?rcbnNumber=hdkakfnkwfnwlkl",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"onboard",
+												"api",
+												"business",
+												"status",
+												"toggle"
+											],
+											"query": [
+												{
+													"key": "rcbnNumber",
+													"value": "hdkakfnkwfnwlkl"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "c24ccfd4-6088-4b80-8c01-6c3f6ec1a848",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/business/status/toggle?rcbnNumber=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"business",
+														"status",
+														"toggle"
+													],
+													"query": [
+														{
+															"key": "rcbnNumber",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Activate/Deactivate a blacklisted business",
 									"event": [
 										{
@@ -4669,6 +4803,10 @@
 											"script": {
 												"id": "1ddad674-0c19-4c5b-bd25-daf74dcf7da4",
 												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
 													"pm.test(\"Response has no result\", function() {\r",
 													"    const responseData = pm.response.json();\r",
 													"    \r",
