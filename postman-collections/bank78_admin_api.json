@@ -4277,6 +4277,10 @@
 											"script": {
 												"id": "6a401f84-c728-4913-a770-d3bc909072fb",
 												"exec": [
+													"pm.test(\"Status code is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
 													"pm.test(\"Response 'hasResult' is false\", function () {\r",
 													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
 													"});\r",
