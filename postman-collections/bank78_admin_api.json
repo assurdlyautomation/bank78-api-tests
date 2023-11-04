@@ -1391,6 +1391,93 @@
 													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"totalSum\": \"<double>\",\n    \"total\": \"<integer>\",\n    \"totalSuccessfulAmount\": \"<double>\",\n    \"totalSuccessfulCount\": \"<integer>\",\n    \"totalFailedAmount\": \"<double>\",\n    \"totalFailedCount\": \"<integer>\"\n  },\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 												}
 											]
+										},
+										{
+											"name": "/api/transactions/businesses/:userId/dashboard Copy",
+											"id": "6434569c-eba9-4705-929c-b0d204d548f7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/transactions/businesses/:userId/dashboard",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"transactions",
+														"businesses",
+														":userId",
+														"dashboard"
+													],
+													"variable": [
+														{
+															"id": "ef9329af-d897-48b9-aefb-38714227efc7",
+															"key": "userId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "78f1ea9a-df31-4d7e-b27e-6120a6c2ce0c",
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/transactions/businesses/:userId/dashboard",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"transactions",
+																"businesses",
+																":userId",
+																"dashboard"
+															],
+															"variable": [
+																{
+																	"key": "userId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"totalSum\": \"<double>\",\n    \"total\": \"<integer>\",\n    \"totalSuccessfulAmount\": \"<double>\",\n    \"totalSuccessfulCount\": \"<integer>\",\n    \"totalFailedAmount\": \"<double>\",\n    \"totalFailedCount\": \"<integer>\"\n  },\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
 										}
 									],
 									"id": "839f2fe3-6ea2-457d-8615-c085ae05205d"
