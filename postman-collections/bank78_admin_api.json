@@ -6237,94 +6237,447 @@
 													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 												}
 											]
+										},
+										{
+											"name": "Level 1 Approved without username",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "6b04a42c-b8f2-48ff-97e0-c27d3a1536fb",
+														"exec": [
+															"pm.test(\"Verify response hasResult is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response result is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response validationMessages is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response successful is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.eql(false);\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "f2e44464-7a04-480f-9db2-b00743ceef36",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "9417c765-ed61-4f17-b38f-e66ab0f1df86",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 1 Rejected",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "3390cc1a-6eba-46bf-924b-73c173025201",
+														"exec": [
+															"pm.test(\"Response status code is 200\", function () {\r",
+															"  pm.response.to.have.status(200);\r",
+															"});\r",
+															"pm.test(\"Response has an error message\", function () {\r",
+															"  var responseJSON = pm.response.json();\r",
+															"  pm.expect(responseJSON.message).to.be.a('string').and.to.not.be.empty;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Decline Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "a3d5fb9b-d939-4a49-b727-621ee38279ac",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level1rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "9329f56d-9f16-4c62-b11b-c8a854dd5dd1",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 1 Rejected without reason",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b0033d95-aee5-41a1-8a6f-368aea9d7884",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'result' is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.false;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "355b355b-e9d8-45bb-8f45-9655242bed2c",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"test8031@mailinator.com\",\n  \"kycStatus\": \"Level1Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "95fc2f57-03eb-4bd9-beb7-4deee1b8753b",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
 										}
 									],
 									"id": "e64bb93b-17de-4fa8-9547-e14ac6eac97c"
 								},
 								{
-									"name": "Level 2 Approved",
-									"event": [
+									"name": "Level 2",
+									"item": [
 										{
-											"listen": "test",
-											"script": {
-												"id": "e4dbf846-d320-4f56-8f1e-146496e612f0",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is true\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is true\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.true;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify the 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.have.property('message');\r",
-													"    pm.expect(pm.response.json().result.message).to.equal(\"Approval Successful\");\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "86b8eb62-1c4f-4125-8b59-55020adb50d7",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
+											"name": "Level 2 Approved",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "e4dbf846-d320-4f56-8f1e-146496e612f0",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Approval Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
-											}
-										},
-										"url": "{{baseUrl}}/onboard/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "ed2b407e-e3cc-4dd3-81c3-dc2cb7406617",
-											"name": "Success",
-											"originalRequest": {
+											],
+											"id": "86b8eb62-1c4f-4125-8b59-55020adb50d7",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6336,14 +6689,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6351,106 +6704,622 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "{{baseUrl}}/onboard/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "ed2b407e-e3cc-4dd3-81c3-dc2cb7406617",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Downgrade from level 2",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4de20ab7-8e80-47a9-a0b1-00240c64c30c",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Error\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Invalid KYC Status - An Attempting to Downgrade is not possible'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Invalid KYC Status - An Attempting to Downgrade is not possible\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.false;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
 											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+											"id": "fa3c234c-2f79-4180-be4e-8ef89b8f4a8f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"test8962@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not enough data\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "37432e3a-d089-45db-920a-3f41189178b4",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 2 Approved without username",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "6b04a42c-b8f2-48ff-97e0-c27d3a1536fb",
+														"exec": [
+															"pm.test(\"Verify response hasResult is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response result is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response validationMessages is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response successful is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.eql(false);\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "3018620a-a8cf-41d7-9448-b137b39c3640",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "19cd1889-8195-4f57-a212-bb02530d5211",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 2 Rejected",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "3390cc1a-6eba-46bf-924b-73c173025201",
+														"exec": [
+															"pm.test(\"Response status code is 200\", function () {\r",
+															"  pm.response.to.have.status(200);\r",
+															"});\r",
+															"pm.test(\"Response has an error message\", function () {\r",
+															"  var responseJSON = pm.response.json();\r",
+															"  pm.expect(responseJSON.message).to.be.a('string').and.to.not.be.empty;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Decline Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "2e356143-1f54-4bf0-8ded-ee1a35b43632",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "3e0edd0f-df1a-48ac-92db-3264a9447de6",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 2 Rejected without reason",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b0033d95-aee5-41a1-8a6f-368aea9d7884",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'result' is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.false;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"id": "341ae366-dfbe-49c6-bb95-f0b3f3de98ca",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"userName\": \"test8031@mailinator.com\",\n  \"kycStatus\": \"Level2Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
+											},
+											"response": [
+												{
+													"id": "c89157e7-b6a8-4fd8-907a-ff26d2e3308a",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
 										}
-									]
+									],
+									"id": "8e712ff3-67a0-4796-a502-da34871f3bc3"
 								},
 								{
-									"name": "Downgrade from level 2",
-									"event": [
+									"name": "Level 3",
+									"item": [
 										{
-											"listen": "test",
-											"script": {
-												"id": "4de20ab7-8e80-47a9-a0b1-00240c64c30c",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Error\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Invalid KYC Status - An Attempting to Downgrade is not possible'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Invalid KYC Status - An Attempting to Downgrade is not possible\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.false;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "fa3c234c-2f79-4180-be4e-8ef89b8f4a8f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test8962@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not enough data\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
+											"name": "Level 3 Approved",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "1645bde7-924e-48ca-9359-f7cc4494977e",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Approval Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "37432e3a-d089-45db-920a-3f41189178b4",
-											"name": "Success",
-											"originalRequest": {
+											],
+											"id": "f2f868b7-4fd4-4877-aee9-4a72d6521966",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6462,14 +7331,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"test4385@mailinator.com\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6477,104 +7346,106 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "cdc39a64-fd1d-4669-ae3b-24968dd13d90",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Downgrade from level 3",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "676a83b2-6e71-40f8-ab50-c8e0afd63135",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Error\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Invalid KYC Status - An Attempting to Downgrade is not possible'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Invalid KYC Status - An Attempting to Downgrade is not possible\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.false;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
 											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 2 Approved without username",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "6b04a42c-b8f2-48ff-97e0-c27d3a1536fb",
-												"exec": [
-													"pm.test(\"Verify response hasResult is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response result is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response validationMessages is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response successful is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.eql(false);\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "3018620a-a8cf-41d7-9448-b137b39c3640",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
+											"id": "0bb8f321-f7cd-4a9c-b65f-bc1b5a56bc85",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
 											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "19cd1889-8195-4f57-a212-bb02530d5211",
-											"name": "Success",
-											"originalRequest": {
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6586,14 +7457,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"test4385@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not enough data\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6601,104 +7472,104 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "472f1804-2abc-413c-8cec-e72b05038d8d",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 3 Approved without username",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "a79c522a-1295-4f92-9b81-9b5eb18d0a6a",
+														"exec": [
+															"pm.test(\"Verify response hasResult is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response result is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response validationMessages is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Verify response successful is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.eql(false);\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
 											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 2 Approved without username Copy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "6b04a42c-b8f2-48ff-97e0-c27d3a1536fb",
-												"exec": [
-													"pm.test(\"Verify response hasResult is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response result is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response validationMessages is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response successful is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.eql(false);\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "f2e44464-7a04-480f-9db2-b00743ceef36",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
+											"id": "61bd1550-bb48-4d76-8edd-d791706c0ff4",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
 											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "9417c765-ed61-4f17-b38f-e66ab0f1df86",
-											"name": "Success",
-											"originalRequest": {
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6710,14 +7581,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6725,107 +7596,115 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "343d7137-ef25-4e18-b446-52ae579c225f",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 3 Rejected",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "6e6fb16c-fee4-42b3-9ef4-0d42e59a1fd0",
+														"exec": [
+															"pm.test(\"Response status code is 200\", function () {\r",
+															"  pm.response.to.have.status(200);\r",
+															"});\r",
+															"pm.test(\"Response has an error message\", function () {\r",
+															"  var responseJSON = pm.response.json();\r",
+															"  pm.expect(responseJSON.message).to.be.a('string').and.to.not.be.empty;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'hasResult' is true\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is 'Success'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is true\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.true;\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify the 'result' object (if needed)\r",
+															"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.have.property('message');\r",
+															"    pm.expect(pm.response.json().result.message).to.equal(\"Decline Successful\");\r",
+															"});\r",
+															"\r",
+															"// Optional: Verify 'validationMessages' (if needed)\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
 											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 3 Approved",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "1645bde7-924e-48ca-9359-f7cc4494977e",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is true\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is true\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.true;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify the 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.have.property('message');\r",
-													"    pm.expect(pm.response.json().result.message).to.equal(\"Approval Successful\");\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "f2f868b7-4fd4-4877-aee9-4a72d6521966",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
+											"id": "1232f7d7-742f-49fa-b4b3-2e72fda1b931",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
 											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test4385@mailinator.com\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "cdc39a64-fd1d-4669-ae3b-24968dd13d90",
-											"name": "Success",
-											"originalRequest": {
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6837,14 +7716,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"test3293@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not a real person\",\n  \"detail\": [\n    {\n      \"email\": \"test3293@mailinator.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6852,106 +7731,104 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "4e5c67bb-2d86-42e6-8813-ca38f1caa5f2",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Level 3 Rejected without reason",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7fcc92c7-c453-4c76-908c-802a2ab45e76",
+														"exec": [
+															"pm.test(\"Response 'hasResult' is false\", function () {\r",
+															"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'result' is null\", function () {\r",
+															"    pm.expect(pm.response.json().result).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
+															"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
+															"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'validationMessages' is null\", function () {\r",
+															"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response 'successful' is false\", function () {\r",
+															"    pm.expect(pm.response.json().successful).to.be.false;\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
 												}
 											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Downgrade from level 3",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "676a83b2-6e71-40f8-ab50-c8e0afd63135",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Error\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Invalid KYC Status - An Attempting to Downgrade is not possible'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Invalid KYC Status - An Attempting to Downgrade is not possible\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.false;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "0bb8f321-f7cd-4a9c-b65f-bc1b5a56bc85",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
+											"id": "e83ca7bb-2639-421c-9bd3-d29cba65a22b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
 											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test4385@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not enough data\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "472f1804-2abc-413c-8cec-e72b05038d8d",
-											"name": "Success",
-											"originalRequest": {
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
@@ -6963,14 +7840,14 @@
 														"value": "text/plain"
 													},
 													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+													"raw": "{\n  \"userName\": \"test3293@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\",\n  \"detail\": [\n    {\n      \"email\": \"test3293@mailinator.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6978,664 +7855,58 @@
 														}
 													}
 												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
+												"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
+											"response": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
+													"id": "63f7ee0e-428f-4fe5-9c25-a788b9c48eee",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/api/customer/kyc/approve"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 3 Approved without username",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "a79c522a-1295-4f92-9b81-9b5eb18d0a6a",
-												"exec": [
-													"pm.test(\"Verify response hasResult is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.eql(false);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response result is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response resultType is 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.eql('Error');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response message is 'Please provide the username'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.eql('Please provide the username');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response validationMessages is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Verify response successful is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.eql(false);\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
+											]
 										}
 									],
-									"id": "61bd1550-bb48-4d76-8edd-d791706c0ff4",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"\",\n  \"kycStatus\": \"Level3approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "343d7137-ef25-4e18-b446-52ae579c225f",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 2 Rejected",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "3390cc1a-6eba-46bf-924b-73c173025201",
-												"exec": [
-													"pm.test(\"Response status code is 200\", function () {\r",
-													"  pm.response.to.have.status(200);\r",
-													"});\r",
-													"pm.test(\"Response has an error message\", function () {\r",
-													"  var responseJSON = pm.response.json();\r",
-													"  pm.expect(responseJSON.message).to.be.a('string').and.to.not.be.empty;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'hasResult' is true\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is true\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.true;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify the 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.have.property('message');\r",
-													"    pm.expect(pm.response.json().result.message).to.equal(\"Decline Successful\");\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "2e356143-1f54-4bf0-8ded-ee1a35b43632",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "3e0edd0f-df1a-48ac-92db-3264a9447de6",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 2 Rejected without reason",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "b0033d95-aee5-41a1-8a6f-368aea9d7884",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'result' is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.false;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "341ae366-dfbe-49c6-bb95-f0b3f3de98ca",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test8031@mailinator.com\",\n  \"kycStatus\": \"Level2Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "c89157e7-b6a8-4fd8-907a-ff26d2e3308a",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 3 Rejected",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "6e6fb16c-fee4-42b3-9ef4-0d42e59a1fd0",
-												"exec": [
-													"pm.test(\"Response status code is 200\", function () {\r",
-													"  pm.response.to.have.status(200);\r",
-													"});\r",
-													"pm.test(\"Response has an error message\", function () {\r",
-													"  var responseJSON = pm.response.json();\r",
-													"  pm.expect(responseJSON.message).to.be.a('string').and.to.not.be.empty;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'hasResult' is true\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.true;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is 'Success'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.equal(\"Success\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is true\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.true;\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify the 'result' object (if needed)\r",
-													"pm.test(\"Response 'result' object contains 'message'\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.have.property('message');\r",
-													"    pm.expect(pm.response.json().result.message).to.equal(\"Decline Successful\");\r",
-													"});\r",
-													"\r",
-													"// Optional: Verify 'validationMessages' (if needed)\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "1232f7d7-742f-49fa-b4b3-2e72fda1b931",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test3293@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"Not a real person\",\n  \"detail\": [\n    {\n      \"email\": \"test3293@mailinator.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "4e5c67bb-2d86-42e6-8813-ca38f1caa5f2",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Level 3 Rejected without reason",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"id": "7fcc92c7-c453-4c76-908c-802a2ab45e76",
-												"exec": [
-													"pm.test(\"Response 'hasResult' is false\", function () {\r",
-													"    pm.expect(pm.response.json().hasResult).to.be.false;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'result' is null\", function () {\r",
-													"    pm.expect(pm.response.json().result).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'resultType' is a string and equals 'Error'\", function () {\r",
-													"    pm.expect(pm.response.json().resultType).to.be.a('string').and.to.equal('Error');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'message' is a string and equals 'Please provide rejection message'\", function () {\r",
-													"    pm.expect(pm.response.json().message).to.be.a('string').and.to.equal('Please provide rejection message');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'validationMessages' is null\", function () {\r",
-													"    pm.expect(pm.response.json().validationMessages).to.be.null;\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Response 'successful' is false\", function () {\r",
-													"    pm.expect(pm.response.json().successful).to.be.false;\r",
-													"});\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"id": "e83ca7bb-2639-421c-9bd3-d29cba65a22b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": {
-												"token": "{{admin_access_token}}"
-											}
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "text/plain"
-											},
-											{
-												"key": "x-api-key",
-												"value": "{{x-api-key}}",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"userName\": \"test3293@mailinator.com\",\n  \"kycStatus\": \"Level3Rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"\",\n  \"detail\": [\n    {\n      \"email\": \"test3293@mailinator.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "https://onboard-dev.bank78.co/api/customer/kyc/approve"
-									},
-									"response": [
-										{
-											"id": "63f7ee0e-428f-4fe5-9c25-a788b9c48eee",
-											"name": "Success",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "text/plain"
-													},
-													{
-														"description": "Added as a part of security scheme: apikey",
-														"key": "Authorization",
-														"value": "<API Key>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"userName\": \"<string>\",\n  \"rcBnNumber\": \"<string>\",\n  \"kycStatus\": \"Level2Pending\",\n  \"kycApprovedBy\": \"<string>\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/api/customer/kyc/approve"
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"responseTime": null,
-											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"nullable\": true\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-										}
-									]
+									"id": "786832c7-50aa-471a-a793-d41d8f176a65"
 								}
 							],
 							"id": "b2d35b31-ad77-4b77-86dd-f90862f36c75"
