@@ -14197,24 +14197,77 @@
 							"item": [
 								{
 									"name": "Retrieves all system roles",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "5393e7fc-293e-448d-8362-e03fda99cdce",
+												"exec": [
+													"\r",
+													"pm.test(\"Response status code is 200\", function () {\r",
+													"  pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"  pm.test(\"Validate the hasResult field is a boolean\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData.hasResult).to.be.a('boolean');\r",
+													"  });\r",
+													"\r",
+													"\r",
+													"pm.test(\"Verify that the 'result' object is present in the response\", function () {\r",
+													"  const responseData = pm.response.json();\r",
+													"  \r",
+													"  pm.expect(responseData).to.be.an('object');\r",
+													"  pm.expect(responseData.result).to.exist;\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validate the presence and count of 'items' array in 'result' object\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData.result).to.exist.and.to.be.an('object');\r",
+													"    pm.expect(responseData.result.items).to.exist.and.to.be.an('array');\r",
+													"    pm.expect(responseData.result.items).to.have.lengthOf(10);\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "89f5a1a2-de18-405c-bb2b-cb37d881fe02",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
+											"raw": "{{baseUrl}}/identity/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
+												"identity",
 												"v1",
 												"userroles",
 												"getpaged",
@@ -14224,19 +14277,16 @@
 											],
 											"variable": [
 												{
-													"id": "b11c84ae-ee5b-4077-91a5-fbdb97ded4d5",
 													"key": "page",
 													"value": "1",
 													"description": "(Required) "
 												},
 												{
-													"id": "286ada93-23c4-4366-8eb0-cdf57d783a69",
 													"key": "pagesize",
 													"value": "10",
 													"description": "(Required) "
 												},
 												{
-													"id": "3975fd83-9eb7-497b-a448-a8e8446815b6",
 													"key": "whereCondition",
 													"value": "{}",
 													"description": "(Required) "
@@ -14316,115 +14366,7 @@
 											"item": [
 												{
 													"name": "{whereCondition}",
-													"item": [
-														{
-															"name": "Create system roles",
-															"id": "50c7cca1-5288-457f-989d-d684dd208e9d",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "GET",
-																"header": [
-																	{
-																		"key": "Accept",
-																		"value": "application/json"
-																	}
-																],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/userroles/querypaged/:page/:pagesize/:whereCondition",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"userroles",
-																		"querypaged",
-																		":page",
-																		":pagesize",
-																		":whereCondition"
-																	],
-																	"variable": [
-																		{
-																			"id": "6beeac6e-f078-4e02-be24-ebd20f7d9efd",
-																			"key": "page",
-																			"value": "1",
-																			"description": "(Required) "
-																		},
-																		{
-																			"id": "c259e12c-0178-4a56-b50b-4678544a87b4",
-																			"key": "pagesize",
-																			"value": "10",
-																			"description": "(Required) "
-																		},
-																		{
-																			"id": "43961d01-c803-4cae-81fa-0b698045e2d8",
-																			"key": "whereCondition",
-																			"value": "{}",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "69ca4258-b52c-4472-9c04-abd1308be400",
-																	"name": "Success",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [
-																			{
-																				"key": "Accept",
-																				"value": "application/json"
-																			},
-																			{
-																				"description": "Added as a part of security scheme: apikey",
-																				"key": "Authorization",
-																				"value": "<API Key>"
-																			}
-																		],
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/userroles/querypaged/:page/:pagesize/:whereCondition",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"userroles",
-																				"querypaged",
-																				":page",
-																				":pagesize",
-																				":whereCondition"
-																			],
-																			"variable": [
-																				{
-																					"key": "page"
-																				},
-																				{
-																					"key": "pagesize"
-																				},
-																				{
-																					"key": "whereCondition"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "json",
-																	"header": [
-																		{
-																			"key": "Content-Type",
-																			"value": "application/json"
-																		}
-																	],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    }\n  ],\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-																}
-															]
-														}
-													],
+													"item": [],
 													"id": "7bc166bb-b22f-4315-ac0a-6ec72edbf487"
 												}
 											],
@@ -14432,6 +14374,113 @@
 										}
 									],
 									"id": "03884816-a586-4ba1-80d2-9c6eae8c16ba"
+								},
+								{
+									"name": "Create system roles",
+									"id": "50c7cca1-5288-457f-989d-d684dd208e9d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/userroles/querypaged/:page/:pagesize/:whereCondition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"userroles",
+												"querypaged",
+												":page",
+												":pagesize",
+												":whereCondition"
+											],
+											"variable": [
+												{
+													"id": "6beeac6e-f078-4e02-be24-ebd20f7d9efd",
+													"key": "page",
+													"value": "1",
+													"description": "(Required) "
+												},
+												{
+													"id": "c259e12c-0178-4a56-b50b-4678544a87b4",
+													"key": "pagesize",
+													"value": "10",
+													"description": "(Required) "
+												},
+												{
+													"id": "43961d01-c803-4cae-81fa-0b698045e2d8",
+													"key": "whereCondition",
+													"value": "{}",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "69ca4258-b52c-4472-9c04-abd1308be400",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/userroles/querypaged/:page/:pagesize/:whereCondition",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"userroles",
+														"querypaged",
+														":page",
+														":pagesize",
+														":whereCondition"
+													],
+													"variable": [
+														{
+															"key": "page"
+														},
+														{
+															"key": "pagesize"
+														},
+														{
+															"key": "whereCondition"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"isActive\": \"<boolean>\"\n    }\n  ],\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
 								}
 							],
 							"id": "2e12b671-0c20-4e4c-b1e7-f88866154920"
