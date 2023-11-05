@@ -13338,24 +13338,7 @@
 												"type": "text"
 											}
 										],
-										"url": {
-											"raw": "{{baseUrl}}/identity/v1/userpermissions/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"identity",
-												"v1",
-												"userpermissions",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "1"
-												}
-											]
-										}
+										"url": "{{baseUrl}}/identity/v1/userpermissions/286"
 									},
 									"response": [
 										{
@@ -14055,7 +14038,7 @@
 					"name": "User Roles",
 					"item": [
 						{
-							"name": "{id}",
+							"name": "Single Role",
 							"item": [
 								{
 									"name": "Retrieve system role definition",
