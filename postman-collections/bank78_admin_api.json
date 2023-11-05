@@ -20604,14 +20604,25 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": "https://savings-dev.bank78.co/api/SavingsProduct/getpaged/1/10/%7B%7D"
+										"url": "{{baseUrl}}/savings/api/SavingsProduct/getpaged/1/10/%7B%7D"
 									},
 									"response": [
 										{
@@ -20678,138 +20689,120 @@
 							"name": "querypaged",
 							"item": [
 								{
-									"name": "{page}",
-									"item": [
-										{
-											"name": "{pagesize}",
-											"item": [
+									"name": "/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
+									"id": "de3f5150-f89e-4b93-a876-bed89a2992a2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/savings/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"savings",
+												"api",
+												"SavingsProduct",
+												"querypaged",
+												":page",
+												":pagesize",
+												":whereCondition"
+											],
+											"variable": [
 												{
-													"name": "{whereCondition}",
-													"item": [
-														{
-															"name": "/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
-															"id": "de3f5150-f89e-4b93-a876-bed89a2992a2",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"auth": {
-																	"type": "bearer",
-																	"bearer": {
-																		"token": "{{admin_access_token}}"
-																	}
-																},
-																"method": "GET",
-																"header": [
-																	{
-																		"key": "Accept",
-																		"value": "text/plain"
-																	},
-																	{
-																		"key": "x-api-key",
-																		"value": "{{x-api-key}}",
-																		"type": "text"
-																	}
-																],
-																"url": {
-																	"raw": "{{baseUrl}}/savings/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"savings",
-																		"api",
-																		"SavingsProduct",
-																		"querypaged",
-																		":page",
-																		":pagesize",
-																		":whereCondition"
-																	],
-																	"variable": [
-																		{
-																			"id": "74adb57d-1ad6-4a46-b4ed-eebfa898d856",
-																			"key": "page",
-																			"value": "1"
-																		},
-																		{
-																			"id": "e2024064-6d36-419f-ba89-f817e0e5a3af",
-																			"key": "pagesize",
-																			"value": "10"
-																		},
-																		{
-																			"id": "d21e1f87-a4de-4ff0-b2d6-3ccefc3c5ba2",
-																			"key": "whereCondition",
-																			"value": "{}"
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "6389fa1d-b7e1-4a98-9b52-df4292f4dbf9",
-																	"name": "Success",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [
-																			{
-																				"key": "Accept",
-																				"value": "text/plain"
-																			},
-																			{
-																				"description": "Added as a part of security scheme: apikey",
-																				"key": "Authorization",
-																				"value": "<API Key>"
-																			}
-																		],
-																		"url": {
-																			"raw": "{{baseUrl}}/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"api",
-																				"SavingsProduct",
-																				"querypaged",
-																				":page",
-																				":pagesize",
-																				":whereCondition"
-																			],
-																			"variable": [
-																				{
-																					"key": "page"
-																				},
-																				{
-																					"key": "pagesize"
-																				},
-																				{
-																					"key": "whereCondition"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "json",
-																	"header": [
-																		{
-																			"key": "Content-Type",
-																			"value": "application/json"
-																		}
-																	],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"isActive\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"interestValue\": \"<double>\",\n      \"penalty\": \"<double>\",\n      \"penaltyTypeId\": null,\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedOn\": \"<dateTime>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"isActive\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"interestValue\": \"<double>\",\n      \"penalty\": \"<double>\",\n      \"penaltyTypeId\": null,\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedOn\": \"<dateTime>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\"\n    }\n  ],\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-																}
-															]
-														}
+													"id": "74adb57d-1ad6-4a46-b4ed-eebfa898d856",
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"id": "e2024064-6d36-419f-ba89-f817e0e5a3af",
+													"key": "pagesize",
+													"value": "10"
+												},
+												{
+													"id": "d21e1f87-a4de-4ff0-b2d6-3ccefc3c5ba2",
+													"key": "whereCondition",
+													"value": "{}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "6389fa1d-b7e1-4a98-9b52-df4292f4dbf9",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/SavingsProduct/querypaged/:page/:pagesize/:whereCondition",
+													"host": [
+														"{{baseUrl}}"
 													],
-													"id": "8c2a10dd-de37-4e90-b1d2-0b99c2640c44"
+													"path": [
+														"api",
+														"SavingsProduct",
+														"querypaged",
+														":page",
+														":pagesize",
+														":whereCondition"
+													],
+													"variable": [
+														{
+															"key": "page"
+														},
+														{
+															"key": "pagesize"
+														},
+														{
+															"key": "whereCondition"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
 												}
 											],
-											"id": "51616c84-943f-4a85-94ff-472b96b23722"
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"isActive\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"interestValue\": \"<double>\",\n      \"penalty\": \"<double>\",\n      \"penaltyTypeId\": null,\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedOn\": \"<dateTime>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"isActive\": \"<boolean>\",\n      \"name\": \"<string>\",\n      \"interestValue\": \"<double>\",\n      \"penalty\": \"<double>\",\n      \"penaltyTypeId\": null,\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedOn\": \"<dateTime>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\"\n    }\n  ],\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
-									],
-									"id": "7e2e4101-fd34-4cd9-8563-2fe8bc5bc89d"
+									]
 								}
 							],
 							"id": "ffcbafff-fbc3-4783-9311-efa3c3c74326"
@@ -20871,7 +20864,7 @@
 							"id": "b883fa7d-82aa-443e-81c7-bcc5b4141ad7"
 						},
 						{
-							"name": "/api/SavingsProduct",
+							"name": "Create a savings product",
 							"id": "3cb81a3d-4b16-4265-ba92-2642a5e873fc",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -20949,7 +20942,7 @@
 							]
 						},
 						{
-							"name": "/api/SavingsProduct",
+							"name": "Edit a savings product",
 							"id": "be4a9d5e-c045-4b69-97c9-b77a3387e24d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
