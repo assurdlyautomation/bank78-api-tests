@@ -20508,7 +20508,7 @@
 							"name": "toggleactive",
 							"item": [
 								{
-									"name": "/api/SavingsProduct/toggleactive/:id",
+									"name": "Activate/Deactivate",
 									"id": "7fa189bc-d77e-44d0-b99f-0462d7852476",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -20864,40 +20864,21 @@
 							"id": "b883fa7d-82aa-443e-81c7-bcc5b4141ad7"
 						},
 						{
-							"name": "Create a savings product",
-							"id": "3cb81a3d-4b16-4265-ba92-2642a5e873fc",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"interestValue\": \"7\",\n  \"name\": \"Not locked\",\n  \"penalty\": \"2\",\n  \"penaltyTypeId\": \"2\",\n  \"shouldLockSavings\": \"false\",\n  \"productCode\": \"100\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "https://savings-dev.bank78.co/api/SavingsProduct"
-							},
-							"response": [
+							"name": "Create a product",
+							"item": [
 								{
-									"id": "9ec012b3-bb37-44ea-878f-f1e9f07c99ce",
-									"name": "Success",
-									"originalRequest": {
+									"name": "Create a savings product",
+									"id": "3cb81a3d-4b16-4265-ba92-2642a5e873fc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -20909,14 +20890,14 @@
 												"value": "text/plain"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"interestValue\": \"<double>\",\n  \"name\": \"<string>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null,\n  \"shouldLockSavings\": \"<boolean>\"\n}",
+											"raw": "{\n  \"interestValue\": \"7\",\n  \"name\": \"Not locked\",\n  \"penalty\": \"2\",\n  \"penaltyTypeId\": \"2\",\n  \"shouldLockSavings\": \"false\",\n  \"productCode\": \"100\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -20924,69 +20905,75 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/SavingsProduct"
+										"url": "{{baseUrl}}/savings/api/SavingsProduct"
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "9ec012b3-bb37-44ea-878f-f1e9f07c99ce",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"interestValue\": \"<double>\",\n  \"name\": \"<string>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null,\n  \"shouldLockSavings\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/SavingsProduct"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"isActive\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"interestValue\": \"<double>\",\n    \"penalty\": \"<double>\",\n    \"penaltyTypeId\": null\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"isActive\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"interestValue\": \"<double>\",\n    \"penalty\": \"<double>\",\n    \"penaltyTypeId\": null\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+									]
 								}
-							]
+							],
+							"id": "a4876ee9-dbc6-4658-b236-18c5b5f7639f"
 						},
 						{
-							"name": "Edit a savings product",
-							"id": "be4a9d5e-c045-4b69-97c9-b77a3387e24d",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "text/plain"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"4\",\n  \"interestValue\": \"15.0\",\n  \"name\": \"15% (locked)\",\n  \"penalty\": \"7\",\n  \"penaltyTypeId\": \"1\",\n  \"shouldLockSavings\": \"true\",\n  \"productCode\": \"100\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/savings/api/SavingsProduct"
-							},
-							"response": [
+							"name": "Edit a product",
+							"item": [
 								{
-									"id": "244fec33-154e-4f3c-8b69-0fbb70b3898b",
-									"name": "Success",
-									"originalRequest": {
+									"name": "Edit a savings product",
+									"id": "be4a9d5e-c045-4b69-97c9-b77a3387e24d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "PUT",
 										"header": [
 											{
@@ -20998,14 +20985,14 @@
 												"value": "text/plain"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"<integer>\",\n  \"interestValue\": \"<double>\",\n  \"name\": \"<string>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null,\n  \"shouldLockSavings\": \"<boolean>\"\n}",
+											"raw": "{\n  \"id\": \"4\",\n  \"interestValue\": \"15.0\",\n  \"name\": \"15% (locked)\",\n  \"penalty\": \"7\",\n  \"penaltyTypeId\": \"1\",\n  \"shouldLockSavings\": \"true\",\n  \"productCode\": \"100\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -21013,22 +21000,58 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/api/SavingsProduct"
+										"url": "{{baseUrl}}/savings/api/SavingsProduct"
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "244fec33-154e-4f3c-8b69-0fbb70b3898b",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<integer>\",\n  \"interestValue\": \"<double>\",\n  \"name\": \"<string>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null,\n  \"shouldLockSavings\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/api/SavingsProduct"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"isActive\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"interestValue\": \"<double>\",\n    \"penalty\": \"<double>\",\n    \"penaltyTypeId\": null\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"isActive\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"interestValue\": \"<double>\",\n    \"penalty\": \"<double>\",\n    \"penaltyTypeId\": null\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
+									]
 								}
-							]
+							],
+							"id": "1f1b4e2c-7941-49aa-8f60-2235e4a45e1f"
 						}
 					],
 					"id": "8486b2aa-93c9-45f2-ab1a-1e015e857fc9"
