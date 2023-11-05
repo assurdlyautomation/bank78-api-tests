@@ -13399,6 +13399,12 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{admin_access_token}}"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -13408,6 +13414,11 @@
 									{
 										"key": "Accept",
 										"value": "application/json"
+									},
+									{
+										"key": "x-api-key",
+										"value": "{{x-api-key}}",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -13420,7 +13431,7 @@
 										}
 									}
 								},
-								"url": "{{baseUrl}}/v1/userpermissions"
+								"url": "{{baseUrl}}/identity/v1/userpermissions"
 							},
 							"response": [
 								{
