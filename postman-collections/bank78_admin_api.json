@@ -14715,19 +14715,90 @@
 							"item": [
 								{
 									"name": "/v1/userroles/business-roles",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "61dada09-87d3-49cc-95d0-fabafb39122a",
+												"exec": [
+													"pm.test(\"Response status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response has the required fields\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData).to.be.an('object');\r",
+													"    pm.expect(responseData.hasResult).to.exist;\r",
+													"    pm.expect(responseData.result).to.exist;\r",
+													"    pm.expect(responseData.resultType).to.exist;\r",
+													"    pm.expect(responseData.message).to.exist;\r",
+													"    pm.expect(responseData.validationMessages).to.be.null;\r",
+													"    pm.expect(responseData.successful).to.exist;\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validate that the 'result' array is present and contains at least one element\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData).to.be.an('object');\r",
+													"    pm.expect(responseData.result).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an object\", function () {\r",
+													"    pm.expect(pm.response.json()).to.be.an('object');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has the required fields\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData.hasResult).to.exist;\r",
+													"    pm.expect(responseData.result).to.exist;\r",
+													"    pm.expect(responseData.resultType).to.exist;\r",
+													"    pm.expect(responseData.message).to.exist;\r",
+													"    pm.expect(responseData.validationMessages).to.be.null;\r",
+													"    pm.expect(responseData.successful).to.exist;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validate that the 'result' array is present and contains at least one element\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData.result).to.exist.and.to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "c228db0d-f3ce-4303-bf80-58ae1133f7a8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": "{{baseUrl}}/v1/userroles/business-roles"
+										"url": "{{baseUrl}}/identity/v1/userroles/business-roles"
 									},
 									"response": [
 										{
