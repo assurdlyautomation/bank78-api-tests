@@ -14599,6 +14599,55 @@
 							"item": [
 								{
 									"name": "/v1/userroles/roles",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "9b2f21c3-d6db-41f8-87f3-8aee80779b63",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response is an object with properties\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData).to.be.an('object').that.has.all.keys('hasResult', 'result', 'resultType', 'message', 'validationMessages', 'successful');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"hasResult property is a boolean\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.hasResult).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"result property is an array\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.result).to.be.an('array');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"resultType property is a number\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.resultType).to.be.a('number');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"message property is a string\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.message).to.be.a('string');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"validationMessages property is null\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.validationMessages).to.be.a('null');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"successful property is a boolean\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.successful).to.be.a('boolean');\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "1dda90ff-b70b-4ef4-8054-42130023cf87",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
