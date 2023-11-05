@@ -13311,7 +13311,7 @@
 					"name": "userpermissions",
 					"item": [
 						{
-							"name": "{id}",
+							"name": "List a single permission",
 							"item": [
 								{
 									"name": "/v1/userpermissions/:id",
@@ -13393,7 +13393,7 @@
 							"id": "295e7ca9-64c8-4bca-a7f6-25af591dacc3"
 						},
 						{
-							"name": "/v1/userpermissions",
+							"name": "Create a permission",
 							"id": "8f74d717-1700-479b-94e7-d585121355d2",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
