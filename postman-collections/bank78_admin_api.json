@@ -13791,6 +13791,35 @@
 							"item": [
 								{
 									"name": "Retrieve single user",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d4df4fde-a254-4219-9899-ddca2e6a09f8",
+												"exec": [
+													"pm.test(\"Status code is 200 OK\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has expected structure and values\", function () {\r",
+													"    const responseBody = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseBody).to.have.property(\"hasResult\", true);\r",
+													"    pm.expect(responseBody).to.have.property(\"result\").to.be.an('object');\r",
+													"    \r",
+													"    // Add more assertions for other properties as needed\r",
+													"    // pm.expect(result).to.have.property(\"fullName\").to.be.null;\r",
+													"    \r",
+													"    pm.expect(responseBody).to.have.property(\"resultType\", 1);\r",
+													"    pm.expect(responseBody).to.have.property(\"message\", \"Success\");\r",
+													"    pm.expect(responseBody).to.have.property(\"successful\", true);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "355a613d-9744-45eb-932c-f3e4e0f76889",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
