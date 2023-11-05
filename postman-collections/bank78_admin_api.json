@@ -20426,37 +20426,31 @@
 							"name": "List a single product",
 							"item": [
 								{
-									"name": "/api/SavingsProduct/:id",
+									"name": "A single product",
 									"id": "078b93d3-644f-4046-841e-a1596170cfa1",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": {
-											"raw": "{{baseUrl}}/api/SavingsProduct/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"SavingsProduct",
-												":id"
-											],
-											"variable": [
-												{
-													"id": "65a4f7e6-f3e9-46c7-a230-112fa05ced52",
-													"key": "id",
-													"value": "<integer>"
-												}
-											]
-										}
+										"url": "{{baseUrl}}/savings/api/SavingsProduct/4"
 									},
 									"response": [
 										{
@@ -20604,96 +20598,78 @@
 							"name": "getpaged",
 							"item": [
 								{
-									"name": "{page}",
-									"item": [
+									"name": "/api/SavingsProduct/getpaged/:page/:pagesize/:whereCondition",
+									"id": "c89a5019-4443-4cff-aefa-6cad39e2167b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": "https://savings-dev.bank78.co/api/SavingsProduct/getpaged/1/10/%7B%7D"
+									},
+									"response": [
 										{
-											"name": "{pagesize}",
-											"item": [
-												{
-													"name": "{whereCondition}",
-													"item": [
-														{
-															"name": "/api/SavingsProduct/getpaged/:page/:pagesize/:whereCondition",
-															"id": "c89a5019-4443-4cff-aefa-6cad39e2167b",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "GET",
-																"header": [
-																	{
-																		"key": "Accept",
-																		"value": "text/plain"
-																	}
-																],
-																"url": "https://savings-dev.bank78.co/api/SavingsProduct/getpaged/1/10/%7B%7D"
-															},
-															"response": [
-																{
-																	"id": "cb37db08-f95f-40bf-bcdd-333f2a092cfb",
-																	"name": "Success",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [
-																			{
-																				"key": "Accept",
-																				"value": "text/plain"
-																			},
-																			{
-																				"description": "Added as a part of security scheme: apikey",
-																				"key": "Authorization",
-																				"value": "<API Key>"
-																			}
-																		],
-																		"url": {
-																			"raw": "{{baseUrl}}/api/SavingsProduct/getpaged/:page/:pagesize/:whereCondition",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"api",
-																				"SavingsProduct",
-																				"getpaged",
-																				":page",
-																				":pagesize",
-																				":whereCondition"
-																			],
-																			"variable": [
-																				{
-																					"key": "page"
-																				},
-																				{
-																					"key": "pagesize"
-																				},
-																				{
-																					"key": "whereCondition"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "json",
-																	"header": [
-																		{
-																			"key": "Content-Type",
-																			"value": "application/json"
-																		}
-																	],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"isActive\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"interestValue\": \"<double>\",\n        \"penalty\": \"<double>\",\n        \"penaltyTypeId\": null,\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"lastUpdatedBy\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"isActive\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"interestValue\": \"<double>\",\n        \"penalty\": \"<double>\",\n        \"penaltyTypeId\": null,\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"lastUpdatedBy\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
-																}
-															]
-														}
+											"id": "cb37db08-f95f-40bf-bcdd-333f2a092cfb",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/SavingsProduct/getpaged/:page/:pagesize/:whereCondition",
+													"host": [
+														"{{baseUrl}}"
 													],
-													"id": "26d354b6-88c8-47b7-9eb5-9a19b3ae996b"
+													"path": [
+														"api",
+														"SavingsProduct",
+														"getpaged",
+														":page",
+														":pagesize",
+														":whereCondition"
+													],
+													"variable": [
+														{
+															"key": "page"
+														},
+														{
+															"key": "pagesize"
+														},
+														{
+															"key": "whereCondition"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
 												}
 											],
-											"id": "7c078272-85a0-4503-8463-27dee2bcf5b8"
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"isActive\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"interestValue\": \"<double>\",\n        \"penalty\": \"<double>\",\n        \"penaltyTypeId\": null,\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"lastUpdatedBy\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"isActive\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"interestValue\": \"<double>\",\n        \"penalty\": \"<double>\",\n        \"penaltyTypeId\": null,\n        \"createdBy\": \"<string>\",\n        \"lastUpdatedOn\": \"<dateTime>\",\n        \"lastUpdatedBy\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": null,\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": null,\n  \"responseCode\": \"<string>\"\n}"
 										}
-									],
-									"id": "a2db40bb-7a63-4969-8bba-4f00cecaf09a"
+									]
 								}
 							],
 							"id": "18a92608-9e1b-42fe-afa8-bc39289876ec"
