@@ -20423,7 +20423,7 @@
 					"name": "SavingsProduct",
 					"item": [
 						{
-							"name": "{id}",
+							"name": "List a single product",
 							"item": [
 								{
 									"name": "/api/SavingsProduct/:id",
@@ -20514,20 +20514,54 @@
 							"name": "toggleactive",
 							"item": [
 								{
-									"name": "{id}",
-									"item": [
+									"name": "/api/SavingsProduct/toggleactive/:id",
+									"id": "7fa189bc-d77e-44d0-b99f-0462d7852476",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/SavingsProduct/toggleactive/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"SavingsProduct",
+												"toggleactive",
+												":id"
+											],
+											"variable": [
+												{
+													"id": "a0729209-52c6-4395-98d2-f1c510bab6cb",
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"response": [
 										{
-											"name": "/api/SavingsProduct/toggleactive/:id",
-											"id": "7fa189bc-d77e-44d0-b99f-0462d7852476",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
+											"id": "25cd401e-a936-4b38-b06e-3c65a5aef47c",
+											"name": "Success",
+											"originalRequest": {
 												"method": "POST",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
 													}
 												],
 												"url": {
@@ -20543,65 +20577,25 @@
 													],
 													"variable": [
 														{
-															"id": "a0729209-52c6-4395-98d2-f1c510bab6cb",
-															"key": "id",
-															"value": "<integer>"
+															"key": "id"
 														}
 													]
 												}
 											},
-											"response": [
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
 												{
-													"id": "25cd401e-a936-4b38-b06e-3c65a5aef47c",
-													"name": "Success",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "text/plain"
-															},
-															{
-																"description": "Added as a part of security scheme: apikey",
-																"key": "Authorization",
-																"value": "<API Key>"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/api/SavingsProduct/toggleactive/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"SavingsProduct",
-																"toggleactive",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"id\": \"<integer>\",\n  \"isActive\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"interestValue\": \"<double>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null\n}"
+													"key": "Content-Type",
+													"value": "application/json"
 												}
-											]
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"id\": \"<integer>\",\n  \"isActive\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"interestValue\": \"<double>\",\n  \"penalty\": \"<double>\",\n  \"penaltyTypeId\": null\n}"
 										}
-									],
-									"id": "39426e82-7f43-41fc-a510-f036dd19f70b"
+									]
 								}
 							],
 							"id": "45ae0390-70e1-41d0-a711-acee8f90f007"
