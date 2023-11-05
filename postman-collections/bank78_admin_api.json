@@ -14922,6 +14922,32 @@
 						},
 						{
 							"name": "Role already exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2c1736b1-870d-440d-8370-bc6b65227600",
+										"exec": [
+											"pm.test(\"Status code is 400 Bad Request\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response body structure and error message\", function () {\r",
+											"    const responseBody = pm.response.json();\r",
+											"\r",
+											"    pm.expect(responseBody).to.have.property(\"hasResult\", false);\r",
+											"    pm.expect(responseBody).to.have.property(\"result\", null);\r",
+											"    pm.expect(responseBody).to.have.property(\"resultType\", 2);\r",
+											"    pm.expect(responseBody).to.have.property(\"message\", \"Role already exists\");\r",
+											"    pm.expect(responseBody).to.have.property(\"validationMessages\", null);\r",
+											"    pm.expect(responseBody).to.have.property(\"successful\", false);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "bd0eb6a8-8b4c-4bdc-9585-9eae4b2ff00b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
