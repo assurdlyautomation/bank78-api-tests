@@ -13919,6 +13919,57 @@
 							"item": [
 								{
 									"name": "Activate/Deactivate a USER",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "8bff1479-f4a1-4f8f-8822-f92a7f975167",
+												"exec": [
+													"\r",
+													"pm.test(\"Response status code is 200\", function () {\r",
+													"  pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Response has the required fields\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData).to.be.an('object');\r",
+													"    pm.expect(responseData.hasResult).to.exist;\r",
+													"    pm.expect(responseData.result).to.exist;\r",
+													"    pm.expect(responseData.resultType).to.exist;\r",
+													"    pm.expect(responseData.message).to.exist;\r",
+													"    pm.expect(responseData.validationMessages).to.be.null;\r",
+													"    pm.expect(responseData.successful).to.exist;\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validate the value of hasResult is a boolean\", function () {\r",
+													"  const responseData = pm.response.json();\r",
+													"\r",
+													"  pm.expect(responseData.hasResult).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validate the value of resultType is an integer\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData.resultType).to.be.a('number');\r",
+													"});\r",
+													"\r",
+													"\r",
+													"pm.test(\"Validate the value of successful is a boolean\", function () {\r",
+													"  const responseData = pm.response.json();\r",
+													"  \r",
+													"  pm.expect(responseData.successful).to.be.a('boolean');\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "7c524de4-5566-4e8d-bc7c-91a3fa566f94",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14008,37 +14059,86 @@
 							"item": [
 								{
 									"name": "Retrieve system role definition",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "87cbeb3e-e625-4f50-8cf3-fb4203343a0a",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has 'hasResult' property\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('hasResult');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response has 'result' property\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('result');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Each element in the 'sections' array has 'id' property\", function () {\r",
+													"    pm.response.json().result.sections.forEach(function(section) {\r",
+													"        pm.expect(section).to.have.property('id');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Each element in the 'sections' array has 'applicationSectionId' property\", function () {\r",
+													"    pm.response.json().result.sections.forEach(function(section) {\r",
+													"        pm.expect(section).to.have.property('applicationSectionId');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Each element in the 'sections' array has 'sectionName' property\", function () {\r",
+													"    pm.response.json().result.sections.forEach(function(section) {\r",
+													"        pm.expect(section).to.have.property('sectionName');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Each element in the 'permissions' array has 'id' property\", function () {\r",
+													"    pm.response.json().result.sections.forEach(function(section) {\r",
+													"        section.permissions.forEach(function(permission) {\r",
+													"            pm.expect(permission).to.have.property('id');\r",
+													"        });\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Each element in the 'permissions' array has 'checked' property\", function () {\r",
+													"    pm.response.json().result.sections.forEach(function(section) {\r",
+													"        section.permissions.forEach(function(permission) {\r",
+													"            pm.expect(permission).to.have.property('checked');\r",
+													"        });\r",
+													"    });\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"id": "09bd7d1d-2ea9-4dd4-828a-4b5c5ae6130f",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "GET",
 										"header": [
 											{
 												"key": "Accept",
 												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
-										"url": {
-											"raw": "{{baseUrl}}/v1/userroles/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"userroles",
-												":id"
-											],
-											"variable": [
-												{
-													"id": "a58e87ec-c06d-4b11-b0e9-b1c4cef5bb5a",
-													"key": "id",
-													"value": "0",
-													"description": "(Required) "
-												}
-											]
-										}
+										"url": "{{baseUrl}}/identity/v1/userroles/1"
 									},
 									"response": [
 										{
