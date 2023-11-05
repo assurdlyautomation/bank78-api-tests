@@ -14476,6 +14476,43 @@
 									"item": [
 										{
 											"name": "Activate/Deactivate a role",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "10d63e66-b819-4393-a30f-6a4ea9ae69e3",
+														"exec": [
+															"pm.test(\"Status code is 200 OK\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Response body structure and 'isActive' property\", function () {\r",
+															"    const responseBody = pm.response.json();\r",
+															"    \r",
+															"    pm.expect(responseBody).to.have.property(\"hasResult\", true);\r",
+															"    pm.expect(responseBody).to.have.property(\"result\").to.be.an('object');\r",
+															"    \r",
+															"    const result = responseBody.result;\r",
+															"    \r",
+															"    // Assert that 'isActive' is either true or false\r",
+															"    pm.expect(result).to.have.property(\"isActive\").to.satisfy((value) => value === true || value === false);\r",
+															"    \r",
+															"    // other assertions\r",
+															"    pm.expect(result).to.have.property(\"userCount\").to.be.a('number');\r",
+															"    pm.expect(result).to.have.property(\"description\").to.be.a('string');\r",
+															"    pm.expect(result).to.have.property(\"id\").to.be.a('number');\r",
+															"    pm.expect(result).to.have.property(\"name\").to.be.a('string');\r",
+															"    \r",
+															"    pm.expect(responseBody).to.have.property(\"resultType\", 1);\r",
+															"    pm.expect(responseBody).to.have.property(\"message\", \"Success\");\r",
+															"    pm.expect(responseBody).to.have.property(\"successful\", true);\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"id": "3578c8c4-3485-4bac-90ef-5f000e131857",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
