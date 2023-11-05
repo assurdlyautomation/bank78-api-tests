@@ -14359,24 +14359,7 @@
 							"name": "querypaged",
 							"item": [
 								{
-									"name": "{page}",
-									"item": [
-										{
-											"name": "{pagesize}",
-											"item": [
-												{
-													"name": "{whereCondition}",
-													"item": [],
-													"id": "7bc166bb-b22f-4315-ac0a-6ec72edbf487"
-												}
-											],
-											"id": "74b2acf6-6d5d-4eff-97b8-5fb7ca3ad4d5"
-										}
-									],
-									"id": "03884816-a586-4ba1-80d2-9c6eae8c16ba"
-								},
-								{
-									"name": "Create system roles",
+									"name": "list system roles",
 									"id": "50c7cca1-5288-457f-989d-d684dd208e9d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -14498,33 +14481,25 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "application/json"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
-												"url": {
-													"raw": "{{baseUrl}}/v1/userroles/toggleactive/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"userroles",
-														"toggleactive",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "4864c59a-7619-44bc-99f6-7e05b1f90fc8",
-															"key": "id",
-															"value": "<integer>",
-															"description": "(Required) "
-														}
-													]
-												}
+												"url": "{{baseUrl}}/identity/v1/userroles/toggleactive/6"
 											},
 											"response": [
 												{
