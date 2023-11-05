@@ -14592,6 +14592,89 @@
 							"name": "roles",
 							"item": [
 								{
+									"name": "Edit admin role",
+									"item": [],
+									"id": "c2b62735-6fd1-4789-b95a-57f6a4e2f0ff"
+								},
+								{
+									"name": "Update existing role",
+									"id": "0856da1b-ba09-4d55-ae62-b5d7f605a5b4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"description\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"AuditTrails\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Transfer\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/v1/userroles"
+									},
+									"response": [
+										{
+											"id": "87ed647b-b24b-43bf-a486-dc8bc12a75d8",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"description\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"AuditTrails\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Transfer\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/userroles"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
 									"name": "/v1/userroles/roles",
 									"event": [
 										{
@@ -14832,51 +14915,21 @@
 							"id": "fafab461-294f-4c49-a89c-d64758e8b9af"
 						},
 						{
-							"name": "Create a system role",
-							"id": "aa7eddf3-e4af-43d5-a3be-0a9842364a4f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"description\": \"user roles\",\n    \"name\": \"User Role\",\n    \"sections\": [\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 1,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 1,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 2,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 3,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanApprove\",\n            \"permissionId\": 4,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanRejectKyc\",\n            \"permissionId\": 5,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Business\",\n        \"section\": 1\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 2,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 6,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanView\",\n            \"permissionId\": 7,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 8,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 9,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanInviteUser\",\n            \"permissionId\": 10,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Administrator\",\n        \"section\": 2\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 3,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 11,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 12,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transaction\",\n        \"section\": 3\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 4,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 13,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 14,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 15,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transfer\",\n        \"section\": 4\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 5,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 16,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 17,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 18,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 19,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Configuration\",\n        \"section\": 5\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 6,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 20,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 21,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 22,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Wallet\",\n        \"section\": 6\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 7,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 23,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Dashboard\",\n        \"section\": 7\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 8,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 24,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 25,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 26,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 27,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"User\",\n        \"section\": 8\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 9,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 28,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 29,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 30,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"EmailLogs\",\n        \"section\": 9\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 10,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 31,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 32,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"AuditTrails\",\n        \"section\": 10\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 11,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 33,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 34,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 35,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"RoleConfig\",\n        \"section\": 11\n      }\n    ],\n    \"isAdminRole\":true\n  }",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/v1/userroles"
-							},
-							"response": [
+							"name": "Create Admin Role",
+							"item": [
 								{
-									"id": "d11c2e6f-d480-4fd6-b055-23e8247951ee",
-									"name": "Success",
-									"originalRequest": {
+									"name": "Create a system role",
+									"id": "aa7eddf3-e4af-43d5-a3be-0a9842364a4f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
 										"method": "POST",
 										"header": [
 											{
@@ -14888,14 +14941,14 @@
 												"value": "application/json"
 											},
 											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Wallet\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Configuration\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
+											"raw": "{\n  \"description\": \"user roles\",\n    \"name\": \"User Role\",\n    \"sections\": [\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 1,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 1,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 2,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 3,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanApprove\",\n            \"permissionId\": 4,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanRejectKyc\",\n            \"permissionId\": 5,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Business\",\n        \"section\": 1\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 2,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 6,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanView\",\n            \"permissionId\": 7,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 8,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 9,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanInviteUser\",\n            \"permissionId\": 10,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Administrator\",\n        \"section\": 2\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 3,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 11,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 12,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transaction\",\n        \"section\": 3\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 4,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 13,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 14,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 15,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transfer\",\n        \"section\": 4\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 5,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 16,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 17,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 18,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 19,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Configuration\",\n        \"section\": 5\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 6,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 20,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 21,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 22,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Wallet\",\n        \"section\": 6\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 7,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 23,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Dashboard\",\n        \"section\": 7\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 8,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 24,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 25,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 26,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 27,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"User\",\n        \"section\": 8\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 9,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 28,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 29,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 30,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"EmailLogs\",\n        \"section\": 9\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 10,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 31,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 32,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"AuditTrails\",\n        \"section\": 10\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 11,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 33,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 34,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 35,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"RoleConfig\",\n        \"section\": 11\n      }\n    ],\n    \"isAdminRole\":true\n  }",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -14903,215 +14956,173 @@
 												}
 											}
 										},
-										"url": "{{baseUrl}}/v1/userroles"
+										"url": "{{baseUrl}}/identity/v1/userroles"
 									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
+									"response": [
 										{
-											"key": "Content-Type",
-											"value": "application/json"
+											"id": "d11c2e6f-d480-4fd6-b055-23e8247951ee",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Wallet\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Configuration\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/userroles"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Role already exists",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2c1736b1-870d-440d-8370-bc6b65227600",
+												"exec": [
+													"pm.test(\"Status code is 400 Bad Request\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Response body structure and error message\", function () {\r",
+													"    const responseBody = pm.response.json();\r",
+													"\r",
+													"    pm.expect(responseBody).to.have.property(\"hasResult\", false);\r",
+													"    pm.expect(responseBody).to.have.property(\"result\", null);\r",
+													"    pm.expect(responseBody).to.have.property(\"resultType\", 2);\r",
+													"    pm.expect(responseBody).to.have.property(\"message\", \"Role already exists\");\r",
+													"    pm.expect(responseBody).to.have.property(\"validationMessages\", null);\r",
+													"    pm.expect(responseBody).to.have.property(\"successful\", false);\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
 									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Role already exists",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2c1736b1-870d-440d-8370-bc6b65227600",
-										"exec": [
-											"pm.test(\"Status code is 400 Bad Request\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Response body structure and error message\", function () {\r",
-											"    const responseBody = pm.response.json();\r",
-											"\r",
-											"    pm.expect(responseBody).to.have.property(\"hasResult\", false);\r",
-											"    pm.expect(responseBody).to.have.property(\"result\", null);\r",
-											"    pm.expect(responseBody).to.have.property(\"resultType\", 2);\r",
-											"    pm.expect(responseBody).to.have.property(\"message\", \"Role already exists\");\r",
-											"    pm.expect(responseBody).to.have.property(\"validationMessages\", null);\r",
-											"    pm.expect(responseBody).to.have.property(\"successful\", false);\r",
-											"});\r",
-											""
+									"id": "bd0eb6a8-8b4c-4bdc-9585-9eae4b2ff00b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{admin_access_token}}"
+											}
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
+											}
 										],
-										"type": "text/javascript"
-									}
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"description\": \"user roles\",\n    \"name\": \"User Role\",\n    \"sections\": [\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 1,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 1,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 2,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 3,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanApprove\",\n            \"permissionId\": 4,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanRejectKyc\",\n            \"permissionId\": 5,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Business\",\n        \"section\": 1\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 2,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 6,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanView\",\n            \"permissionId\": 7,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 8,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 9,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanInviteUser\",\n            \"permissionId\": 10,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Administrator\",\n        \"section\": 2\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 3,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 11,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 12,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transaction\",\n        \"section\": 3\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 4,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 13,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 14,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 15,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transfer\",\n        \"section\": 4\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 5,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 16,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 17,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 18,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 19,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Configuration\",\n        \"section\": 5\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 6,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 20,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 21,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 22,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Wallet\",\n        \"section\": 6\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 7,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 23,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Dashboard\",\n        \"section\": 7\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 8,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 24,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 25,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 26,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 27,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"User\",\n        \"section\": 8\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 9,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 28,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 29,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 30,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"EmailLogs\",\n        \"section\": 9\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 10,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 31,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 32,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"AuditTrails\",\n        \"section\": 10\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 11,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 33,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 34,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 35,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"RoleConfig\",\n        \"section\": 11\n      }\n    ],\n    \"isAdminRole\":true\n  }",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/identity/v1/userroles"
+									},
+									"response": [
+										{
+											"id": "e4311158-14b0-4825-9d0c-cc42da83cdea",
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Wallet\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Configuration\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/userroles"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
+										}
+									]
 								}
 							],
-							"id": "bd0eb6a8-8b4c-4bdc-9585-9eae4b2ff00b",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": {
-										"token": "{{admin_access_token}}"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "x-api-key",
-										"value": "{{x-api-key}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"description\": \"user roles\",\n    \"name\": \"User Role\",\n    \"sections\": [\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 1,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 1,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 2,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 3,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanApprove\",\n            \"permissionId\": 4,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanRejectKyc\",\n            \"permissionId\": 5,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Business\",\n        \"section\": 1\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 2,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 6,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanView\",\n            \"permissionId\": 7,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 8,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 9,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanInviteUser\",\n            \"permissionId\": 10,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Administrator\",\n        \"section\": 2\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 3,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 11,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 12,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transaction\",\n        \"section\": 3\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 4,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 13,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 14,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 15,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Transfer\",\n        \"section\": 4\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 5,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 16,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 17,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 18,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 19,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Configuration\",\n        \"section\": 5\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 6,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 20,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 21,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 22,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Wallet\",\n        \"section\": 6\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 7,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 23,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"Dashboard\",\n        \"section\": 7\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 8,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 24,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 25,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 26,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 27,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"User\",\n        \"section\": 8\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 9,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 28,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 29,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 30,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"EmailLogs\",\n        \"section\": 9\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 10,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 31,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanExport\",\n            \"permissionId\": 32,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"AuditTrails\",\n        \"section\": 10\n      },\n      {\n        \"id\": 0,\n        \"applicationSectionId\": 11,\n        \"permissions\": [\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanAdd\",\n            \"permissionId\": 33,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": true,\n            \"name\": \"CanView\",\n            \"permissionId\": 34,\n            \"applicationSectionPermissionId\": 0\n          },\n          {\n            \"id\": 0,\n            \"checked\": false,\n            \"name\": \"CanUpdate\",\n            \"permissionId\": 35,\n            \"applicationSectionPermissionId\": 0\n          }\n        ],\n        \"sectionName\": \"RoleConfig\",\n        \"section\": 11\n      }\n    ],\n    \"isAdminRole\":true\n  }",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/identity/v1/userroles"
-							},
-							"response": [
-								{
-									"id": "e4311158-14b0-4825-9d0c-cc42da83cdea",
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Wallet\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Configuration\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/v1/userroles"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Update existing role",
-							"id": "0856da1b-ba09-4d55-ae62-b5d7f605a5b4",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"description\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"AuditTrails\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Transfer\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
-									"options": {
-										"raw": {
-											"headerFamily": "json",
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/v1/userroles"
-							},
-							"response": [
-								{
-									"id": "87ed647b-b24b-43bf-a486-dc8bc12a75d8",
-									"name": "Success",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											},
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "Authorization",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"description\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"sections\": [\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"AuditTrails\"\n    },\n    {\n      \"applicationSectionId\": \"<integer>\",\n      \"permissions\": [\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"checked\": \"<boolean>\",\n          \"name\": \"<string>\",\n          \"permissionId\": \"<integer>\",\n          \"applicationSectionPermissionId\": \"<integer>\"\n        }\n      ],\n      \"id\": \"<integer>\",\n      \"sectionName\": \"<string>\",\n      \"section\": \"Transfer\"\n    }\n  ],\n  \"isAdminRole\": \"<boolean>\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/v1/userroles"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"roleName\": \"<string>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-								}
-							]
+							"id": "b70a7491-08d9-44ce-8b10-e7778219cbdf"
 						}
 					],
 					"id": "80ad294c-cec7-4165-ac4d-8bb1e390d43c"
