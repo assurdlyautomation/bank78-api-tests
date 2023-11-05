@@ -14196,129 +14196,111 @@
 							"name": "getpaged",
 							"item": [
 								{
-									"name": "{page}",
-									"item": [
-										{
-											"name": "{pagesize}",
-											"item": [
+									"name": "Retrieves all system roles",
+									"id": "89f5a1a2-de18-405c-bb2b-cb37d881fe02",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"v1",
+												"userroles",
+												"getpaged",
+												":page",
+												":pagesize",
+												":whereCondition"
+											],
+											"variable": [
 												{
-													"name": "{whereCondition}",
-													"item": [
-														{
-															"name": "Retrieves all system roles",
-															"id": "89f5a1a2-de18-405c-bb2b-cb37d881fe02",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "GET",
-																"header": [
-																	{
-																		"key": "Accept",
-																		"value": "application/json"
-																	}
-																],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"userroles",
-																		"getpaged",
-																		":page",
-																		":pagesize",
-																		":whereCondition"
-																	],
-																	"variable": [
-																		{
-																			"id": "b11c84ae-ee5b-4077-91a5-fbdb97ded4d5",
-																			"key": "page",
-																			"value": "1",
-																			"description": "(Required) "
-																		},
-																		{
-																			"id": "286ada93-23c4-4366-8eb0-cdf57d783a69",
-																			"key": "pagesize",
-																			"value": "10",
-																			"description": "(Required) "
-																		},
-																		{
-																			"id": "3975fd83-9eb7-497b-a448-a8e8446815b6",
-																			"key": "whereCondition",
-																			"value": "{}",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "225e4bd6-5d61-4694-9750-37c8322df3cb",
-																	"name": "Success",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [
-																			{
-																				"key": "Accept",
-																				"value": "application/json"
-																			},
-																			{
-																				"description": "Added as a part of security scheme: apikey",
-																				"key": "Authorization",
-																				"value": "<API Key>"
-																			}
-																		],
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"userroles",
-																				"getpaged",
-																				":page",
-																				":pagesize",
-																				":whereCondition"
-																			],
-																			"variable": [
-																				{
-																					"key": "page"
-																				},
-																				{
-																					"key": "pagesize"
-																				},
-																				{
-																					"key": "whereCondition"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "json",
-																	"header": [
-																		{
-																			"key": "Content-Type",
-																			"value": "application/json"
-																		}
-																	],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"isActive\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"isActive\": \"<boolean>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
-																}
-															]
-														}
+													"id": "b11c84ae-ee5b-4077-91a5-fbdb97ded4d5",
+													"key": "page",
+													"value": "1",
+													"description": "(Required) "
+												},
+												{
+													"id": "286ada93-23c4-4366-8eb0-cdf57d783a69",
+													"key": "pagesize",
+													"value": "10",
+													"description": "(Required) "
+												},
+												{
+													"id": "3975fd83-9eb7-497b-a448-a8e8446815b6",
+													"key": "whereCondition",
+													"value": "{}",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "225e4bd6-5d61-4694-9750-37c8322df3cb",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"description": "Added as a part of security scheme: apikey",
+														"key": "Authorization",
+														"value": "<API Key>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/userroles/getpaged/:page/:pagesize/:whereCondition",
+													"host": [
+														"{{baseUrl}}"
 													],
-													"id": "7c9c09fe-ca46-4ece-b0c5-c01fe6b06535"
+													"path": [
+														"v1",
+														"userroles",
+														"getpaged",
+														":page",
+														":pagesize",
+														":whereCondition"
+													],
+													"variable": [
+														{
+															"key": "page"
+														},
+														{
+															"key": "pagesize"
+														},
+														{
+															"key": "whereCondition"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
 												}
 											],
-											"id": "d493a2d7-f2c7-4a03-b6d4-628c6288e682"
+											"cookie": [],
+											"responseTime": null,
+											"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"isActive\": \"<boolean>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"isActive\": \"<boolean>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\"\n}"
 										}
-									],
-									"id": "44b5e970-8776-4e5c-a02f-ede28fae38ee"
+									]
 								}
 							],
 							"id": "8ff37e94-ac89-46d9-a310-b4844ac5e4ca"
