@@ -6403,7 +6403,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"bryan+41@assurdly.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"raw": "{\n  \"userName\": \"johndoe_test@mailinator.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -6919,7 +6919,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"bryan+555@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"raw": "{\n  \"userName\": \"johndoe_test@mailinator.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -8754,7 +8754,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n\"userId\": \"f9c7014f-45f2-4a75-a91c-7d92b4853752\"\n}",
+											"raw": "{\n\"userId\": \"6c3b0383-bebb-4a1d-969e-c1d25a0cbc7e\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -8838,7 +8838,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=bryan+39@assurdly.com",
+											"raw": "{{baseUrl}}/onboard/api/customer/blacklist?username=tofutea5@mailinator.com",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -8857,7 +8857,7 @@
 												},
 												{
 													"key": "username",
-													"value": "bryan+39@assurdly.com"
+													"value": "tofutea5@mailinator.com"
 												}
 											]
 										}
