@@ -6403,7 +6403,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"johndoe_test@mailinator.com\",\n  \"kycStatus\": \"Level1approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"raw": "{\n  \"userName\": \"bryan+41@assurdly.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -9651,24 +9651,27 @@
 											{
 												"key": "Accept",
 												"value": "text/plain"
+											},
+											{
+												"key": "x-api-key",
+												"value": "{{x-api-key}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "https://onboard-dev.bank78.co/api/customer?userName=unyc24@mailinator.com",
-											"protocol": "https",
+											"raw": "{{baseUrl}}/onboard/api/customer?userName=bryan%2B41%40assurdly.com",
 											"host": [
-												"onboard-dev",
-												"bank78",
-												"co"
+												"{{baseUrl}}"
 											],
 											"path": [
+												"onboard",
 												"api",
 												"customer"
 											],
 											"query": [
 												{
 													"key": "userName",
-													"value": "unyc24@mailinator.com"
+													"value": "bryan%2B41%40assurdly.com"
 												}
 											]
 										}
