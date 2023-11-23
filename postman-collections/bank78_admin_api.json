@@ -6919,7 +6919,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"johndoe_test@mailinator.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+													"raw": "{\n  \"userName\": \"johndoe_test29@mailinator.com\",\n  \"kycStatus\": \"Level2approved\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
