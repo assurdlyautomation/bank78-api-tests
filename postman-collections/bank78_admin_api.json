@@ -7304,7 +7304,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"userName\": \"bryan+39@assurdly.com\",\n  \"kycStatus\": \"Level2rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
+													"raw": "{\n  \"userName\": \"johndoe_test101@mailinator.com\",\n  \"kycStatus\": \"Level2rejected\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\",\n  \"kycDeclineReason\": \"ID Mismatch\",\n  \"detail\": [\n    {\n      \"email\": \"bryan+39@assurdly.com\",\n      \"reason\": [\n        \"Liveness\"\n      ]\n    }\n  ]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
