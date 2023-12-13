@@ -17125,6 +17125,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "PUT",
 												"header": [
 													{
@@ -17134,6 +17140,11 @@
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"body": {
@@ -17147,11 +17158,12 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/config/business?id=<integer>",
+													"raw": "{{baseUrl}}/kyc/api/config/business?id=<integer>",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
+														"kyc",
 														"api",
 														"config",
 														"business"
@@ -17235,19 +17247,31 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{admin_access_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [
 													{
 														"key": "Accept",
 														"value": "text/plain"
+													},
+													{
+														"key": "x-api-key",
+														"value": "{{x-api-key}}",
+														"type": "text"
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/api/config/business?businessTypeId=<integer>",
+													"raw": "{{baseUrl}}/kyc/api/config/business?businessTypeId=1",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
+														"kyc",
 														"api",
 														"config",
 														"business"
@@ -17255,7 +17279,7 @@
 													"query": [
 														{
 															"key": "businessTypeId",
-															"value": "<integer>"
+															"value": "1"
 														}
 													]
 												}
