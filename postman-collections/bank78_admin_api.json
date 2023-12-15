@@ -20785,6 +20785,1230 @@
 						}
 					],
 					"id": "0fe948df-4e6b-44f9-9cb7-e62185fa7b79"
+				},
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "BillTransactionLogs",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Get a single bill payment log",
+											"id": "d92a1b50-bc69-4337-ae40-a472ee526a71",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"BillTransactionLogs",
+														":id"
+													],
+													"variable": [
+														{
+															"id": "3060d4c7-154e-4394-9189-0e11667f5612",
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "fdcadef5-f2cb-407c-9af7-43f05f9efd07",
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"statusId\": \"Success\",\n    \"reference\": \"<string>\",\n    \"accountName\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"billId\": \"<integer>\",\n    \"amount\": \"<double>\",\n    \"phoneNumber\": \"<string>\",\n    \"billVendorId\": \"Baxi\",\n    \"completedDate\": \"<dateTime>\",\n    \"responseCode\": \"<string>\",\n    \"clientRequestId\": \"<string>\",\n    \"deviceId\": \"<string>\",\n    \"channel\": \"Web\",\n    \"userId\": \"<string>\",\n    \"charge\": \"<double>\",\n    \"commission\": \"<double>\",\n    \"cbaReference\": \"<string>\",\n    \"retryCount\": \"<integer>\",\n    \"vendorReference\": \"<string>\",\n    \"billCode\": \"<string>\",\n    \"billPackageCode\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryEmail\": \"<string>\",\n    \"beneficiaryPhone\": \"<string>\",\n    \"commissionValue\": \"<double>\",\n    \"commissionTypeId\": \"Fixed\",\n    \"billPackageId\": \"<integer>\",\n    \"billTypeId\": \"CableTv\",\n    \"billToken\": \"<string>\",\n    \"isTokenType\": \"<boolean>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"sourceAccountId\": \"<long>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"feeTypeId\": \"PercentageOfTransactionCharge\",\n    \"currencyId\": \"<string>\",\n    \"processedByVendor\": \"<boolean>\",\n    \"statusName\": \"<string>\",\n    \"paymentGatewayName\": \"<string>\"\n  },\n  \"resultType\": \"ValidationError\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Invalid_Wallet\",\n  \"responseCode\": \"<string>\"\n}"
+												}
+											]
+										}
+									],
+									"id": "786e6f54-fb95-436e-9f13-5ea55cc81310"
+								},
+								{
+									"name": "find-by-reference",
+									"item": [
+										{
+											"name": "{reference}",
+											"item": [
+												{
+													"name": "get a bill payment log by a bill payment reference",
+													"id": "2bd0143c-e291-4778-8b50-ec3a539baa99",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/find-by-reference/:reference",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																"find-by-reference",
+																":reference"
+															],
+															"variable": [
+																{
+																	"id": "2fa0211a-eabb-47e6-b1b1-3c03b5226f38",
+																	"key": "reference",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "f57f1aff-449d-4520-a06c-fcdbf9e1fd0e",
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: apikey",
+																		"key": "Authorization",
+																		"value": "<API Key>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/find-by-reference/:reference",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"BillTransactionLogs",
+																		"find-by-reference",
+																		":reference"
+																	],
+																	"variable": [
+																		{
+																			"key": "reference"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"id\": \"<integer>\",\n    \"statusId\": \"LoggedForReversal\",\n    \"reference\": \"<string>\",\n    \"accountName\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"billId\": \"<integer>\",\n    \"amount\": \"<double>\",\n    \"phoneNumber\": \"<string>\",\n    \"billVendorId\": \"Baxi\",\n    \"completedDate\": \"<dateTime>\",\n    \"responseCode\": \"<string>\",\n    \"clientRequestId\": \"<string>\",\n    \"deviceId\": \"<string>\",\n    \"channel\": \"Web\",\n    \"userId\": \"<string>\",\n    \"charge\": \"<double>\",\n    \"commission\": \"<double>\",\n    \"cbaReference\": \"<string>\",\n    \"retryCount\": \"<integer>\",\n    \"vendorReference\": \"<string>\",\n    \"billCode\": \"<string>\",\n    \"billPackageCode\": \"<string>\",\n    \"beneficiary\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"beneficiaryEmail\": \"<string>\",\n    \"beneficiaryPhone\": \"<string>\",\n    \"commissionValue\": \"<double>\",\n    \"commissionTypeId\": \"PercentageOfBillAmount\",\n    \"billPackageId\": \"<integer>\",\n    \"billTypeId\": \"Education\",\n    \"billToken\": \"<string>\",\n    \"isTokenType\": \"<boolean>\",\n    \"emailAddress\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"sourceAccountId\": \"<long>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"feeTypeId\": \"Fixed\",\n    \"currencyId\": \"<string>\",\n    \"processedByVendor\": \"<boolean>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Invalid_Response_Code\",\n  \"responseCode\": \"<string>\"\n}"
+														}
+													]
+												}
+											],
+											"id": "afedfe7c-fd11-468d-b838-d1faf961908c"
+										}
+									],
+									"id": "4e047ccc-6cb1-4b51-906c-0269b03ba4b2"
+								},
+								{
+									"name": "confirm-by-reference",
+									"item": [
+										{
+											"name": "{reference}",
+											"item": [
+												{
+													"name": "/api/v1/BillTransactionLogs/confirm-by-reference/:reference",
+													"id": "11d31459-5c61-4901-82ee-54049080e148",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/confirm-by-reference/:reference",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																"confirm-by-reference",
+																":reference"
+															],
+															"variable": [
+																{
+																	"id": "a68735cd-dc54-4fbb-8ca9-65d1e303f29a",
+																	"key": "reference",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "1795bd38-6499-4ecd-a725-a692e5dab111",
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: apikey",
+																		"key": "Authorization",
+																		"value": "<API Key>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/confirm-by-reference/:reference",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"BillTransactionLogs",
+																		"confirm-by-reference",
+																		":reference"
+																	],
+																	"variable": [
+																		{
+																			"key": "reference"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Dupicate_Transaction\",\n  \"responseCode\": \"<string>\"\n}"
+														}
+													]
+												}
+											],
+											"id": "2ba85427-6050-4e57-9ad4-a0fcca49589f"
+										}
+									],
+									"id": "a3d802ae-9f7b-48a9-9964-6bcdf34bc933"
+								},
+								{
+									"name": "confirm-by-id",
+									"item": [
+										{
+											"name": "{id}",
+											"item": [
+												{
+													"name": "/api/v1/BillTransactionLogs/confirm-by-id/:id",
+													"id": "c6e45aab-d21c-4d87-a7ca-ba948de8fb0c",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/confirm-by-id/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																"confirm-by-id",
+																":id"
+															],
+															"variable": [
+																{
+																	"id": "c9e94b6f-6f80-4f76-ba61-724a5a320c87",
+																	"key": "id",
+																	"value": "<integer>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "a3028d38-8f76-4ff0-8bdb-6b86a747bb33",
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: apikey",
+																		"key": "Authorization",
+																		"value": "<API Key>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/confirm-by-id/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"BillTransactionLogs",
+																		"confirm-by-id",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Dupicate_Transaction\",\n  \"responseCode\": \"<string>\"\n}"
+														}
+													]
+												}
+											],
+											"id": "ccd7d084-d8e8-4350-8149-e79ac762efc3"
+										}
+									],
+									"id": "527be975-7564-4444-a37e-37682f83988f"
+								},
+								{
+									"name": "get-paged",
+									"item": [
+										{
+											"name": "{page}",
+											"item": [
+												{
+													"name": "{pagesize}",
+													"item": [
+														{
+															"name": "{whereCondition}",
+															"item": [
+																{
+																	"name": "Retrieve paginated bills payment log",
+																	"id": "b33173c8-924b-470e-9348-905319824a79",
+																	"protocolProfileBehavior": {
+																		"disableBodyPruning": true
+																	},
+																	"request": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "text/plain"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/get-paged/:page/:pagesize/:whereCondition",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"BillTransactionLogs",
+																				"get-paged",
+																				":page",
+																				":pagesize",
+																				":whereCondition"
+																			],
+																			"variable": [
+																				{
+																					"id": "f57d323e-937c-4b39-8daa-0b045e7ee3c9",
+																					"key": "page",
+																					"value": "1",
+																					"description": "(Required) "
+																				},
+																				{
+																					"id": "92f320e0-813d-4938-b208-6720a176a910",
+																					"key": "pagesize",
+																					"value": "10",
+																					"description": "(Required) "
+																				},
+																				{
+																					"id": "14f14bb2-1089-4e2b-b310-f0c2269b2d9b",
+																					"key": "whereCondition",
+																					"value": "{}",
+																					"description": "(Required) "
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"id": "29c1ef51-dbd9-4f64-ad8d-63367ee9e7d8",
+																			"name": "Success",
+																			"originalRequest": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "text/plain"
+																					},
+																					{
+																						"description": "Added as a part of security scheme: apikey",
+																						"key": "Authorization",
+																						"value": "<API Key>"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/get-paged/:page/:pagesize/:whereCondition",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"BillTransactionLogs",
+																						"get-paged",
+																						":page",
+																						":pagesize",
+																						":whereCondition"
+																					],
+																					"variable": [
+																						{
+																							"key": "page"
+																						},
+																						{
+																							"key": "pagesize"
+																						},
+																						{
+																							"key": "whereCondition"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "json",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "application/json"
+																				}
+																			],
+																			"cookie": [],
+																			"responseTime": null,
+																			"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"statusId\": \"Success\",\n        \"reference\": \"<string>\",\n        \"accountName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"billId\": \"<integer>\",\n        \"amount\": \"<double>\",\n        \"phoneNumber\": \"<string>\",\n        \"billVendorId\": \"Baxi\",\n        \"completedDate\": \"<dateTime>\",\n        \"responseCode\": \"<string>\",\n        \"clientRequestId\": \"<string>\",\n        \"deviceId\": \"<string>\",\n        \"channel\": \"USSD\",\n        \"userId\": \"<string>\",\n        \"charge\": \"<double>\",\n        \"commission\": \"<double>\",\n        \"cbaReference\": \"<string>\",\n        \"retryCount\": \"<integer>\",\n        \"vendorReference\": \"<string>\",\n        \"billCode\": \"<string>\",\n        \"billPackageCode\": \"<string>\",\n        \"beneficiary\": \"<string>\",\n        \"beneficiaryName\": \"<string>\",\n        \"beneficiaryEmail\": \"<string>\",\n        \"beneficiaryPhone\": \"<string>\",\n        \"commissionValue\": \"<double>\",\n        \"commissionTypeId\": \"Fixed\",\n        \"billPackageId\": \"<integer>\",\n        \"billTypeId\": \"Electricity\",\n        \"billToken\": \"<string>\",\n        \"isTokenType\": \"<boolean>\",\n        \"emailAddress\": \"<string>\",\n        \"sourceAccount\": \"<string>\",\n        \"sourceAccountId\": \"<long>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"feeTypeId\": \"PercentageOfTransactionCharge\",\n        \"currencyId\": \"<string>\",\n        \"processedByVendor\": \"<boolean>\",\n        \"statusName\": \"<string>\",\n        \"paymentGatewayName\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"statusId\": \"LoggedForReversal\",\n        \"reference\": \"<string>\",\n        \"accountName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"billId\": \"<integer>\",\n        \"amount\": \"<double>\",\n        \"phoneNumber\": \"<string>\",\n        \"billVendorId\": \"Baxi\",\n        \"completedDate\": \"<dateTime>\",\n        \"responseCode\": \"<string>\",\n        \"clientRequestId\": \"<string>\",\n        \"deviceId\": \"<string>\",\n        \"channel\": \"Mobile\",\n        \"userId\": \"<string>\",\n        \"charge\": \"<double>\",\n        \"commission\": \"<double>\",\n        \"cbaReference\": \"<string>\",\n        \"retryCount\": \"<integer>\",\n        \"vendorReference\": \"<string>\",\n        \"billCode\": \"<string>\",\n        \"billPackageCode\": \"<string>\",\n        \"beneficiary\": \"<string>\",\n        \"beneficiaryName\": \"<string>\",\n        \"beneficiaryEmail\": \"<string>\",\n        \"beneficiaryPhone\": \"<string>\",\n        \"commissionValue\": \"<double>\",\n        \"commissionTypeId\": \"PercentageOfTransactionCharge\",\n        \"billPackageId\": \"<integer>\",\n        \"billTypeId\": \"CableTv\",\n        \"billToken\": \"<string>\",\n        \"isTokenType\": \"<boolean>\",\n        \"emailAddress\": \"<string>\",\n        \"sourceAccount\": \"<string>\",\n        \"sourceAccountId\": \"<long>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"feeTypeId\": \"Fixed\",\n        \"currencyId\": \"<string>\",\n        \"processedByVendor\": \"<boolean>\",\n        \"statusName\": \"<string>\",\n        \"paymentGatewayName\": \"<string>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"DuplicateEntry\",\n  \"responseCode\": \"<string>\"\n}"
+																		}
+																	]
+																}
+															],
+															"id": "82770aab-55ff-4597-85e5-a58f75002ee1"
+														}
+													],
+													"id": "d77aeecd-4556-4a62-b303-9ec6af6a51ac"
+												}
+											],
+											"id": "42808ff5-7a99-401b-a534-12d7021b6b9c"
+										}
+									],
+									"id": "c7cddcb6-4cfc-4291-8b05-ca8b40c30a8a"
+								},
+								{
+									"name": "query-paged",
+									"item": [
+										{
+											"name": "{page}",
+											"item": [
+												{
+													"name": "{pagesize}",
+													"item": [
+														{
+															"name": "{whereCondition}",
+															"item": [
+																{
+																	"name": "Retrieve paginated log for pagination template",
+																	"id": "0fd04e9c-e277-40a2-ab0a-90f075b6ef33",
+																	"protocolProfileBehavior": {
+																		"disableBodyPruning": true
+																	},
+																	"request": {
+																		"method": "GET",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "text/plain"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/query-paged/:page/:pagesize/:whereCondition",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"api",
+																				"v1",
+																				"BillTransactionLogs",
+																				"query-paged",
+																				":page",
+																				":pagesize",
+																				":whereCondition"
+																			],
+																			"variable": [
+																				{
+																					"id": "c0748361-110c-44cb-b6fe-e626724ed476",
+																					"key": "page",
+																					"value": "1",
+																					"description": "(Required) "
+																				},
+																				{
+																					"id": "f4bb3b4f-8e37-4631-88ae-03ca72e34553",
+																					"key": "pagesize",
+																					"value": "10",
+																					"description": "(Required) "
+																				},
+																				{
+																					"id": "94112fe5-c4cd-4497-bf35-931031f6a440",
+																					"key": "whereCondition",
+																					"value": "{}",
+																					"description": "(Required) "
+																				}
+																			]
+																		}
+																	},
+																	"response": [
+																		{
+																			"id": "57b700fd-d0ab-4123-a715-034067e69ae1",
+																			"name": "Success",
+																			"originalRequest": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "text/plain"
+																					},
+																					{
+																						"description": "Added as a part of security scheme: apikey",
+																						"key": "Authorization",
+																						"value": "<API Key>"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/query-paged/:page/:pagesize/:whereCondition",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"BillTransactionLogs",
+																						"query-paged",
+																						":page",
+																						":pagesize",
+																						":whereCondition"
+																					],
+																					"variable": [
+																						{
+																							"key": "page"
+																						},
+																						{
+																							"key": "pagesize"
+																						},
+																						{
+																							"key": "whereCondition"
+																						}
+																					]
+																				}
+																			},
+																			"status": "OK",
+																			"code": 200,
+																			"_postman_previewlanguage": "json",
+																			"header": [
+																				{
+																					"key": "Content-Type",
+																					"value": "application/json"
+																				}
+																			],
+																			"cookie": [],
+																			"responseTime": null,
+																			"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"statusId\": \"Failed\",\n      \"reference\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"billId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"phoneNumber\": \"<string>\",\n      \"billVendorId\": \"Baxi\",\n      \"completedDate\": \"<dateTime>\",\n      \"responseCode\": \"<string>\",\n      \"clientRequestId\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"channel\": \"USSD\",\n      \"userId\": \"<string>\",\n      \"charge\": \"<double>\",\n      \"commission\": \"<double>\",\n      \"cbaReference\": \"<string>\",\n      \"retryCount\": \"<integer>\",\n      \"vendorReference\": \"<string>\",\n      \"billCode\": \"<string>\",\n      \"billPackageCode\": \"<string>\",\n      \"beneficiary\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"beneficiaryEmail\": \"<string>\",\n      \"beneficiaryPhone\": \"<string>\",\n      \"commissionValue\": \"<double>\",\n      \"commissionTypeId\": \"PercentageOfBillAmount\",\n      \"billPackageId\": \"<integer>\",\n      \"billTypeId\": \"Airtime\",\n      \"billToken\": \"<string>\",\n      \"isTokenType\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"sourceAccount\": \"<string>\",\n      \"sourceAccountId\": \"<long>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"feeTypeId\": \"PercentageOfTransactionCharge\",\n      \"currencyId\": \"<string>\",\n      \"processedByVendor\": \"<boolean>\",\n      \"statusName\": \"<string>\",\n      \"paymentGatewayName\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"statusId\": \"Pending\",\n      \"reference\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"billId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"phoneNumber\": \"<string>\",\n      \"billVendorId\": \"Baxi\",\n      \"completedDate\": \"<dateTime>\",\n      \"responseCode\": \"<string>\",\n      \"clientRequestId\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"channel\": \"USSD\",\n      \"userId\": \"<string>\",\n      \"charge\": \"<double>\",\n      \"commission\": \"<double>\",\n      \"cbaReference\": \"<string>\",\n      \"retryCount\": \"<integer>\",\n      \"vendorReference\": \"<string>\",\n      \"billCode\": \"<string>\",\n      \"billPackageCode\": \"<string>\",\n      \"beneficiary\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"beneficiaryEmail\": \"<string>\",\n      \"beneficiaryPhone\": \"<string>\",\n      \"commissionValue\": \"<double>\",\n      \"commissionTypeId\": \"PercentageOfBillAmount\",\n      \"billPackageId\": \"<integer>\",\n      \"billTypeId\": \"Data\",\n      \"billToken\": \"<string>\",\n      \"isTokenType\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"sourceAccount\": \"<string>\",\n      \"sourceAccountId\": \"<long>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"feeTypeId\": \"Fixed\",\n      \"currencyId\": \"<string>\",\n      \"processedByVendor\": \"<boolean>\",\n      \"statusName\": \"<string>\",\n      \"paymentGatewayName\": \"<string>\"\n    }\n  ],\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Bill_Transaction_Log_Update_Error\",\n  \"responseCode\": \"<string>\"\n}"
+																		}
+																	]
+																}
+															],
+															"id": "4890cfec-d914-4af5-9279-b20e2c6483b3"
+														}
+													],
+													"id": "9b91c278-e67a-41c8-8eda-329ca48e15e4"
+												}
+											],
+											"id": "2825b364-a829-4ce3-8b3a-f661b1b202a3"
+										}
+									],
+									"id": "8417c6f4-703a-43f0-beda-075c1b79ee15"
+								},
+								{
+									"name": "admin",
+									"item": [
+										{
+											"name": "get-paged",
+											"item": [
+												{
+													"name": "{page}",
+													"item": [
+														{
+															"name": "{pagesize}",
+															"item": [
+																{
+																	"name": "{whereCondition}",
+																	"item": [
+																		{
+																			"name": "Retrieve paginated bills payment log",
+																			"id": "aa3968d8-6f32-45ba-bc3f-091c6f6968a6",
+																			"protocolProfileBehavior": {
+																				"disableBodyPruning": true
+																			},
+																			"request": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "text/plain"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/admin/get-paged/:page/:pagesize/:whereCondition",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"BillTransactionLogs",
+																						"admin",
+																						"get-paged",
+																						":page",
+																						":pagesize",
+																						":whereCondition"
+																					],
+																					"variable": [
+																						{
+																							"id": "dc870f44-1060-4b73-9460-bc9bdaf9901d",
+																							"key": "page",
+																							"value": "1",
+																							"description": "(Required) "
+																						},
+																						{
+																							"id": "42f30dcf-a7b3-4bbf-bfc6-871ec782a52b",
+																							"key": "pagesize",
+																							"value": "10",
+																							"description": "(Required) "
+																						},
+																						{
+																							"id": "90265653-d1f7-4a38-b3d2-591c6a85a23e",
+																							"key": "whereCondition",
+																							"value": "{}",
+																							"description": "(Required) "
+																						}
+																					]
+																				}
+																			},
+																			"response": [
+																				{
+																					"id": "ebd9ad6e-04e1-4a29-a3ea-3ea6245f7049",
+																					"name": "Success",
+																					"originalRequest": {
+																						"method": "GET",
+																						"header": [
+																							{
+																								"key": "Accept",
+																								"value": "text/plain"
+																							},
+																							{
+																								"description": "Added as a part of security scheme: apikey",
+																								"key": "Authorization",
+																								"value": "<API Key>"
+																							}
+																						],
+																						"url": {
+																							"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/admin/get-paged/:page/:pagesize/:whereCondition",
+																							"host": [
+																								"{{baseUrl}}"
+																							],
+																							"path": [
+																								"api",
+																								"v1",
+																								"BillTransactionLogs",
+																								"admin",
+																								"get-paged",
+																								":page",
+																								":pagesize",
+																								":whereCondition"
+																							],
+																							"variable": [
+																								{
+																									"key": "page"
+																								},
+																								{
+																									"key": "pagesize"
+																								},
+																								{
+																									"key": "whereCondition"
+																								}
+																							]
+																						}
+																					},
+																					"status": "OK",
+																					"code": 200,
+																					"_postman_previewlanguage": "json",
+																					"header": [
+																						{
+																							"key": "Content-Type",
+																							"value": "application/json"
+																						}
+																					],
+																					"cookie": [],
+																					"responseTime": null,
+																					"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"items\": [\n      {\n        \"id\": \"<integer>\",\n        \"statusId\": \"Success\",\n        \"reference\": \"<string>\",\n        \"accountName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"billId\": \"<integer>\",\n        \"amount\": \"<double>\",\n        \"phoneNumber\": \"<string>\",\n        \"billVendorId\": \"Baxi\",\n        \"completedDate\": \"<dateTime>\",\n        \"responseCode\": \"<string>\",\n        \"clientRequestId\": \"<string>\",\n        \"deviceId\": \"<string>\",\n        \"channel\": \"USSD\",\n        \"userId\": \"<string>\",\n        \"charge\": \"<double>\",\n        \"commission\": \"<double>\",\n        \"cbaReference\": \"<string>\",\n        \"retryCount\": \"<integer>\",\n        \"vendorReference\": \"<string>\",\n        \"billCode\": \"<string>\",\n        \"billPackageCode\": \"<string>\",\n        \"beneficiary\": \"<string>\",\n        \"beneficiaryName\": \"<string>\",\n        \"beneficiaryEmail\": \"<string>\",\n        \"beneficiaryPhone\": \"<string>\",\n        \"commissionValue\": \"<double>\",\n        \"commissionTypeId\": \"Fixed\",\n        \"billPackageId\": \"<integer>\",\n        \"billTypeId\": \"Electricity\",\n        \"billToken\": \"<string>\",\n        \"isTokenType\": \"<boolean>\",\n        \"emailAddress\": \"<string>\",\n        \"sourceAccount\": \"<string>\",\n        \"sourceAccountId\": \"<long>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"feeTypeId\": \"PercentageOfTransactionCharge\",\n        \"currencyId\": \"<string>\",\n        \"processedByVendor\": \"<boolean>\",\n        \"statusName\": \"<string>\",\n        \"paymentGatewayName\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"statusId\": \"LoggedForReversal\",\n        \"reference\": \"<string>\",\n        \"accountName\": \"<string>\",\n        \"accountNumber\": \"<string>\",\n        \"billId\": \"<integer>\",\n        \"amount\": \"<double>\",\n        \"phoneNumber\": \"<string>\",\n        \"billVendorId\": \"Baxi\",\n        \"completedDate\": \"<dateTime>\",\n        \"responseCode\": \"<string>\",\n        \"clientRequestId\": \"<string>\",\n        \"deviceId\": \"<string>\",\n        \"channel\": \"Mobile\",\n        \"userId\": \"<string>\",\n        \"charge\": \"<double>\",\n        \"commission\": \"<double>\",\n        \"cbaReference\": \"<string>\",\n        \"retryCount\": \"<integer>\",\n        \"vendorReference\": \"<string>\",\n        \"billCode\": \"<string>\",\n        \"billPackageCode\": \"<string>\",\n        \"beneficiary\": \"<string>\",\n        \"beneficiaryName\": \"<string>\",\n        \"beneficiaryEmail\": \"<string>\",\n        \"beneficiaryPhone\": \"<string>\",\n        \"commissionValue\": \"<double>\",\n        \"commissionTypeId\": \"PercentageOfTransactionCharge\",\n        \"billPackageId\": \"<integer>\",\n        \"billTypeId\": \"CableTv\",\n        \"billToken\": \"<string>\",\n        \"isTokenType\": \"<boolean>\",\n        \"emailAddress\": \"<string>\",\n        \"sourceAccount\": \"<string>\",\n        \"sourceAccountId\": \"<long>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"feeTypeId\": \"Fixed\",\n        \"currencyId\": \"<string>\",\n        \"processedByVendor\": \"<boolean>\",\n        \"statusName\": \"<string>\",\n        \"paymentGatewayName\": \"<string>\"\n      }\n    ],\n    \"total\": \"<integer>\",\n    \"info\": \"<double>\"\n  },\n  \"resultType\": \"Empty\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"DuplicateEntry\",\n  \"responseCode\": \"<string>\"\n}"
+																				}
+																			]
+																		}
+																	],
+																	"id": "3e8c9105-5158-41ba-bb56-a45b755b2711"
+																}
+															],
+															"id": "8f29abb1-ada4-4139-9910-1b55eef50454"
+														}
+													],
+													"id": "554ead98-7e96-45c3-9ddb-98a039f2d7c9"
+												}
+											],
+											"id": "4bb5f288-bb47-4f47-be80-588584a4d704"
+										},
+										{
+											"name": "query-paged",
+											"item": [
+												{
+													"name": "{page}",
+													"item": [
+														{
+															"name": "{pagesize}",
+															"item": [
+																{
+																	"name": "{whereCondition}",
+																	"item": [
+																		{
+																			"name": "Retrieve paginated log for pagination template on admin",
+																			"id": "0889a86a-c8c1-4890-90b4-951997a6394a",
+																			"protocolProfileBehavior": {
+																				"disableBodyPruning": true
+																			},
+																			"request": {
+																				"method": "GET",
+																				"header": [
+																					{
+																						"key": "Accept",
+																						"value": "text/plain"
+																					}
+																				],
+																				"url": {
+																					"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/admin/query-paged/:page/:pagesize/:whereCondition",
+																					"host": [
+																						"{{baseUrl}}"
+																					],
+																					"path": [
+																						"api",
+																						"v1",
+																						"BillTransactionLogs",
+																						"admin",
+																						"query-paged",
+																						":page",
+																						":pagesize",
+																						":whereCondition"
+																					],
+																					"variable": [
+																						{
+																							"id": "71df89fd-ffb7-4aa7-baa8-191c1cda44fa",
+																							"key": "page",
+																							"value": "1",
+																							"description": "(Required) "
+																						},
+																						{
+																							"id": "95a71f64-9de4-40fd-b1bc-1b1183d0b268",
+																							"key": "pagesize",
+																							"value": "10",
+																							"description": "(Required) "
+																						},
+																						{
+																							"id": "7d976d18-3b71-4ca3-9931-b9440800b218",
+																							"key": "whereCondition",
+																							"value": "{}",
+																							"description": "(Required) "
+																						}
+																					]
+																				}
+																			},
+																			"response": [
+																				{
+																					"id": "273c6b6f-e433-4fe1-ae08-0a767bcfc547",
+																					"name": "Success",
+																					"originalRequest": {
+																						"method": "GET",
+																						"header": [
+																							{
+																								"key": "Accept",
+																								"value": "text/plain"
+																							},
+																							{
+																								"description": "Added as a part of security scheme: apikey",
+																								"key": "Authorization",
+																								"value": "<API Key>"
+																							}
+																						],
+																						"url": {
+																							"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/admin/query-paged/:page/:pagesize/:whereCondition",
+																							"host": [
+																								"{{baseUrl}}"
+																							],
+																							"path": [
+																								"api",
+																								"v1",
+																								"BillTransactionLogs",
+																								"admin",
+																								"query-paged",
+																								":page",
+																								":pagesize",
+																								":whereCondition"
+																							],
+																							"variable": [
+																								{
+																									"key": "page"
+																								},
+																								{
+																									"key": "pagesize"
+																								},
+																								{
+																									"key": "whereCondition"
+																								}
+																							]
+																						}
+																					},
+																					"status": "OK",
+																					"code": 200,
+																					"_postman_previewlanguage": "json",
+																					"header": [
+																						{
+																							"key": "Content-Type",
+																							"value": "application/json"
+																						}
+																					],
+																					"cookie": [],
+																					"responseTime": null,
+																					"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": [\n    {\n      \"id\": \"<integer>\",\n      \"statusId\": \"Failed\",\n      \"reference\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"billId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"phoneNumber\": \"<string>\",\n      \"billVendorId\": \"Baxi\",\n      \"completedDate\": \"<dateTime>\",\n      \"responseCode\": \"<string>\",\n      \"clientRequestId\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"channel\": \"USSD\",\n      \"userId\": \"<string>\",\n      \"charge\": \"<double>\",\n      \"commission\": \"<double>\",\n      \"cbaReference\": \"<string>\",\n      \"retryCount\": \"<integer>\",\n      \"vendorReference\": \"<string>\",\n      \"billCode\": \"<string>\",\n      \"billPackageCode\": \"<string>\",\n      \"beneficiary\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"beneficiaryEmail\": \"<string>\",\n      \"beneficiaryPhone\": \"<string>\",\n      \"commissionValue\": \"<double>\",\n      \"commissionTypeId\": \"PercentageOfBillAmount\",\n      \"billPackageId\": \"<integer>\",\n      \"billTypeId\": \"Airtime\",\n      \"billToken\": \"<string>\",\n      \"isTokenType\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"sourceAccount\": \"<string>\",\n      \"sourceAccountId\": \"<long>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"feeTypeId\": \"PercentageOfTransactionCharge\",\n      \"currencyId\": \"<string>\",\n      \"processedByVendor\": \"<boolean>\",\n      \"statusName\": \"<string>\",\n      \"paymentGatewayName\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"statusId\": \"Pending\",\n      \"reference\": \"<string>\",\n      \"accountName\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"billId\": \"<integer>\",\n      \"amount\": \"<double>\",\n      \"phoneNumber\": \"<string>\",\n      \"billVendorId\": \"Baxi\",\n      \"completedDate\": \"<dateTime>\",\n      \"responseCode\": \"<string>\",\n      \"clientRequestId\": \"<string>\",\n      \"deviceId\": \"<string>\",\n      \"channel\": \"USSD\",\n      \"userId\": \"<string>\",\n      \"charge\": \"<double>\",\n      \"commission\": \"<double>\",\n      \"cbaReference\": \"<string>\",\n      \"retryCount\": \"<integer>\",\n      \"vendorReference\": \"<string>\",\n      \"billCode\": \"<string>\",\n      \"billPackageCode\": \"<string>\",\n      \"beneficiary\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"beneficiaryEmail\": \"<string>\",\n      \"beneficiaryPhone\": \"<string>\",\n      \"commissionValue\": \"<double>\",\n      \"commissionTypeId\": \"PercentageOfBillAmount\",\n      \"billPackageId\": \"<integer>\",\n      \"billTypeId\": \"Data\",\n      \"billToken\": \"<string>\",\n      \"isTokenType\": \"<boolean>\",\n      \"emailAddress\": \"<string>\",\n      \"sourceAccount\": \"<string>\",\n      \"sourceAccountId\": \"<long>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"feeTypeId\": \"Fixed\",\n      \"currencyId\": \"<string>\",\n      \"processedByVendor\": \"<boolean>\",\n      \"statusName\": \"<string>\",\n      \"paymentGatewayName\": \"<string>\"\n    }\n  ],\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Bill_Transaction_Log_Update_Error\",\n  \"responseCode\": \"<string>\"\n}"
+																				}
+																			]
+																		}
+																	],
+																	"id": "302162b9-80ae-4d3f-b75a-e61e65ec50b0"
+																}
+															],
+															"id": "7026f9be-8c14-4cfc-9c9e-33c35eef7831"
+														}
+													],
+													"id": "3dc99c75-651d-4c79-9352-64a68e604fcc"
+												}
+											],
+											"id": "aa542592-5074-479b-b628-228304fdb037"
+										}
+									],
+									"id": "90234768-dbe3-47f1-8f14-6c02a7203134"
+								},
+								{
+									"name": "update-status",
+									"item": [
+										{
+											"name": "{id}",
+											"item": [
+												{
+													"name": "/api/v1/BillTransactionLogs/update-status/:id",
+													"id": "fa34477f-664a-4cc6-b1aa-3266e426a9fb",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"billId\": \"<integer>\",\n  \"status\": \"Success\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/update-status/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																"update-status",
+																":id"
+															],
+															"variable": [
+																{
+																	"id": "58d566b6-528a-45d3-8cc0-e71673ce59e2",
+																	"key": "id",
+																	"value": "<string>",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "d0ed7616-1c2f-4d3a-ab8b-027526c435e3",
+															"name": "Success",
+															"originalRequest": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: apikey",
+																		"key": "Authorization",
+																		"value": "<API Key>"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"billId\": \"<integer>\",\n  \"status\": \"Success\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/update-status/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"BillTransactionLogs",
+																		"update-status",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"message\": \"<string>\"\n  },\n  \"resultType\": \"Error\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"Dupicate_Transaction\",\n  \"responseCode\": \"<string>\"\n}"
+														}
+													]
+												}
+											],
+											"id": "f1027662-0ec8-47ae-94a2-3258fac6d996"
+										}
+									],
+									"id": "4c2eee7a-b2cb-4765-b28b-b7a6731a0e80"
+								},
+								{
+									"name": "lookup",
+									"item": [
+										{
+											"name": "/api/v1/BillTransactionLogs/lookup",
+											"id": "96bd6977-3f70-42fd-a626-420246063b58",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": "{{baseUrl}}/api/v1/BillTransactionLogs/lookup"
+											},
+											"response": [
+												{
+													"id": "0bd791e1-220c-4459-93f0-90c06e23c64d",
+													"name": "Success",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															},
+															{
+																"description": "Added as a part of security scheme: apikey",
+																"key": "Authorization",
+																"value": "<API Key>"
+															}
+														],
+														"url": "{{baseUrl}}/api/v1/BillTransactionLogs/lookup"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"periods\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"resultType\": \"Success\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"DuplicateEntry\",\n  \"responseCode\": \"<string>\"\n}"
+												}
+											]
+										}
+									],
+									"id": "dddbade0-203c-4f7c-af8a-d16fc3672d70"
+								},
+								{
+									"name": "summary",
+									"item": [
+										{
+											"name": "{whereCondition}",
+											"item": [
+												{
+													"name": "/api/v1/BillTransactionLogs/summary/:whereCondition",
+													"id": "97699bd0-614b-46f1-a053-bbf5959a8de6",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/summary/:whereCondition",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"BillTransactionLogs",
+																"summary",
+																":whereCondition"
+															],
+															"variable": [
+																{
+																	"id": "eed0f852-891d-4995-bc98-509b8b59bf7b",
+																	"key": "whereCondition",
+																	"value": "{}",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "05f89e88-8bcd-4867-92e2-b99afb612c0d",
+															"name": "Success",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: apikey",
+																		"key": "Authorization",
+																		"value": "<API Key>"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/BillTransactionLogs/summary/:whereCondition",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"BillTransactionLogs",
+																		"summary",
+																		":whereCondition"
+																	],
+																	"variable": [
+																		{
+																			"key": "whereCondition"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"hasResult\": \"<boolean>\",\n  \"result\": {\n    \"totalCount\": \"<integer>\",\n    \"totalAmount\": \"<double>\",\n    \"successfulCount\": \"<integer>\",\n    \"successfulAmount\": \"<double>\",\n    \"failedCount\": \"<integer>\",\n    \"failedAmount\": \"<double>\",\n    \"pendingCount\": \"<integer>\",\n    \"pendingAmount\": \"<double>\",\n    \"deltaValue\": \"<double>\",\n    \"deltaSign\": \"<string>\"\n  },\n  \"resultType\": \"CustomerInformation\",\n  \"message\": \"<string>\",\n  \"validationMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"successful\": \"<boolean>\",\n  \"errorCode\": \"PinMismatch\",\n  \"responseCode\": \"<string>\"\n}"
+														}
+													]
+												}
+											],
+											"id": "34f56490-163c-488b-b07b-7cfd26ab5472"
+										}
+									],
+									"id": "1dca71ec-6ccf-47ed-9b94-d5dae763c051"
+								}
+							],
+							"id": "b5056be4-f5e6-470a-b59b-e0076fff84ad"
+						}
+					],
+					"id": "078aa5c6-a981-46ac-b141-920a6a7694a7"
 				}
 			],
 			"id": "2ea63803-98fd-49ca-ad71-39af3adca205"
