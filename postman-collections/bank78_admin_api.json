@@ -4602,7 +4602,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"userName\": \"unyc101@mailinator.com\",\n  \"rcBnNumber\": \"RC5009008\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
+											"raw": "{\n  \"userName\": \"secondtest@mailinator.com\",\n  \"rcBnNumber\": \"RC9045893478\",\n  \"kycStatus\": \"Verified\",\n  \"kycApprovedBy\": \"superadmin@payaza.africa\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
